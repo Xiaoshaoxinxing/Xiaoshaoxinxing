@@ -3,6 +3,7 @@ import ast
 import copy
 import json
 import importlib.util
+import os
 from pathlib import Path
 import tempfile
 from types import SimpleNamespace
@@ -49,7 +50,7 @@ class AlignmentTests(unittest.TestCase):
         torch.set_num_threads(2)
 
     def test_original_component_bodies_are_unchanged(self):
-        source = Path('/data/user02/Atsuko')
+        source = os.environ.get('ATSUKO_REFERENCE_ROOT')
         current = Path(__file__).resolve().parents[1]/'mer_omni/layers'
         pairs = {'spectral.py':'trains/singleTask/model/spectral_band.py',
                  'router.py':'trains/singleTask/model/router.py',
@@ -59,9 +60,13 @@ class AlignmentTests(unittest.TestCase):
             return {n.name: ast.dump(n, include_attributes=False) for n in ast.parse(path.read_text()).body
                     if isinstance(n, (ast.FunctionDef, ast.ClassDef))}
         for name, original in pairs.items():
-            expected = REFERENCE/'spectral_band.py' if name == 'spectral.py' else source/original
-            if not expected.is_file():
-                continue  # Non-uploaded dependency comparison is optional off-server.
+            if name == 'spectral.py':
+                expected = REFERENCE/'spectral_band.py'
+            elif source:
+                expected = Path(source).expanduser()/original
+            else:
+                continue  # Extra upstream comparisons are explicitly opt-in.
+            self.assertTrue(expected.is_file(), str(expected))
             self.assertEqual(bodies(current/name), bodies(expected), name)
 
     def test_uploaded_reference_snapshots_match_provenance(self):

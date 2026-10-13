@@ -29,7 +29,7 @@ data/calibration/                  # 全训练集校准结果
 
 Omni 固定版本为配置内的 `revision`。加载时只读本地权重，不自动下载；架构检查不等同于版本哈希核验。`preflight` 的 `model_weights_verified=false` 也不表示执行过完整性检查。
 
-原始训练文件包括 `track2_train_mercaptionplus.csv`、`track3_train_mercaptionplus.csv`、`subtitle_chieng.csv` 及配套音视频，具体路径由 `mer_omni/data.py` 构造。本机 `data/shared` 是指向 `data/datasets` 的链接，训练数据和评测模型还复用 AffectGPT 目录；这些链接不随代码上传。
+原始训练文件包括 `track2_train_mercaptionplus.csv`、`track3_train_mercaptionplus.csv`、`subtitle_chieng.csv` 及配套音视频，具体路径由 `mer_omni/data.py` 构造。`data/shared` 可以直接是本地数据目录，也可以是你自行建立的符号链接。代码不要求原服务器上的 AffectGPT 目录或链接。
 
 ```bash
 # 仅在本地尚无清单时执行，已有文件拒绝覆盖
@@ -46,7 +46,17 @@ python tools/mer_omni.py train --device cuda:0 --output runs/new_run
 
 完整一轮覆盖 31,327 条且各一次，microbatch=1、累积=3，共 10,443 步。最后一步按实际样本和答案 token 数归一化，不跨轮补样本，超长文本报错。每步记录样本 ID；完成时保存覆盖收据。模型检查点包括适配器、频带、优化器和随机状态，加载仍需要相同的基础 Omni 权重。
 
-恢复训练使用相同配置加 `--resume <checkpoint>`；`--max-steps N` 指绝对停止步数。迁移服务器后，旧检查点和清单可能仍绑定原绝对路径与清单哈希，不能只复制 `.pt` 文件就恢复。当前训练器为单设备、`num_workers=0`，不支持 DDP。
+恢复训练使用相同实验设置加 `--resume <checkpoint>`；`--max-steps N` 指绝对停止步数。恢复允许数据根目录、训练/评测清单位置、校准文件位置和 evaluator 本地位置变化；模型设置、训练设置、随机状态和训练清单哈希仍严格核对。当前训练器为单设备、`num_workers=0`，不支持 DDP。
+
+## 路径与迁移
+
+- 配置中的 `data_root`、`train_manifest`、`benchmark_manifest_dir`、`calibration_file`、`omni.source`、`evaluator.model` 使用仓库根目录作为相对路径基准；配置资源路径支持 `~`。运行时转换成当前机器的绝对路径是正常操作，不代表依赖原服务器。
+- `--config`、`--output`、`--resume` 等显式命令行路径按当前工作目录解释；默认配置由脚本自身位置定位。长度审计工具的 `--manifest`、`--tokenizer`、`--output` 按仓库根目录解析；错误统计工具可用 `--manifest-dir` 指定清单目录。
+- `prepare` 新生成的音视频路径及标注收据来源路径相对清单所在目录保存。整体搬迁时保持数据与清单的相对布局即可，清单字节及哈希不变；原始标注内容变化仍会报错。数据集通过符号链接访问时，保存配置中的链接路径；新机器上需要自行建立有效链接。
+- 推理使用当前配置指定的训练清单，而不是盲目打开检查点里记录的旧路径，并验证该清单与检查点绑定的 SHA256 相同。已在合成输入上验证搬目录后继续训练与未中断训练一致。
+- 迁移时应保持 `omni.source` 的相对配置值不变，将同一固定版本权重放到新仓库的对应位置。它仍参与架构比较和校准指纹；仅修改它的配置字符串也可能触发校准/检查点一致性检查，不会静默接受不同模型。
+- 旧格式绝对路径清单和收据继续兼容，但不会被自动改写。旧清单若需要重建，原始字节哈希会改变，不能直接冒充旧检查点的训练清单；需要单独处理旧资源迁移。标签抽取缓存仍严格比较 evaluator 设置，移动其模型位置后应重新抽取。此类旧产物未包含在 GitHub 仓库中。
+- `train.sh` 可使用仓库内 `.venv`、PATH 中的 Python 或显式 `MER_OMNI_PYTHON`，例如激活 Conda 后执行 `MER_OMNI_PYTHON=python bash train.sh`。脚本从其他目录启动时也会先切换到自身所在的仓库目录。
 
 ## 评测
 
@@ -92,4 +102,4 @@ python tools/mer_omni.py --config config/mer_omni_evaluation.json score \
 
 `python -m unittest discover -s tests -v` 使用合成媒体、微型真实 Transformers Omni 和上传的原版快照，覆盖 CE 掩码/梯度、辅助路径跳过、尾批归一化、完整采样、断点恢复、补零/截断、频带校准及评分规则。不需要实际 3B 权重或数据集。
 
-若服务器保留旧 Atsuko 目录，测试还比较未上传依赖的函数体；其他机器只对随库提供的参考文件做验证。通过这些测试不能证明模型识别能力或整个实验与原作者完全等价。
+默认测试只依赖随库提供的参考文件，并核验其哈希。若自行准备了额外原版源码，可通过 `ATSUKO_REFERENCE_ROOT`、`AFFECTGPT_REFERENCE_ROOT` 环境变量显式启用额外函数体对照；不再探测原服务器目录。通过这些测试不能证明模型识别能力或整个实验与原作者完全等价。

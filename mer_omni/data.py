@@ -1,5 +1,6 @@
 """Strict local manifests; hybrid caption/OV-label instruction targets."""
 import json
+import os
 from pathlib import Path
 import random
 
@@ -35,7 +36,8 @@ def read_csv_map(path, column, *, allow_empty=False, required_ids=None):
 
 
 def build_train_rows(root):
-    root = Path(root).resolve()
+    # Keep configured symlinks in stored paths instead of binding to their target machine.
+    root = Path(root).expanduser().absolute()
     captions = read_csv_map(root / 'track3_train_mercaptionplus.csv', 'reason')
     labels = read_csv_map(root / 'track2_train_mercaptionplus.csv', 'openset', allow_empty=True)
     subtitles = read_csv_map(root / 'subtitle_chieng.csv', 'english', allow_empty=True)
@@ -50,7 +52,7 @@ def build_train_rows(root):
 
 def build_benchmark_rows(dataset_root, dataset):
     spec = BENCHMARKS[dataset]
-    root = Path(dataset_root).resolve() / spec['directory']
+    root = Path(dataset_root).expanduser().absolute() / spec['directory']
     subtitle_path = root / spec.get('transcript', 'transcription-engchi-polish.csv')
     subtitle_column = spec.get('text_column', 'english')
     if dataset == 'OVMERDPlus':
@@ -116,7 +118,7 @@ def validate_rows(rows, *, require_media=True):
 
 
 def read_manifest(path, *, require_media=True):
-    path = Path(path).resolve()
+    path = Path(path).expanduser().resolve()
     rows = [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
     for row in rows:
         for key in ('video', 'audio'):
@@ -127,25 +129,46 @@ def read_manifest(path, *, require_media=True):
 
 def save_manifest(rows, path, sources, *, require_media=True):
     validate_rows(rows, require_media=require_media)
-    path = Path(path)
+    path = Path(path).expanduser().resolve()
     if path.exists() or path.with_suffix('.receipt.json').exists():
         raise FileExistsError(f'Refusing to overwrite {path}')
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(''.join(json.dumps(row, ensure_ascii=False) + '\n' for row in rows))
+    stored_rows = []
+    for row in rows:
+        stored = dict(row)
+        for key in ('video', 'audio'):
+            stored[key] = os.path.relpath(Path(row[key]).expanduser().absolute(), path.parent)
+        stored_rows.append(stored)
+    path.write_text(''.join(json.dumps(row, ensure_ascii=False) + '\n' for row in stored_rows))
+    sources = [Path(p).expanduser().absolute() for p in sources]
     receipt = dict(samples=len(rows), manifest_sha256=sha256(path), media_checked=require_media,
-                   sources={str(p): sha256(p) for p in sources})
+                   path_base='manifest_dir',
+                   sources={os.path.relpath(p, path.parent): sha256(p) for p in sources})
     path.with_suffix('.receipt.json').write_text(json.dumps(receipt, indent=2))
 
 
 def verify_manifest_receipt(path):
-    path = Path(path)
+    path = Path(path).expanduser().resolve()
     receipt = json.loads(path.with_suffix('.receipt.json').read_text())
+    if receipt.get('path_base') not in (None, 'manifest_dir'):
+        raise ValueError('Unknown annotation receipt path base')
     if receipt['manifest_sha256'] != sha256(path):
         raise ValueError(f'Manifest changed after preparation: {path}')
     for source, expected in receipt['sources'].items():
+        if receipt.get('path_base') == 'manifest_dir':
+            source = path.parent / source
         if sha256(source) != expected:
             raise ValueError(f'Annotation source changed: {source}')
     return receipt
+
+
+def read_checkpoint_training_rows(checkpoint, config):
+    """Use this machine's manifest location, retaining the checkpoint's data identity."""
+    path = config['train_manifest']
+    verify_manifest_receipt(path)
+    if sha256(path) != checkpoint['manifest_sha256']:
+        raise ValueError('Checkpoint training manifest changed')
+    return read_manifest(path, require_media=False)
 
 
 class MERDataset(Dataset):

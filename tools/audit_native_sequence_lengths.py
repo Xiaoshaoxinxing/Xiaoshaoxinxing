@@ -16,7 +16,7 @@ os.environ['TOKENIZERS_PARALLELISM'] = 'false'
 import numpy as np
 import soundfile as sf
 from transformers import AutoTokenizer
-from mer_omni.data import verify_manifest_receipt
+from mer_omni.data import read_manifest, verify_manifest_receipt
 from mer_omni.protocol import sha256
 
 
@@ -26,15 +26,15 @@ def main():
     parser.add_argument('--tokenizer', default='models/Qwen2.5-Omni-3B')
     parser.add_argument('--output', required=True)
     options = parser.parse_args()
-    output = ROOT/options.output
+    output = ROOT/Path(options.output).expanduser()
     if output.exists():
         raise FileExistsError(output)
-    manifest = ROOT/options.manifest
+    manifest = ROOT/Path(options.manifest).expanduser()
     verify_manifest_receipt(manifest)
-    rows = [json.loads(line) for line in manifest.read_text().splitlines()]
+    rows = read_manifest(manifest)
     if not rows or any(r['split'] != 'train' or r['dataset'] != 'MER-Caption+' for r in rows):
         raise ValueError('Choose sequence lengths only from MER-Caption+ training inputs')
-    tokenizer = AutoTokenizer.from_pretrained(ROOT/options.tokenizer, local_files_only=True)
+    tokenizer = AutoTokenizer.from_pretrained(ROOT/Path(options.tokenizer).expanduser(), local_files_only=True)
     text_lengths = []
     for start in range(0, len(rows), 512):
         texts = [r['text'] or ' ' for r in rows[start:start+512]]

@@ -24,11 +24,13 @@ class AssetTests(unittest.TestCase):
     def setUpClass(cls):
         torch.set_num_threads(2)
 
-    def test_runtime_does_not_import_old_project(self):
-        old = '/data/user02/Atsuko/'
-        loaded = [str(getattr(module, '__file__', '')) for module in list(sys.modules.values())]
-        self.assertFalse(any(path.startswith(old) for path in loaded))
-        self.assertFalse(any(str(path).startswith(old) for path in sys.path))
+    def test_runtime_modules_come_from_this_checkout(self):
+        checkout = Path(__file__).resolve().parents[1]
+        loaded = [Path(module.__file__).resolve() for name, module in list(sys.modules.items())
+                  if (name == 'mer_omni' or name.startswith('mer_omni.'))
+                  and getattr(module, '__file__', None)]
+        self.assertTrue(loaded)
+        self.assertTrue(all(path.is_relative_to(checkout) for path in loaded))
 
     def test_missing_model_is_not_downloaded(self):
         with tempfile.TemporaryDirectory() as tmp:

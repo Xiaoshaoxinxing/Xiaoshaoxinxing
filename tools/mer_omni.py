@@ -15,7 +15,7 @@ os.environ['TRANSFORMERS_OFFLINE'] = '1'
 
 from mer_omni.protocol import BENCHMARKS, ROOT, load_config, sha256, check_coverage, check_prediction_ids, check_no_overlap
 from mer_omni.data import (build_train_rows, build_benchmark_rows, read_manifest, save_manifest,
-                           verify_manifest_receipt, MERDataset, MERCollator)
+                           verify_manifest_receipt, read_checkpoint_training_rows, MERDataset, MERCollator)
 
 
 def digest(value):
@@ -24,10 +24,8 @@ def digest(value):
 
 def resolve_config(config):
     for key in ('train_manifest', 'benchmark_manifest_dir', 'data_root', 'calibration_file'):
-        if not Path(config[key]).is_absolute():
-            config[key] = str(ROOT / config[key])
-    if not Path(config['evaluator']['model']).is_absolute():
-        config['evaluator']['model'] = str(ROOT / config['evaluator']['model'])
+        config[key] = str(ROOT / Path(config[key]).expanduser())
+    config['evaluator']['model'] = str(ROOT / Path(config['evaluator']['model']).expanduser())
     return config
 
 
@@ -81,7 +79,7 @@ def run(args):
                                       manifest_sha256=sha256(cfg['train_manifest']))
         except (ValueError, FileNotFoundError) as exc:
             status['training'] = dict(ready=False, reason=str(exc))
-        status['model_config_present'] = (ROOT / cfg['omni']['source'] / 'config.json').is_file()
+        status['model_config_present'] = (ROOT / Path(cfg['omni']['source']).expanduser() / 'config.json').is_file()
         status['model_weights_verified'] = False
         status['spectral_calibration_present'] = Path(cfg['calibration_file']).is_file()
         for name, spec in BENCHMARKS.items():
@@ -148,10 +146,7 @@ def run(args):
             raise ValueError('Inference config differs from checkpoint architecture')
         if cfg.get('accepted_release_overlaps', {}) != trained_cfg.get('accepted_release_overlaps', {}):
             raise ValueError('Inference overlap policy differs from checkpoint')
-        verify_manifest_receipt(trained_cfg['train_manifest'])
-        train_rows = read_manifest(trained_cfg['train_manifest'], require_media=False)
-        if sha256(trained_cfg['train_manifest']) != checkpoint['manifest_sha256']:
-            raise ValueError('Checkpoint training manifest changed')
+        train_rows = read_checkpoint_training_rows(checkpoint, cfg)
         path = Path(cfg['benchmark_manifest_dir']) / (args.dataset + '.jsonl')
         verify_manifest_receipt(path)
         rows = read_manifest(path)

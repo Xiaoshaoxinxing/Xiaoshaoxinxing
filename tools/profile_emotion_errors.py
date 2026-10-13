@@ -8,13 +8,15 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from mer_omni.evaluation import mappings, ref
+from mer_omni.data import read_manifest
 from mer_omni.protocol import sha256
 
 
-def profile(directory, dataset):
-    directory = Path(directory)
-    path = ROOT / 'data/manifests/benchmark' / (dataset + '.jsonl')
-    rows = [json.loads(x) for x in path.read_text().splitlines()]
+def profile(directory, dataset, manifest_dir=None):
+    directory = Path(directory).expanduser()
+    manifest_dir = Path(manifest_dir).expanduser() if manifest_dir is not None else ROOT / 'data/manifests/benchmark'
+    path = manifest_dir / (dataset + '.jsonl')
+    rows = read_manifest(path, require_media=False)
     predictions = [json.loads(x) for x in (directory / 'predictions.jsonl').read_text().splitlines()]
     cache = json.loads((directory / 'extraction.json').read_text())
     score = json.loads((directory / 'score.json').read_text())
@@ -75,8 +77,10 @@ if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--evaluation', type=Path, required=True)
     p.add_argument('--output', type=Path, required=True)
+    p.add_argument('--manifest-dir', type=Path, default=ROOT / 'data/manifests/benchmark')
     args = p.parse_args()
-    result = {d: profile(args.evaluation / d, d) for d in ['MER2023', 'MER2024', 'CMUMOSEI']
+    args.evaluation, args.output = args.evaluation.expanduser(), args.output.expanduser()
+    result = {d: profile(args.evaluation / d, d, args.manifest_dir) for d in ['MER2023', 'MER2024', 'CMUMOSEI']
               if (args.evaluation / d / 'score.json').exists()}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')

@@ -40,6 +40,21 @@ def sha256(path):
     return digest.hexdigest()
 
 
+def config_without_data_locations(config):
+    """Compare experiment settings independently of where local data is mounted.
+
+    The Omni source/revision and all scientific settings remain part of the identity.
+    Keep Omni's configured source relative when relocating an existing experiment.
+    """
+    value = dict(config)
+    for key in ('data_root', 'train_manifest', 'benchmark_manifest_dir', 'calibration_file'):
+        value.pop(key, None)
+    if 'evaluator' in value:
+        value['evaluator'] = dict(value['evaluator'])
+        value['evaluator'].pop('model', None)
+    return value
+
+
 def spectral_sequence_lengths(spectral):
     """Resolve fixed text/video/audio lengths; old configs keep one shared grid."""
     lengths = spectral.get('sequence_lengths', [spectral['sequence_length']] * 3)

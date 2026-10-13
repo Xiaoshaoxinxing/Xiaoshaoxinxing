@@ -2,6 +2,7 @@
 import ast
 import copy
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -12,7 +13,7 @@ import torch
 from mer_omni.data import MERDataset, build_train_rows, validate_rows, build_benchmark_rows
 from mer_omni.evaluation import score_dataset, aggregate_scores
 from mer_omni.model import MEROmni
-from mer_omni.protocol import ROOT, BENCHMARKS, check_no_overlap, check_prediction_ids
+from mer_omni.protocol import ROOT, BENCHMARKS, check_no_overlap, check_prediction_ids, sha256
 from mer_omni.training import SampleStream, adapter_state, load_adapter, train, read_checkpoint, seed_all
 from mer_omni.encoders.omni import OmniComponents
 from mer_omni.calibration import set_calibration
@@ -56,12 +57,12 @@ def batch(inputs=None):
 class ProtocolTests(unittest.TestCase):
     def test_no_overlap_duplicates_or_partial_benchmark_mean(self):
         rows = [dict(id='x', dataset='MER-Caption+', split='train', text='', description='happy',
-                     openset=['happy'], video='/tmp/x.mp4', audio='/tmp/x.wav')]
+                     openset=['happy'], video='synthetic/x.mp4', audio='synthetic/x.wav')]
         validate_rows(rows, require_media=False)
         with self.assertRaisesRegex(ValueError, 'duplicate'):
             validate_rows(rows * 2, require_media=False)
         with self.assertRaisesRegex(ValueError, 'overlap'):
-            check_no_overlap(rows, [dict(id='x', video='/different/file.mp4')])
+            check_no_overlap(rows, [dict(id='x', video='synthetic/different/file.mp4')])
         with self.assertRaisesRegex(ValueError, 'coverage'):
             check_prediction_ids(rows, {})
         with self.assertRaisesRegex(ValueError, 'nine'):
@@ -80,9 +81,9 @@ class ProtocolTests(unittest.TestCase):
         self.assertNotIn('description', evaluation)
 
     def test_original_release_overlap_acceptance_is_scoped(self):
-        train = [dict(id='shared', dataset='MER-Caption+', split='train', video='/tmp/train/shared.mp4'),
-                 dict(id='unexpected', dataset='MER-Caption+', split='train', video='/tmp/train/new.mp4')]
-        row = dict(id='shared', dataset='OVMERDPlus', split='test', video='/tmp/eval/shared.mp4')
+        train = [dict(id='shared', dataset='MER-Caption+', split='train', video='synthetic/train/shared.mp4'),
+                 dict(id='unexpected', dataset='MER-Caption+', split='train', video='synthetic/train/new.mp4')]
+        row = dict(id='shared', dataset='OVMERDPlus', split='test', video='synthetic/eval/shared.mp4')
         policy = {'OVMERDPlus': ['shared']}
         with self.assertRaisesRegex(ValueError, 'overlap'):
             check_no_overlap(train, [row])
@@ -95,7 +96,7 @@ class ProtocolTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'overlap'):
             check_no_overlap(train, [dict(row, id='alias', video=train[0]['video'])],
                              accepted_overlaps={'OVMERDPlus': ['alias']})
-        fresh = dict(row, id='fresh', video='/tmp/eval/fresh.mp4')
+        fresh = dict(row, id='fresh', video='synthetic/eval/fresh.mp4')
         self.assertEqual(check_no_overlap(train, [fresh], accepted_overlaps=policy), [])
 
     def test_overlap_policy_preserves_calibration_signature(self):
@@ -123,12 +124,18 @@ class ProtocolTests(unittest.TestCase):
         self.assertEqual(miss['wheel_f1'], 0)
         self.assertEqual(miss['precision'], 0)
 
-    def test_reference_function_bodies_match_saved_source(self):
+    def test_saved_reference_integrity_and_optional_upstream_comparison(self):
         root = ROOT / 'mer_omni/reference'
         receipt = json.loads((root / 'provenance.json').read_text())
-        original = Path(receipt['source'])
-        if not original.exists():
-            self.skipTest('Local source comparison only on the reference server')
+        self.assertEqual(sha256(root / 'affectgpt.py'), receipt['vendored_sha256'])
+        for path, info in receipt['files'].items():
+            if path.startswith('emotion_wheel/'):
+                self.assertEqual(sha256(root / path), info['sha256'])
+        source = os.environ.get('AFFECTGPT_REFERENCE_ROOT')
+        if not source:
+            return  # The checkout integrity checks above always run.
+        original = Path(source).expanduser()
+        self.assertTrue(original.is_dir(), str(original))
         copied = {n.name: ast.dump(n, include_attributes=False) for n in ast.parse((root / 'affectgpt.py').read_text()).body
                   if isinstance(n, ast.FunctionDef)}
         for path, info in receipt['files'].items():

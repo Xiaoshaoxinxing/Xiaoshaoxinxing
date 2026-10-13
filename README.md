@@ -47,9 +47,15 @@
 
 ## 检查与运行
 
-环境为 Python 3.10、PyTorch 2.4.0+cu121、Transformers 4.52.4，依赖见 [requirements/train.txt](requirements/train.txt)。系统需安装 `ffmpeg` / `ffprobe`。标签抽取使用 [独立环境](requirements/evaluation.txt)，其 Transformers 版本与训练环境不同。
+支持 Linux / Python 3.10，使用 PyTorch 2.4.0+cu121、Transformers 4.52.4，依赖见 [requirements/train.txt](requirements/train.txt)。系统需安装 `ffmpeg` / `ffprobe`。标签抽取使用 [独立环境](requirements/evaluation.txt)，其 Transformers 版本与训练环境不同。
 
 ```bash
+git clone https://github.com/Xiaoshaoxinxing/Xiaoshaoxinxing.git
+cd Xiaoshaoxinxing
+python3.10 -m venv .venv
+source .venv/bin/activate
+python -m pip install --extra-index-url https://download.pytorch.org/whl/cu121 -r requirements/train.txt
+
 # 在已安装依赖的环境中运行，不需要真实数据或 3B 权重
 OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 \
   python -m unittest discover -s tests -v
@@ -60,5 +66,7 @@ python tools/mer_omni.py preflight
 ```
 
 完整运行需自行准备配置中的本地模型、原始数据、清单与校准结果；GitHub 版本不包含这些资源。数据目录约定和准备、训练、评测命令见 [运行协议](docs/protocol.md)。本机已完成本轮训练，`train.sh` 会拒绝覆盖已有运行目录。
+
+配置里的资源路径默认相对本仓库根目录解析，也支持自行设置绝对路径和 `~`；不需要原服务器目录。新生成的清单和标注收据保存相对路径，可随数据目录一同搬迁。`train.sh` 优先使用本仓库 `.venv/bin/python`，没有时使用 PATH 中的 Python，也可通过 `MER_OMNI_PYTHON=/path/to/python bash train.sh` 显式指定环境。旧服务器生成的绝对路径清单、评测缓存不会自动迁移，边界见[路径与迁移](docs/protocol.md#路径与迁移)。
 
 数据、权重、检查点、日志、缓存及清理前归档均由 `.gitignore` 排除。主目录只保留审查与运行相关源码、配置、测试、依赖及说明；本地历史文件在 `.local-archive/github-cleanup-20261013/`，不应加入版本控制。

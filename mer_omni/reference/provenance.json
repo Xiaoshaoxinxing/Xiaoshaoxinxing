@@ -1,5 +1,5 @@
 {
-  "source": "/data/user02/AffectGPT/repo/AffectGPT",
+  "source": "AffectGPT source snapshot",
   "files": {
     "my_affectgpt/evaluation/wheel.py": {
       "sha256": "2072ae0f6b18721cac9b51e154fac30c013cb73800366797a474f616f2631f54",
@@ -64,5 +64,7 @@
       "sha256": "2dd4595b2cf8e7628ca06a416a8e38ac831614b244f23d1ae613dc34007649f1"
     }
   },
-  "changes": "Import isolation only; function bodies unchanged. Metric aggregation is implemented by mer_omni/evaluation.py."
+  "changes": "Import isolation only; function bodies unchanged. Metric aggregation is implemented by mer_omni/evaluation.py.",
+  "source_root_env": "AFFECTGPT_REFERENCE_ROOT",
+  "vendored_sha256": "5feee1f6484421901681c1e0dbfe3cdf73e22600d953160784c85a9c7b9e57a8"
 }

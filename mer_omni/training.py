@@ -8,7 +8,7 @@ import time
 import numpy as np
 import torch
 
-from .protocol import sha256
+from .protocol import sha256, config_without_data_locations
 from .model import SequenceTooLong
 from .objectives import combine_losses
 from .console import panel, training_progress
@@ -166,8 +166,9 @@ def train(model, dataset, collator, config, output, device, *, resume=None, max_
     start = 0
     if resume is not None:
         checkpoint = read_checkpoint(resume)
-        if checkpoint['config'] != config or checkpoint['manifest_sha256'] != manifest_hash:
-            raise ValueError('Resume requires identical config and training manifest')
+        if (config_without_data_locations(checkpoint['config']) != config_without_data_locations(config)
+                or checkpoint['manifest_sha256'] != manifest_hash):
+            raise ValueError('Resume requires identical experiment settings and training manifest')
         load_adapter(model, checkpoint['model'])
         model.calibration_info = checkpoint['calibration']
         optimizer.load_state_dict(checkpoint['optimizer'])
