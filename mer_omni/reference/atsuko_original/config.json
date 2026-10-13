@@ -1,0 +1,375 @@
+{
+  "datasetCommonParams": {
+    "dataset_root_dir": "./dataset",
+    "mosi": {
+      "aligned": {
+        "featurePath": "MOSI/Processed/aligned_50.pkl",
+        "feature_dims": [
+          768,
+          5,
+          20
+        ],
+        "train_samples": 1284,
+        "num_classes": 3,
+        "language": "en",
+        "KeyEval": "Loss",
+        "label_key": "M"
+      },
+      "unaligned": {
+        "featurePath": "MOSI/Processed/unaligned_50.pkl",
+        "feature_dims": [
+          768,
+          5,
+          20
+        ],
+        "train_samples": 1284,
+        "num_classes": 3,
+        "language": "en",
+        "KeyEval": "Loss",
+        "label_key": "M"
+      }
+    },
+    "mosei": {
+      "aligned": {
+        "featurePath": "MOSEI/Processed/aligned_50.pkl",
+        "feature_dims": [
+          768,
+          74,
+          35
+        ],
+        "train_samples": 16326,
+        "num_classes": 3,
+        "language": "en",
+        "KeyEval": "Loss",
+        "label_key": "M",
+        "train_mode": "softlabel",
+        "softlabel_lambda_reg": 0.5,
+        "softlabel_reg_loss": "l1",
+        "use_class_weight": true,
+        "class_weight_type": "effective",
+        "class_weight_beta": 0.9999
+      },
+      "unaligned": {
+        "featurePath": "MOSEI/Processed/unaligned_50.pkl",
+        "feature_dims": [
+          768,
+          74,
+          35
+        ],
+        "train_samples": 16326,
+        "num_classes": 3,
+        "language": "en",
+        "KeyEval": "Loss",
+        "label_key": "M",
+        "train_mode": "softlabel",
+        "softlabel_lambda_reg": 0.5,
+        "softlabel_reg_loss": "l1",
+        "use_class_weight": true,
+        "class_weight_type": "effective",
+        "class_weight_beta": 0.9999
+      }
+    },
+    "mintrec": {
+      "aligned": {
+        "featurePath": "MIntRec/Processed/aligned_50.pkl",
+        "feature_dims": [
+          768,
+          768,
+          256
+        ],
+        "train_samples": 1334,
+        "num_classes": 20,
+        "language": "en",
+        "KeyEval": "Acc",
+        "label_key": "intent",
+        "train_mode": "classification",
+        "aligned_seq_len": 50
+      },
+      "unaligned": {
+        "featurePath": "MIntRec/Processed/unaligned_pad.pkl",
+        "feature_dims": [
+          768,
+          768,
+          256
+        ],
+        "train_samples": 1334,
+        "num_classes": 20,
+        "language": "en",
+        "KeyEval": "Acc",
+        "label_key": "intent",
+        "train_mode": "classification",
+        "audio_max_len": 220,
+        "video_max_len": 120
+      }
+    },
+    "sims": {
+      "aligned": {
+        "featurePath": "CH-SIMS/unaligned_39.pkl",
+        "feature_dims": [
+          768,
+          33,
+          709
+        ],
+        "train_samples": 1368,
+        "num_classes": 3,
+        "language": "cn",
+        "KeyEval": "Loss",
+        "label_key": "M"
+      },
+      "unaligned": {
+        "featurePath": "CH-SIMS/unaligned_39.pkl",
+        "feature_dims": [
+          768,
+          33,
+          709
+        ],
+        "train_samples": 1368,
+        "num_classes": 3,
+        "language": "cn",
+        "KeyEval": "Loss",
+        "label_key": "M"
+      }
+    },
+    "sims_v2": {
+      "aligned": {
+        "featurePath": "CH-SIMS V2/unaligned.pkl",
+        "feature_dims": [
+          768,
+          25,
+          177
+        ],
+        "train_samples": 2722,
+        "num_classes": 3,
+        "language": "cn",
+        "KeyEval": "Loss",
+        "label_key": "M"
+      },
+      "unaligned": {
+        "featurePath": "CH-SIMS V2/unaligned.pkl",
+        "feature_dims": [
+          768,
+          25,
+          177
+        ],
+        "train_samples": 2722,
+        "num_classes": 3,
+        "language": "cn",
+        "KeyEval": "Loss",
+        "label_key": "M"
+      }
+    }
+  },
+  "atsuko": {
+    "commonParams": {
+      "modality_mask": {
+        "text": true,
+        "audio": true,
+        "vision": true
+      },
+      "need_data_aligned": true,
+      "need_model_aligned": true,
+      "early_stop": 15,
+      "use_bert": true,
+      "use_finetune": true,
+      "attn_mask": true,
+      "update_epochs": 10,
+      "fusion_method": "sum",
+      "temperature": 0.1,
+      "is_distill": false,
+      "enable_abcm": true,
+      "enable_spectral_bands": true,
+      "num_bands": 3,
+      "band_partition": "equal_energy",
+      "band_edge_ratios": [
+        0.3333333,
+        0.6666667
+      ],
+      "band_mask_rate": 0.15,
+      "band_entropy_weight": 0.05,
+      "band_edges_l": null,
+      "band_edges_v": null,
+      "band_edges_a": null
+    },
+    "datasetParams": {
+      "mosi": {
+        "band_edges_l": [
+          2,
+          4
+        ],
+        "band_edges_v": [
+          2,
+          4
+        ],
+        "band_edges_a": [
+          2,
+          11
+        ],
+        "loss_ety": 1.0,
+        "attn_dropout_a": 0.2,
+        "attn_dropout_v": 0.0,
+        "relu_dropout": 0.0,
+        "embed_dropout": 0.2,
+        "res_dropout": 0.0,
+        "dst_feature_dim_nheads": [
+          256,
+          8
+        ],
+        "batch_size": 16,
+        "learning_rate": 0.0001,
+        "nlevels": 4,
+        "conv1d_kernel_size_l": 5,
+        "conv1d_kernel_size_a": 5,
+        "conv1d_kernel_size_v": 5,
+        "text_dropout": 0.5,
+        "attn_dropout": 0.3,
+        "output_dropout": 0.5,
+        "grad_clip": 0.6,
+        "patience": 5,
+        "weight_decay": 0.005,
+        "transformers": "bert",
+        "pretrained": "bert-base-uncased"
+      },
+      "mosei": {
+        "band_edges_l": [
+          2,
+          8
+        ],
+        "band_edges_v": [
+          2,
+          4
+        ],
+        "band_edges_a": [
+          2,
+          4
+        ],
+        "loss_ety": 0.3,
+        "spec_router_input": "post_attn",
+        "attn_dropout_a": 0.0,
+        "attn_dropout_v": 0.0,
+        "relu_dropout": 0.0,
+        "embed_dropout": 0.0,
+        "res_dropout": 0.0,
+        "dst_feature_dim_nheads": [
+          256,
+          8
+        ],
+        "batch_size": 16,
+        "learning_rate": 0.0001,
+        "nlevels": 4,
+        "conv1d_kernel_size_l": 5,
+        "conv1d_kernel_size_a": 1,
+        "conv1d_kernel_size_v": 3,
+        "text_dropout": 0.3,
+        "attn_dropout": 0.4,
+        "output_dropout": 0.5,
+        "grad_clip": 0.6,
+        "patience": 5,
+        "weight_decay": 0.001,
+        "transformers": "bert",
+        "pretrained": "bert-base-uncased"
+      },
+      "mintrec": {
+        "band_edges_l": [
+          1,
+          8
+        ],
+        "band_edges_v": [
+          1,
+          2
+        ],
+        "band_edges_a": [
+          1,
+          2
+        ],
+        "loss_ety": 0.3,
+        "spec_router_input": "pre_attn",
+        "cls_loss_type": "focal",
+        "focal_gamma": 2.0,
+        "use_class_weight": true,
+        "class_weight_type": "sqrt_inv",
+        "label_smoothing": 0.0,
+        "attn_dropout_a": 0.0,
+        "attn_dropout_v": 0.0,
+        "relu_dropout": 0.0,
+        "embed_dropout": 0.0,
+        "res_dropout": 0.0,
+        "dst_feature_dim_nheads": [
+          256,
+          8
+        ],
+        "batch_size": 16,
+        "learning_rate": 0.0001,
+        "nlevels": 4,
+        "conv1d_kernel_size_l": 5,
+        "conv1d_kernel_size_a": 1,
+        "conv1d_kernel_size_v": 3,
+        "text_dropout": 0.3,
+        "attn_dropout": 0.4,
+        "output_dropout": 0.5,
+        "grad_clip": 0.6,
+        "patience": 5,
+        "weight_decay": 0.005,
+        "transformers": "bert",
+        "pretrained": "bert-base-uncased"
+      },
+      "sims": {
+        "band_edges_l": null,
+        "band_edges_v": null,
+        "band_edges_a": null,
+        "loss_ety": 0.01,
+        "attn_dropout_a": 0.2,
+        "attn_dropout_v": 0.0,
+        "relu_dropout": 0.0,
+        "embed_dropout": 0.2,
+        "res_dropout": 0.0,
+        "dst_feature_dim_nheads": [
+          256,
+          8
+        ],
+        "batch_size": 16,
+        "learning_rate": 0.00005,
+        "nlevels": 4,
+        "conv1d_kernel_size_l": 5,
+        "conv1d_kernel_size_a": 5,
+        "conv1d_kernel_size_v": 5,
+        "text_dropout": 0.6,
+        "attn_dropout": 0.5,
+        "output_dropout": 0.6,
+        "grad_clip": 0.6,
+        "patience": 5,
+        "weight_decay": 0.01,
+        "transformers": "bert",
+        "pretrained": "bert-base-chinese"
+      },
+      "sims_v2": {
+        "band_edges_l": null,
+        "band_edges_v": null,
+        "band_edges_a": null,
+        "loss_ety": 0.01,
+        "attn_dropout_a": 0.2,
+        "attn_dropout_v": 0.0,
+        "relu_dropout": 0.0,
+        "embed_dropout": 0.2,
+        "res_dropout": 0.0,
+        "dst_feature_dim_nheads": [
+          256,
+          8
+        ],
+        "batch_size": 16,
+        "learning_rate": 0.0001,
+        "nlevels": 4,
+        "conv1d_kernel_size_l": 5,
+        "conv1d_kernel_size_a": 5,
+        "conv1d_kernel_size_v": 5,
+        "text_dropout": 0.5,
+        "attn_dropout": 0.3,
+        "output_dropout": 0.5,
+        "grad_clip": 0.6,
+        "patience": 5,
+        "weight_decay": 0.005,
+        "transformers": "bert",
+        "pretrained": "bert-base-chinese"
+      }
+    }
+  }
+}

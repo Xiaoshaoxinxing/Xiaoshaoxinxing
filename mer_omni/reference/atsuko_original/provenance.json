@@ -1,0 +1,22 @@
+{
+  "source": "User-uploaded unmodified Atsuko files, 2026-10-12",
+  "files": {
+    "atsuko_model.py": {
+      "uploaded_path": "/data/user02/Xiaoshaoxinxing/atsuko_model.py",
+      "sha256": "5bdd6838c1d47cf7cfc41ce1b0f0f06928c8d788ba8eb3b7fe0d708b01c43211"
+    },
+    "spectral_band.py": {
+      "uploaded_path": "/data/user02/Xiaoshaoxinxing/spectral_band.py",
+      "sha256": "1e6eedacda084f95a36b83bc7a475752fc278ce1e5ec2d36ef19500b95908749"
+    },
+    "data_loader.py": {
+      "uploaded_path": "/data/user02/Xiaoshaoxinxing/data_loader.py",
+      "sha256": "857deb6124a4929f6afac1a5b7f3985169c2f70eb3d0137aadb5ee2230e7991e"
+    },
+    "config.json": {
+      "uploaded_path": "/data/user02/Xiaoshaoxinxing/config.json",
+      "sha256": "c2cdbad4ad8226316b66e8483a1b69a65a57d53248ae43d8273ddb65744cdf89"
+    }
+  },
+  "scope": "Reference snapshots for comparison only; not imported as production model modules. Supporting Transformer/router implementations remain the previously copied local dependencies, not newly uploaded references."
+}

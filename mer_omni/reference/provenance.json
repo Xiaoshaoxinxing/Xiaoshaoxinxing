@@ -1,0 +1,68 @@
+{
+  "source": "/data/user02/AffectGPT/repo/AffectGPT",
+  "files": {
+    "my_affectgpt/evaluation/wheel.py": {
+      "sha256": "2072ae0f6b18721cac9b51e154fac30c013cb73800366797a474f616f2631f54",
+      "functions": [
+        "read_wheel_to_map",
+        "convert_all_wheels_to_candidate_labels",
+        "func_merge_map",
+        "read_candidate_synonym_onerun",
+        "read_candidate_synonym_merge",
+        "read_format2raws",
+        "func_get_name2reason",
+        "func_backward_case1",
+        "func_backward_case2",
+        "func_backward_case3",
+        "func_get_wheel_cluster",
+        "func_map_label_to_synonym",
+        "calculate_openset_overlap_rate",
+        "calculate_openset_onehot_hitrate"
+      ]
+    },
+    "toolkit/utils/functions.py": {
+      "sha256": "7d422f9069c1f134729838e0ee08aa9bba0a310ed0b7c7d0f2d1d97ca4f7e23d",
+      "functions": [
+        "string_to_list"
+      ]
+    },
+    "toolkit/utils/read_files.py": {
+      "sha256": "5c59f4887971fb58a6ead16fca4cdb1463645538d896e3d280e5449cad20adce",
+      "functions": [
+        "func_read_key_from_csv"
+      ]
+    },
+    "toolkit/utils/qwen.py": {
+      "sha256": "f0dafb395df79dab38d48934da4c4ac7d7fb57817c7932723635425bfad389b1",
+      "functions": [
+        "func_postprocess_qwen",
+        "get_completion_qwen",
+        "get_completion_qwen_bacth",
+        "reason_to_openset_qwen",
+        "openset_to_sentiment_qwen"
+      ]
+    },
+    "emotion_wheel/format.csv": {
+      "sha256": "ba6de7d61db8e129d1d7ef8a2aae22a9e93a2c2e3e683e6f2735d04455f016f2"
+    },
+    "emotion_wheel/synonym.xlsx": {
+      "sha256": "23f81f9ab1d2418aaf96775304fb5dc52c62bb5d5ef652a97471d045fc9d2e29"
+    },
+    "emotion_wheel/wheel1.xlsx": {
+      "sha256": "e70485d354b82a7491ff24648273182a5f4f13f92c76e6b3e4f9033f5e6afcc1"
+    },
+    "emotion_wheel/wheel2.xlsx": {
+      "sha256": "acc001e076a8e60440361f58dd8c05ed900c4890c84bb7d8d1df93708a7d9c87"
+    },
+    "emotion_wheel/wheel3.xlsx": {
+      "sha256": "d62f30bf88c17c55876634cd088eacaef98278fc25457474364439872f9dbf83"
+    },
+    "emotion_wheel/wheel4.xlsx": {
+      "sha256": "660260561b7fe15550f3679a01e7c783608ce3403d4c28db0a88520f68d83aea"
+    },
+    "emotion_wheel/wheel5.xlsx": {
+      "sha256": "2dd4595b2cf8e7628ca06a416a8e38ac831614b244f23d1ae613dc34007649f1"
+    }
+  },
+  "changes": "Import isolation only; function bodies unchanged. Metric aggregation is implemented by mer_omni/evaluation.py."
+}

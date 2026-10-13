@@ -1,0 +1,44 @@
+# Local datasets, weights, calibration artifacts and experiment outputs.
+/data/
+/models/
+/runs/
+/logs/
+/reports/
+/.local-archive/
+/dist/
+# Local comparison notes link to full experiment records, retained on this machine.
+/AffectGPT对照差距与待排查问题.md
+
+# Environments, caches and editor/runtime state.
+.venv*/
+.cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.DS_Store
+.idea/
+.vscode/
+/.agents/
+/.codex/
+
+# Download sessions, credentials and large generated files.
+.env
+.env.*
+*.cookies
+*.pem
+*.key
+*.partial
+*.incomplete
+*.pt
+*.pth
+*.safetensors
+*.ckpt
+*.bin
+*.zip
+*.tar
+*.tar.gz
+*.log
