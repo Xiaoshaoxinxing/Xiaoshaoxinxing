@@ -11,7 +11,7 @@ from .layers.spectral import BandRouter, apply_band_masking
 from .layers.router import router
 from .layers.transformer import TransformerEncoder
 from .calibration import TrainingSetSpectralDecomposer
-from .protocol import spectral_sequence_lengths
+from .protocol import spectral_sequence_lengths, includes_raw_subtitle, includes_av_tokens
 from .objectives import entropy_balance, feature_distillation, complementarity, combine_losses
 
 
@@ -173,6 +173,8 @@ class MEROmni(nn.Module):
     def __init__(self, config, tokenizer, *, components=None):
         super().__init__()
         self.config, self.tokenizer = config, tokenizer
+        self.include_subtitle = includes_raw_subtitle(config)
+        self.include_av_tokens = includes_av_tokens(config)
         options = dict(config['omni'], generative=True)
         self.components = components if components is not None else OmniComponents.from_pretrained(options)
         if not hasattr(self.components.thinker, 'lm_head'):
@@ -194,6 +196,12 @@ class MEROmni(nn.Module):
             self.bimodal_heads.requires_grad_(False)
             self.fusion_out.requires_grad_(False)
         self.calibration_info = None
+        if self.include_av_tokens:
+            # Add independent projections after all existing initialization, without
+            # advancing its RNG stream. Shared parameters retain the control's seed.
+            with torch.random.fork_rng(devices=[]):
+                self.audio_in = nn.Linear(dim, hidden)
+                self.video_in = nn.Linear(dim, hidden)
 
     def _amp(self):
         weight = self.components.thinker.get_input_embeddings().weight
@@ -206,36 +214,59 @@ class MEROmni(nn.Module):
         embedding = self.components.thinker.get_input_embeddings()
         return embedding(torch.tensor(ids, device=embedding.weight.device, dtype=torch.long))
 
-    def _prompt_segments(self, token, question):
-        # Only the routed feature enters the main fusion layer. Raw subtitle and
-        # unweighted audio/vision tokens would bypass Atsuko's modality routing.
-        return ['###Human: The multimodal information is: <Multi>', token, '</Multi>. '
-                'Now, please answer my question based on all the provided information. '
-                + question + ' ###Assistant: ']
+    def _prompt_segments(self, token, question, text=None, *, audio_token=None, video_token=None):
+        # Default-off switches preserve the exact prompts used by old checkpoints.
+        subtitle = ''
+        if self.include_subtitle:
+            if not isinstance(text, str):
+                raise ValueError('Raw-subtitle prompt requires the original text (empty string is allowed)')
+            subtitle = f'The subtitle of this video is: <Subtitle>{text}</Subtitle>. '
+        segments = ['###Human: The multimodal information is: <Multi>', token]
+        tail = '</Multi>. '
+        if getattr(self, 'include_av_tokens', False):
+            segments.extend([tail + 'The audio content is as follows: <Audio>', audio_token,
+                             '</Audio>. Meanwhile, we uniformly sample raw frames from the video: <Video>',
+                             video_token])
+            tail = '</Video>. '
+        segments.append(tail + subtitle + 'Now, please answer my question based on all the provided information. '
+                        + question + ' ###Assistant: ')
+        return segments
 
-    def validate_training_text(self, question, answer):
+    def validate_training_text(self, question, answer, *, text=None):
         prompt_length = sum(len(self._ids(x)) if isinstance(x, str) else 1
-                            for x in self._prompt_segments(None, question))
+                            for x in self._prompt_segments(None, question, text))
         target_length = len(self._ids(answer + '###'))
         # AffectGPT's limit is checked before the collator appends BOS/EOS.
         if prompt_length + target_length > self.config['train']['max_length']:
             raise SequenceTooLong('Combined prompt and answer exceed the AffectGPT training max_length')
         return target_length + 1
 
-    def _assemble(self, tokens, questions, answers=None):
+    def _assemble(self, tokens, questions, answers=None, *, texts=None, audio_tokens=None, video_tokens=None):
         embeddings, labels = [], []
+        if self.include_subtitle and (texts is None or len(texts) != len(questions)):
+            raise ValueError('Raw-subtitle prompt requires one text per question')
+        if self.include_av_tokens:
+            if (audio_tokens is None or video_tokens is None or
+                    audio_tokens.shape != tokens.shape or video_tokens.shape != tokens.shape):
+                raise ValueError('Audio/video prompt requires one projected token per modality and sample')
+        elif audio_tokens is not None or video_tokens is not None:
+            raise ValueError('Audio/video tokens supplied to a prompt with that pathway disabled')
         bos = self.tokenizer.bos_token_id
         eos = self.tokenizer.eos_token_id
         if eos is None:
             raise ValueError('Tokenizer must define eos_token_id')
         for i, question in enumerate(questions):
-            segments = self._prompt_segments(tokens[i:i+1], question)
+            text = texts[i] if self.include_subtitle else None
+            segments = self._prompt_segments(
+                tokens[i:i+1], question, text,
+                audio_token=audio_tokens[i:i+1] if self.include_av_tokens else None,
+                video_token=video_tokens[i:i+1] if self.include_av_tokens else None)
             pieces = [self._embed([bos])] if bos is not None else []
             pieces += [self._embed(self._ids(x)) if isinstance(x, str) else x for x in segments]
             prompt = torch.cat(pieces)
             lab = torch.full((len(prompt),), -100, device=prompt.device, dtype=torch.long)
             if answers is not None:
-                self.validate_training_text(question, answers[i])
+                self.validate_training_text(question, answers[i], text=text)
                 target = self._ids(answers[i] + '###') + [eos]
                 prompt = torch.cat((prompt, self._embed(target)))
                 lab = torch.cat((lab, torch.tensor(target, device=lab.device)))
@@ -279,12 +310,22 @@ class MEROmni(nn.Module):
                    for index, head in enumerate(self.bimodal_heads)]
         return refined, bimodal
 
+    def _project_prompt_features(self, features):
+        result = dict(tokens=self.fusion_in(features['fusion']))
+        if self.include_av_tokens:
+            # Frontend order is text/video/audio. Use unimodal features before
+            # modality weighting; the original routed fusion remains unchanged.
+            result.update(audio_tokens=self.audio_in(features['modalities'][:, 2]),
+                          video_tokens=self.video_in(features['modalities'][:, 1]))
+        return result
+
     def forward(self, *, omni_inputs, texts, questions, answers, **unused):
         if answers is None:
             raise ValueError('Training requires assistant answers')
         features = self.frontend(self.components.encode(omni_inputs))
         weights = features['modality_weights']
-        assembled = self._assemble(self.fusion_in(features['fusion']), questions, answers)
+        assembled = self._assemble(questions=questions, answers=answers, texts=texts,
+                                   **self._project_prompt_features(features))
         if self.ce_only:
             full = self._nll(*assembled)
             counts = (assembled[2] != -100).sum(-1)
@@ -316,7 +357,8 @@ class MEROmni(nn.Module):
     def generate(self, *, omni_inputs, texts, questions, **unused):
         self.eval()
         features = self.frontend(self.components.encode(omni_inputs))
-        embeddings, masks, _ = self._assemble(self.fusion_in(features['fusion']), questions)
+        embeddings, masks, _ = self._assemble(questions=questions, texts=texts,
+                                             **self._project_prompt_features(features))
         results = []
         settings = self.config['generation']
         processors = generation_processors(settings) if settings['do_sample'] else None

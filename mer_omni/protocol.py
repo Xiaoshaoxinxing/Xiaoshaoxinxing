@@ -68,6 +68,30 @@ def spectral_sequence_lengths(spectral):
     return list(lengths)
 
 
+def includes_raw_subtitle(config):
+    """Old checkpoints keep the routed-only prompt unless explicitly enabled."""
+    prompt = config.get('prompt', {})
+    if not isinstance(prompt, dict) or set(prompt) - {'include_subtitle', 'include_av_tokens'}:
+        raise ValueError('Unknown prompt settings')
+    enabled = prompt.get('include_subtitle', False)
+    if not isinstance(enabled, bool):
+        raise ValueError('prompt.include_subtitle must be boolean')
+    if enabled and config['mcm'].get('loss_mode') != 'ce_only':
+        raise ValueError('Raw-subtitle ablation requires ce_only; auxiliary omission branches must not bypass routing')
+    return enabled
+
+
+def includes_av_tokens(config):
+    """Independent audio/video inputs are opt-in and restricted to the main CE path."""
+    includes_raw_subtitle(config)
+    enabled = config.get('prompt', {}).get('include_av_tokens', False)
+    if not isinstance(enabled, bool):
+        raise ValueError('prompt.include_av_tokens must be boolean')
+    if enabled and config['mcm'].get('loss_mode') != 'ce_only':
+        raise ValueError('Independent audio/video tokens require ce_only; auxiliary omission branches must not bypass routing')
+    return enabled
+
+
 def load_config(path):
     cfg = json.loads(Path(path).read_text())
     if cfg['training_dataset'] != 'MER-Caption+':
@@ -88,6 +112,8 @@ def load_config(path):
             raise ValueError(f'{key} must be positive')
     if cfg['train']['label_type'] not in ('hybrid', 'description', 'ovlabel'):
         raise ValueError('Unknown instruction target')
+    includes_raw_subtitle(cfg)
+    includes_av_tokens(cfg)
     if cfg['spectral']['partition'] != 'equal_energy':
         raise ValueError('Atsuko alignment requires fixed training-set equal-energy partitioning')
     if cfg['spectral']['dim'] % cfg['spectral']['heads'] or cfg['spectral']['sequence_length'] < 3:

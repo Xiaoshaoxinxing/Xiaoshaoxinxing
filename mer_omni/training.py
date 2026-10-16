@@ -42,7 +42,7 @@ def training_row(dataset, index, model, *, allow_replacement=True):
     for _ in range(10):
         row = dataset[index]
         try:
-            model.validate_training_text(row['question'], row['answer'])
+            model.validate_training_text(row['question'], row['answer'], text=row.get('text'))
             return row
         except SequenceTooLong:
             if not allow_replacement:
@@ -148,12 +148,14 @@ def read_checkpoint(path):
 
 
 def train(model, dataset, collator, config, output, device, *, resume=None, max_steps=None,
-          log_every=1, verbose_batches=False):
+          log_every=1, verbose_batches=False, checkpoint_every=None):
     settings = epoch_settings(config['train'], len(dataset))
     full_dataset = settings.get('epoch_mode') == 'full_dataset'
     loss_mode = config['mcm'].get('loss_mode', 'full')
     if log_every < 1:
         raise ValueError('log_every must be positive')
+    if checkpoint_every is not None and checkpoint_every < 1:
+        raise ValueError('checkpoint_every must be positive')
     if settings['num_workers'] != 0:
         raise ValueError('Exact-resume runner uses num_workers=0; parallel decoding is not implemented')
     output = Path(output)
@@ -288,7 +290,8 @@ def train(model, dataset, collator, config, output, device, *, resume=None, max_
             handle.write(json.dumps(log) + '\n')
         if step == start or (step+1) % log_every == 0 or step+1 == stop:
             print(training_progress(log) + '\n', flush=True)
-        if (step+1) % settings['steps_per_epoch'] == 0 or step+1 == stop:
+        if ((step+1) % settings['steps_per_epoch'] == 0 or step+1 == stop or
+                (checkpoint_every is not None and (step+1) % checkpoint_every == 0)):
             checkpoint_path = output / f'checkpoint_step_{step+1:07d}.pt'
             print(f'【保存检查点】正在写入 {checkpoint_path}', flush=True)
             save_checkpoint(checkpoint_path, model, optimizer, stream, step+1, config, manifest_hash)

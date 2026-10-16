@@ -31,7 +31,7 @@ class LossModel(torch.nn.Module):
     def _ids(self, text):
         return text.split()
 
-    def validate_training_text(self, question, answer):
+    def validate_training_text(self, question, answer, *, text=None):
         if answer == 'too_long':
             raise SequenceTooLong('fixture length limit')
 
@@ -133,6 +133,22 @@ class FullDatasetEpochTests(unittest.TestCase):
         self.assertEqual(settings['steps_per_epoch'], 10443)
         old = load_config(ROOT / 'tests/fixtures/legacy_full_loss.json')
         self.assertEqual(epoch_settings(old['train'], 31327), old['train'])
+
+    def test_periodic_checkpoints_preserve_full_run_and_resumability(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            cfg, rows = self.setup_run(root, size=9)
+            full, periodic = LossModel(cfg), LossModel(cfg)
+            self.run_train(full, rows, cfg, root / 'full')
+            self.run_train(periodic, rows, cfg, root / 'periodic', checkpoint_every=1)
+            torch.testing.assert_close(full.weight, periodic.weight, rtol=0, atol=0)
+            self.assertEqual(len(list((root / 'periodic').glob('checkpoint_step_*.pt'))), 3)
+            logs = [json.loads(s) for s in (root / 'periodic/train.jsonl').read_text().splitlines()]
+            self.assertTrue(all(r['stop_step'] == r['total_steps'] == 3 for r in logs))
+            checkpoint = root / 'periodic/checkpoint_step_0000001.pt'
+            resumed = LossModel(cfg)
+            self.run_train(resumed, rows, cfg, root / 'resumed', resume=checkpoint)
+            torch.testing.assert_close(full.weight, resumed.weight, rtol=0, atol=0)
 
 
 if __name__ == '__main__':

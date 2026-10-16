@@ -6,8 +6,8 @@
 /reports/
 /.local-archive/
 /dist/
-# Local comparison notes link to full experiment records, retained on this machine.
-/AffectGPT对照差距与待排查问题.md
+# Downloaded reference paper; research notes are versioned separately.
+/2603.13340v1.pdf
 
 # Environments, caches and editor/runtime state.
 .venv*/

@@ -13,7 +13,8 @@ sys.path.insert(0, str(ROOT))
 os.environ['HF_HUB_OFFLINE'] = '1'
 os.environ['TRANSFORMERS_OFFLINE'] = '1'
 
-from mer_omni.protocol import BENCHMARKS, ROOT, load_config, sha256, check_coverage, check_prediction_ids, check_no_overlap
+from mer_omni.protocol import (BENCHMARKS, ROOT, load_config, sha256, check_coverage,
+                               check_prediction_ids, check_no_overlap, includes_raw_subtitle, includes_av_tokens)
 from mer_omni.data import (build_train_rows, build_benchmark_rows, read_manifest, save_manifest,
                            verify_manifest_receipt, read_checkpoint_training_rows, MERDataset, MERCollator)
 
@@ -132,7 +133,8 @@ def run(args):
             print('【启动 3/3】正在恢复检查点、优化器与采样进度……', flush=True)
         checkpoint = train(model, MERDataset(rows, cfg['train']['label_type']), collator, cfg,
                            args.output, device, resume=args.resume, max_steps=args.max_steps,
-                           log_every=args.log_every, verbose_batches=args.verbose_batches)
+                           log_every=args.log_every, verbose_batches=args.verbose_batches,
+                           checkpoint_every=getattr(args, 'checkpoint_every', None))
         print(f'【训练结束】本次目标已完成，最终检查点：{checkpoint}', flush=True)
     elif args.command == 'infer':
         import numpy as np
@@ -144,6 +146,10 @@ def run(args):
         trained_cfg = checkpoint['config']
         if any(cfg[key] != trained_cfg[key] for key in ('omni', 'spectral', 'mcm', 'train')):
             raise ValueError('Inference config differs from checkpoint architecture')
+        if includes_raw_subtitle(cfg) != includes_raw_subtitle(trained_cfg):
+            raise ValueError('Inference subtitle prompt differs from checkpoint')
+        if includes_av_tokens(cfg) != includes_av_tokens(trained_cfg):
+            raise ValueError('Inference audio/video token prompt differs from checkpoint')
         if cfg.get('accepted_release_overlaps', {}) != trained_cfg.get('accepted_release_overlaps', {}):
             raise ValueError('Inference overlap policy differs from checkpoint')
         train_rows = read_checkpoint_training_rows(checkpoint, cfg)
@@ -258,6 +264,8 @@ def main():
     train.add_argument('--resume')
     train.add_argument('--max-steps', type=int, help='Stop at this absolute optimizer step for staged/diagnostic runs; keeps the reference schedule unchanged')
     train.add_argument('--log-every', type=int, default=1, help='Print progress every N optimizer steps (default: 1)')
+    train.add_argument('--checkpoint-every', type=int,
+                       help='Save every N optimizer steps without stopping or resetting the full-run progress')
     train.add_argument('--verbose-batches', action='store_true', help='Also print sample IDs and each accumulation batch stage')
     calibrate = sub.add_parser('calibrate', help='Compute fixed equal-energy bands from the entire training set')
     calibrate.add_argument('--output', help='Defaults to config.calibration_file; never overwrites')

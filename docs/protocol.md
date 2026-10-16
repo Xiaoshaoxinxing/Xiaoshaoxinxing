@@ -1,6 +1,8 @@
 # 当前模型与运行协议
 
-本文件说明当前补零、仅 CE 版本。训练配置为 `config/mer_omni_atsuko_padding.json`；评测配置为 `config/mer_omni_evaluation.json`，其中生成与标签抽取设置取自最终 step 10443 的正式评测记录。
+本文件说明截至 2026-10-16 的补零、仅 CE 版本。当前训练配置为 `config/mer_omni_av_tokens_ablation.json`；评测配置为 `config/mer_omni_av_tokens_evaluation.json`。当前模型使用原始字幕、融合 token 及独立音视频 token。
+
+原基线使用 `mer_omni_atsuko_padding.json` / `mer_omni_evaluation.json`；字幕对照使用 `mer_omni_subtitle_ablation.json` / `mer_omni_subtitle_evaluation.json`。统一 CLI 和 `train.sh` 的默认配置仍为原基线，当前版本必须显式传入 `--config`。三个版本的检查点和提示词设置不可混用。
 
 ## 模型边界
 
@@ -8,7 +10,11 @@ Omni-3B 的视觉编码器、音频编码器、文本 embedding 和原始语言�
 
 三模态独立右补零至 96/50/704，不插值、不做词级对齐。kernel=5 的卷积投影到 256 维后，序列长度为 92/46/700。谱基和三频带重建沿用 Atsuko，等能量边界在全部 MER-Caption+ 训练输入上统计并冻结；模型不从测试批次重新估计边界。
 
-频带路由后，三模态分别经过 4 层、8 头 Transformer，读取末时间位置。`router_input=pre_attn` 时，模态路由决策使用注意力前序列均值，融合对象仍是注意力后的末位置。融合向量经映射成为一个 Thinker 输入 token；提示中不另外拼接原始字幕或未路由的音视频特征。
+频带路由后，三模态分别经过 4 层、8 头 Transformer，读取末时间位置。`router_input=pre_attn` 时，模态路由决策使用注意力前序列均值，融合对象仍是注意力后的末位置。融合向量经映射成为一个 Thinker 输入 token。
+
+`prompt.include_subtitle=true` 时，原始字幕另行进入 Thinker 提示词，前端文字分支保持。当前还启用 `prompt.include_av_tokens=true`：从 `frontend.modalities` 取音频索引 2 和视频索引 1，分别经可训练 `Linear(256, 2048)` 得到一个独立 token。它们仍经过完整频谱前端，仅绕过最后的模态加权。原基线不启用这两个开关。
+
+新增投影在原有模块之后初始化，并保存/恢复 PyTorch RNG，使共有参数初始值与原有实验一致。完整训练时各实验从底座和 seed=42 初始化开始。推理会核验检查点的字幕和音视频入口设置，拒绝跨版本混用。
 
 训练只执行主语言路径 CE；提示与 padding 不受监督，目标包含回答、`###`、EOS。描述与开放标签 hybrid 采样概率各 50%。CE 模式冻结并跳过六条辅助分支和蒸馏映射，保留它们的构造以保持初始化顺序。`tests/fixtures/legacy_full_loss.json` 仅供旧模式及原版数值回归测试，不能当作当前训练设置。
 
@@ -35,16 +41,17 @@ Omni 固定版本为配置内的 `revision`。加载时只读本地权重，不�
 # 仅在本地尚无清单时执行，已有文件拒绝覆盖
 python tools/mer_omni.py prepare --dataset train
 python tools/mer_omni.py prepare --dataset MER2023
-python tools/mer_omni.py prepare --dataset MER2024
-python tools/mer_omni.py prepare --dataset CMUMOSEI
-python tools/mer_omni.py preflight
+python tools/mer_omni.py --config config/mer_omni_av_tokens_ablation.json preflight
 
 # 在新环境中、资源完整且尚未校准/训练时执行
-python tools/mer_omni.py calibrate --device cuda:0
-python tools/mer_omni.py train --device cuda:0 --output runs/new_run
+python tools/mer_omni.py --config config/mer_omni_av_tokens_ablation.json calibrate --device cuda:0
+python tools/mer_omni.py --config config/mer_omni_av_tokens_ablation.json train \
+  --device cuda:0 --output runs/new_av_run --log-every 10 --checkpoint-every 1000
 ```
 
 完整一轮覆盖 31,327 条且各一次，microbatch=1、累积=3，共 10,443 步。最后一步按实际样本和答案 token 数归一化，不跨轮补样本，超长文本报错。每步记录样本 ID；完成时保存覆盖收据。模型检查点包括适配器、频带、优化器和随机状态，加载仍需要相同的基础 Omni 权重。
+
+本次三个实验的谱前端设置及共有投影初始化一致，因此复用原训练集校准；新环境需先校准。更改序列长度、卷积或前端配置后不能直接复用原校准结果。周期检查点在独立文件中保存，不中断训练循环。
 
 恢复训练使用相同实验设置加 `--resume <checkpoint>`；`--max-steps N` 指绝对停止步数。恢复允许数据根目录、训练/评测清单位置、校准文件位置和 evaluator 本地位置变化；模型设置、训练设置、随机状态和训练清单哈希仍严格核对。当前训练器为单设备、`num_workers=0`，不支持 DDP。
 
@@ -77,20 +84,22 @@ python tools/mer_omni.py train --device cuda:0 --output runs/new_run
 评测先生成描述，再用独立 Qwen2.5-7B-Instruct 抽取情绪词/极性，最后应用原评分规则。最终检查点不通过测试分数选择。当前只完成 README 中列出的集合，不能报告九集均分。
 
 ```bash
-python tools/mer_omni.py --config config/mer_omni_evaluation.json infer \
-  --dataset MER2023 --checkpoint runs/mer_omni_padding_epoch01/checkpoint_step_0010443.pt \
-  --sequence-overflow truncate_right --output runs/eval/MER2023
+python tools/mer_omni.py --config config/mer_omni_av_tokens_evaluation.json infer \
+  --dataset MER2023 --checkpoint runs/new_av_run/checkpoint_step_0010443.pt \
+  --sequence-overflow truncate_right --output runs/new_av_eval/MER2023
 
 # 在 requirements/evaluation.txt 对应的独立 Python 环境执行
-python tools/mer_omni.py --config config/mer_omni_evaluation.json extract \
-  --dataset MER2023 --predictions runs/eval/MER2023/predictions.jsonl \
-  --gpu-memory-utilization 0.50 --max-model-len 4096 --max-num-seqs 8 \
-  --output runs/eval/MER2023/extraction.json
+python tools/mer_omni.py --config config/mer_omni_av_tokens_evaluation.json extract \
+  --dataset MER2023 --predictions runs/new_av_eval/MER2023/predictions.jsonl \
+  --gpu-memory-utilization 0.36 --max-model-len 4096 --max-num-seqs 8 \
+  --output runs/new_av_eval/MER2023/extraction.json
 
-python tools/mer_omni.py --config config/mer_omni_evaluation.json score \
-  --dataset MER2023 --predictions runs/eval/MER2023/predictions.jsonl \
-  --extraction runs/eval/MER2023/extraction.json --output runs/eval/MER2023/score.json
+python tools/mer_omni.py --config config/mer_omni_av_tokens_evaluation.json score \
+  --dataset MER2023 --predictions runs/new_av_eval/MER2023/predictions.jsonl \
+  --extraction runs/new_av_eval/MER2023/extraction.json --output runs/new_av_eval/MER2023/score.json
 ```
+
+上面的 `python` 在生成时属于训练环境，在抽取和评分时属于独立评测环境。当前记录只完成 MER2023；MER2024 已暂停，213 条部分生成不构成正式成绩。上述命令不会自动启动 MER2024。
 
 `truncate_right` 只在推理时覆盖超长策略，保留原生特征前缀，长度和训练校准不变；逐样本记录受影响模态，退出后恢复模型设置。MER2023 有 1 条、MOSEI 有 29 条超长；MER2024 无超长输入。训练默认仍为 `error`。
 
