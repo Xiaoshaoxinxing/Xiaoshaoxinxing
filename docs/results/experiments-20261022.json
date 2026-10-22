@@ -1,0 +1,1980 @@
+{
+  "as_of": "2026-10-22",
+  "scope": "Six AV-token optimization experiments; one training seed and one generation/extraction run per result. No model weights or per-sample predictions included.",
+  "experiments": [
+    {
+      "run": "mer_omni_av_tokens_epoch01",
+      "log_sha256": "27f82fd971db52dfba4c53400700b6aceead471f86796cac30933fac963d8619",
+      "steps": 10443,
+      "epochs": 1,
+      "sample_visits": 31327,
+      "all_losses_finite": true,
+      "complete_unique_coverage_per_epoch": true,
+      "last100_mean_loss": 1.12156961812683,
+      "loss_per_1000_steps": [
+        {
+          "start": 1,
+          "end": 1000,
+          "steps": 1000,
+          "mean_loss": 2.0408999246845507
+        },
+        {
+          "start": 1001,
+          "end": 2000,
+          "steps": 1000,
+          "mean_loss": 1.4220731758466465
+        },
+        {
+          "start": 2001,
+          "end": 3000,
+          "steps": 1000,
+          "mean_loss": 1.3404782942470908
+        },
+        {
+          "start": 3001,
+          "end": 4000,
+          "steps": 1000,
+          "mean_loss": 1.2794684639240448
+        },
+        {
+          "start": 4001,
+          "end": 5000,
+          "steps": 1000,
+          "mean_loss": 1.224904307242998
+        },
+        {
+          "start": 5001,
+          "end": 6000,
+          "steps": 1000,
+          "mean_loss": 1.2180311695812032
+        },
+        {
+          "start": 6001,
+          "end": 7000,
+          "steps": 1000,
+          "mean_loss": 1.180583899569476
+        },
+        {
+          "start": 7001,
+          "end": 8000,
+          "steps": 1000,
+          "mean_loss": 1.1749682593217667
+        },
+        {
+          "start": 8001,
+          "end": 9000,
+          "steps": 1000,
+          "mean_loss": 1.1500111009317795
+        },
+        {
+          "start": 9001,
+          "end": 10000,
+          "steps": 1000,
+          "mean_loss": 1.1458348010161696
+        },
+        {
+          "start": 10001,
+          "end": 10443,
+          "steps": 443,
+          "mean_loss": 1.138270418836048
+        }
+      ],
+      "checkpoint_selection": "final scheduled checkpoint; no benchmark-based selection",
+      "checkpoint_retained_locally": false,
+      "settings": {
+        "omni": {
+          "source": "models/Qwen2.5-Omni-3B",
+          "repo_id": "Qwen/Qwen2.5-Omni-3B",
+          "revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+          "dtype": "bfloat16",
+          "attn_implementation": "sdpa",
+          "gradient_checkpointing": true,
+          "backbone_lora": true,
+          "lora_r": 16,
+          "lora_alpha": 32,
+          "lora_dropout": 0.05,
+          "generative": true,
+          "max_frames": 8,
+          "min_pixels": 3136,
+          "max_pixels": 50176,
+          "max_text_tokens": 1024,
+          "audio_sample_rate": 16000
+        },
+        "spectral": {
+          "reference_preset": "atsuko_mosi",
+          "dim": 256,
+          "heads": 8,
+          "layers": 4,
+          "sequence_length": 50,
+          "partition": "equal_energy",
+          "conv_kernel_sizes": [
+            5,
+            5,
+            5
+          ],
+          "router_input": "pre_attn",
+          "temperature": 0.1,
+          "attn_dropout": [
+            0.3,
+            0.0,
+            0.2
+          ],
+          "relu_dropout": 0.0,
+          "res_dropout": 0.0,
+          "embed_dropout": 0.2,
+          "text_dropout": 0.5,
+          "output_dropout": 0.5,
+          "attn_mask": true,
+          "band_mask_rate": 0.15,
+          "input_mode": "zero_pad",
+          "sequence_lengths": [
+            96,
+            50,
+            704
+          ],
+          "sequence_overflow": "error"
+        },
+        "train": {
+          "seed": 42,
+          "batch_size": 1,
+          "gradient_accumulation": 3,
+          "epochs": 1,
+          "epoch_mode": "full_dataset",
+          "warmup_steps": 5000,
+          "lr": 1e-05,
+          "min_lr": 1e-05,
+          "warmup_lr": 1e-06,
+          "weight_decay": 0.05,
+          "label_type": "hybrid",
+          "max_length": 1024,
+          "num_workers": 0
+        },
+        "generation": {
+          "seed": 42,
+          "do_sample": true,
+          "temperature": 1.0,
+          "top_p": 0.9,
+          "max_new_tokens": 1200,
+          "max_length": 2000
+        },
+        "evaluator": {
+          "model": "models/Qwen2.5-7B-Instruct",
+          "backend": "vllm",
+          "seed": 42,
+          "batch_size": 8,
+          "vllm_version": "0.6.2",
+          "transformers_version": "4.49.0",
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "repetition_penalty": 1.05,
+          "max_tokens": 512
+        },
+        "prompt": {
+          "include_subtitle": true,
+          "include_av_tokens": true
+        }
+      },
+      "evaluations": [
+        {
+          "score_source": "runs/mer_omni_av_tokens_epoch01/evaluation_step10443_affectgpt/MER2023/score.json",
+          "score_sha256": "8dff40125904f94b431b1a5d856d984fa54c79074bafde5fafc94d204663b7e1",
+          "dataset": "MER2023",
+          "task": "basic",
+          "samples": 411,
+          "strict_protocol": true,
+          "expected_samples": 411,
+          "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+          "primary": 0.6153925798101813,
+          "per_wheel": [
+            [
+              0.628482972136223,
+              0.39705882352941174
+            ],
+            [
+              0.6408668730650154,
+              0.42156862745098045
+            ],
+            [
+              0.6006191950464397,
+              0.45691434468524245
+            ],
+            [
+              0.6037151702786377,
+              0.42621259029927755
+            ],
+            [
+              0.6032786885245902,
+              0.5049180327868853
+            ]
+          ],
+          "evaluated_samples_per_wheel": [
+            323,
+            323,
+            323,
+            323,
+            305
+          ],
+          "hit_rate": 0.6153925798101813,
+          "mscore": 0.4413344837503595,
+          "checkpoint_sha256": "5530adfc0893f55b01ee89ba3a52f7ed74cf1872bfb61738cb704cb23b76c306",
+          "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+          "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+          "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+          "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+          "extraction_sha256": "ed61fc36521eac85a78aefd3359b11fede1cb67647a0bee2660676ff26bf2155",
+          "evaluator_engine_options": {
+            "gpu_memory_utilization": 0.36,
+            "max_model_len": 4096,
+            "max_num_seqs": 8
+          },
+          "evaluator_distributed_store": "HashStore",
+          "accepted_release_overlap_ids": [],
+          "input_policy": {
+            "input_mode": "zero_pad",
+            "sequence_lengths": [
+              96,
+              50,
+              704
+            ],
+            "sequence_overflow": "truncate_right"
+          },
+          "input_processing_sha256": "85cfd2061ac70e4312679bd72865109a7a2f7df396981daf10d5ca159ccc8882",
+          "truncated_samples": 1
+        }
+      ]
+    },
+    {
+      "run": "mer_omni_av_tokens_resample_run01",
+      "log_sha256": "35993143ead0bd62f9f94e5212f076c503591a0ce74b8e50b2d4074cc70d54a9",
+      "steps": 10443,
+      "epochs": 1,
+      "sample_visits": 31327,
+      "all_losses_finite": true,
+      "complete_unique_coverage_per_epoch": true,
+      "last100_mean_loss": 1.1234164109653249,
+      "loss_per_1000_steps": [
+        {
+          "start": 1,
+          "end": 1000,
+          "steps": 1000,
+          "mean_loss": 2.05589244469477
+        },
+        {
+          "start": 1001,
+          "end": 2000,
+          "steps": 1000,
+          "mean_loss": 1.4281461137886577
+        },
+        {
+          "start": 2001,
+          "end": 3000,
+          "steps": 1000,
+          "mean_loss": 1.3420594601063676
+        },
+        {
+          "start": 3001,
+          "end": 4000,
+          "steps": 1000,
+          "mean_loss": 1.280359932512283
+        },
+        {
+          "start": 4001,
+          "end": 5000,
+          "steps": 1000,
+          "mean_loss": 1.2245628057630573
+        },
+        {
+          "start": 5001,
+          "end": 6000,
+          "steps": 1000,
+          "mean_loss": 1.217580752022271
+        },
+        {
+          "start": 6001,
+          "end": 7000,
+          "steps": 1000,
+          "mean_loss": 1.1814220931948238
+        },
+        {
+          "start": 7001,
+          "end": 8000,
+          "steps": 1000,
+          "mean_loss": 1.1758973886441744
+        },
+        {
+          "start": 8001,
+          "end": 9000,
+          "steps": 1000,
+          "mean_loss": 1.1506466299897087
+        },
+        {
+          "start": 9001,
+          "end": 10000,
+          "steps": 1000,
+          "mean_loss": 1.1470510223484143
+        },
+        {
+          "start": 10001,
+          "end": 10443,
+          "steps": 443,
+          "mean_loss": 1.1389521156239284
+        }
+      ],
+      "checkpoint_selection": "final scheduled checkpoint; no benchmark-based selection",
+      "checkpoint_retained_locally": false,
+      "settings": {
+        "omni": {
+          "source": "models/Qwen2.5-Omni-3B",
+          "repo_id": "Qwen/Qwen2.5-Omni-3B",
+          "revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+          "dtype": "bfloat16",
+          "attn_implementation": "sdpa",
+          "gradient_checkpointing": true,
+          "backbone_lora": true,
+          "lora_r": 16,
+          "lora_alpha": 32,
+          "lora_dropout": 0.05,
+          "generative": true,
+          "max_frames": 8,
+          "min_pixels": 3136,
+          "max_pixels": 50176,
+          "max_text_tokens": 1024,
+          "audio_sample_rate": 16000
+        },
+        "spectral": {
+          "reference_preset": "atsuko_mosi",
+          "dim": 256,
+          "heads": 8,
+          "layers": 4,
+          "sequence_length": 50,
+          "partition": "equal_energy",
+          "conv_kernel_sizes": [
+            5,
+            5,
+            5
+          ],
+          "router_input": "pre_attn",
+          "temperature": 0.1,
+          "attn_dropout": [
+            0.3,
+            0.0,
+            0.2
+          ],
+          "relu_dropout": 0.0,
+          "res_dropout": 0.0,
+          "embed_dropout": 0.2,
+          "text_dropout": 0.5,
+          "output_dropout": 0.5,
+          "attn_mask": true,
+          "band_mask_rate": 0.15,
+          "input_mode": "omni_resample",
+          "sequence_lengths": [
+            96,
+            50,
+            704
+          ]
+        },
+        "train": {
+          "seed": 42,
+          "batch_size": 1,
+          "gradient_accumulation": 3,
+          "epochs": 1,
+          "epoch_mode": "full_dataset",
+          "warmup_steps": 5000,
+          "lr": 1e-05,
+          "min_lr": 1e-05,
+          "warmup_lr": 1e-06,
+          "weight_decay": 0.05,
+          "label_type": "hybrid",
+          "max_length": 1024,
+          "num_workers": 0
+        },
+        "generation": {
+          "seed": 42,
+          "do_sample": true,
+          "temperature": 1.0,
+          "top_p": 0.9,
+          "max_new_tokens": 1200,
+          "max_length": 2000
+        },
+        "evaluator": {
+          "model": "models/Qwen2.5-7B-Instruct",
+          "backend": "vllm",
+          "seed": 42,
+          "batch_size": 8,
+          "vllm_version": "0.6.2",
+          "transformers_version": "4.49.0",
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "repetition_penalty": 1.05,
+          "max_tokens": 512
+        },
+        "prompt": {
+          "include_subtitle": true,
+          "include_av_tokens": true
+        }
+      },
+      "evaluations": [
+        {
+          "score_source": "runs/mer_omni_av_tokens_resample_run01/evaluation_step10443_affectgpt/MER2023/score.json",
+          "score_sha256": "54b0e77ba613cb29e2bdb5fa0ffa0d774a127ea2a2bb6680bc382586a63a6527",
+          "dataset": "MER2023",
+          "task": "basic",
+          "samples": 411,
+          "strict_protocol": true,
+          "expected_samples": 411,
+          "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+          "primary": 0.6148464700806984,
+          "per_wheel": [
+            [
+              0.6563467492260062,
+              0.4223426212590299
+            ],
+            [
+              0.6470588235294118,
+              0.422858617131063
+            ],
+            [
+              0.5851393188854489,
+              0.43034055727554177
+            ],
+            [
+              0.5758513931888545,
+              0.4006707946336429
+            ],
+            [
+              0.6098360655737705,
+              0.49945355191256824
+            ]
+          ],
+          "evaluated_samples_per_wheel": [
+            323,
+            323,
+            323,
+            323,
+            305
+          ],
+          "hit_rate": 0.6148464700806984,
+          "mscore": 0.4351332284423692,
+          "checkpoint_sha256": "7f7019ebfdf2222563a0717fdd3ddda48f50c178fa904072ea7e69442b73927b",
+          "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+          "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+          "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+          "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+          "extraction_sha256": "8389842df0f30aeae67a149a6e19bb28ff0b6f7b4bca2ef6b5456400e789078c",
+          "evaluator_engine_options": {
+            "gpu_memory_utilization": 0.36,
+            "max_model_len": 4096,
+            "max_num_seqs": 8
+          },
+          "evaluator_distributed_store": "HashStore",
+          "accepted_release_overlap_ids": [],
+          "input_policy": {
+            "input_mode": "omni_resample",
+            "sequence_lengths": [
+              96,
+              50,
+              704
+            ],
+            "sequence_overflow": "error"
+          },
+          "input_processing_sha256": "077bc1531b750738dd0ebb82780fb3e1d2d5d49abcab747afe1dd10aa76d453c",
+          "truncated_samples": 0
+        }
+      ]
+    },
+    {
+      "run": "mer_omni_av_tokens_lrschedule_run01",
+      "log_sha256": "de75353c7de3e9cf360d6d45e12bdc2741913d48bc1ee3f529eed05c743d9bd4",
+      "steps": 10443,
+      "epochs": 1,
+      "sample_visits": 31327,
+      "all_losses_finite": true,
+      "complete_unique_coverage_per_epoch": true,
+      "last100_mean_loss": 1.0851245604577855,
+      "loss_per_1000_steps": [
+        {
+          "start": 1,
+          "end": 1000,
+          "steps": 1000,
+          "mean_loss": 1.5392225371676318
+        },
+        {
+          "start": 1001,
+          "end": 2000,
+          "steps": 1000,
+          "mean_loss": 1.2224561563298753
+        },
+        {
+          "start": 2001,
+          "end": 3000,
+          "steps": 1000,
+          "mean_loss": 1.1944150712109989
+        },
+        {
+          "start": 3001,
+          "end": 4000,
+          "steps": 1000,
+          "mean_loss": 1.1713145241990235
+        },
+        {
+          "start": 4001,
+          "end": 5000,
+          "steps": 1000,
+          "mean_loss": 1.1417015543685052
+        },
+        {
+          "start": 5001,
+          "end": 6000,
+          "steps": 1000,
+          "mean_loss": 1.1476588732176776
+        },
+        {
+          "start": 6001,
+          "end": 7000,
+          "steps": 1000,
+          "mean_loss": 1.1244946506710192
+        },
+        {
+          "start": 7001,
+          "end": 8000,
+          "steps": 1000,
+          "mean_loss": 1.1289064066276293
+        },
+        {
+          "start": 8001,
+          "end": 9000,
+          "steps": 1000,
+          "mean_loss": 1.1076603784958183
+        },
+        {
+          "start": 9001,
+          "end": 10000,
+          "steps": 1000,
+          "mean_loss": 1.1089032205506903
+        },
+        {
+          "start": 10001,
+          "end": 10443,
+          "steps": 443,
+          "mean_loss": 1.1032559555504706
+        }
+      ],
+      "checkpoint_selection": "final scheduled checkpoint; no benchmark-based selection",
+      "checkpoint_retained_locally": false,
+      "settings": {
+        "omni": {
+          "source": "models/Qwen2.5-Omni-3B",
+          "repo_id": "Qwen/Qwen2.5-Omni-3B",
+          "revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+          "dtype": "bfloat16",
+          "attn_implementation": "sdpa",
+          "gradient_checkpointing": true,
+          "backbone_lora": true,
+          "lora_r": 16,
+          "lora_alpha": 32,
+          "lora_dropout": 0.05,
+          "generative": true,
+          "max_frames": 8,
+          "min_pixels": 3136,
+          "max_pixels": 50176,
+          "max_text_tokens": 1024,
+          "audio_sample_rate": 16000
+        },
+        "spectral": {
+          "reference_preset": "atsuko_mosi",
+          "dim": 256,
+          "heads": 8,
+          "layers": 4,
+          "sequence_length": 50,
+          "partition": "equal_energy",
+          "conv_kernel_sizes": [
+            5,
+            5,
+            5
+          ],
+          "router_input": "pre_attn",
+          "temperature": 0.1,
+          "attn_dropout": [
+            0.3,
+            0.0,
+            0.2
+          ],
+          "relu_dropout": 0.0,
+          "res_dropout": 0.0,
+          "embed_dropout": 0.2,
+          "text_dropout": 0.5,
+          "output_dropout": 0.5,
+          "attn_mask": true,
+          "band_mask_rate": 0.15,
+          "input_mode": "zero_pad",
+          "sequence_lengths": [
+            96,
+            50,
+            704
+          ],
+          "sequence_overflow": "error"
+        },
+        "train": {
+          "seed": 42,
+          "batch_size": 1,
+          "gradient_accumulation": 3,
+          "epochs": 1,
+          "epoch_mode": "full_dataset",
+          "warmup_steps": 500,
+          "lr": 2e-05,
+          "min_lr": 2e-05,
+          "warmup_lr": 1e-06,
+          "weight_decay": 0.05,
+          "label_type": "hybrid",
+          "max_length": 1024,
+          "num_workers": 0,
+          "lr_frontend": 0.0001,
+          "grad_clip": 0.6
+        },
+        "generation": {
+          "seed": 42,
+          "do_sample": true,
+          "temperature": 1.0,
+          "top_p": 0.9,
+          "max_new_tokens": 1200,
+          "max_length": 2000
+        },
+        "evaluator": {
+          "model": "models/Qwen2.5-7B-Instruct",
+          "backend": "vllm",
+          "seed": 42,
+          "batch_size": 8,
+          "vllm_version": "0.6.2",
+          "transformers_version": "4.49.0",
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "repetition_penalty": 1.05,
+          "max_tokens": 512
+        },
+        "prompt": {
+          "include_subtitle": true,
+          "include_av_tokens": true
+        }
+      },
+      "evaluations": [
+        {
+          "score_source": "runs/mer_omni_av_tokens_lrschedule_run01/evaluation_step10443_affectgpt/MER2023/score.json",
+          "score_sha256": "320e62b7a1bf61d0b11c4527953fb5230b5d5a699770caa30e8e52d492127ed5",
+          "dataset": "MER2023",
+          "task": "basic",
+          "samples": 411,
+          "strict_protocol": true,
+          "expected_samples": 411,
+          "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+          "primary": 0.6254824138456072,
+          "per_wheel": [
+            [
+              0.6594427244582043,
+              0.4244066047471621
+            ],
+            [
+              0.6687306501547987,
+              0.4282249742002064
+            ],
+            [
+              0.5758513931888545,
+              0.43240454076367385
+            ],
+            [
+              0.6037151702786377,
+              0.4040247678018576
+            ],
+            [
+              0.6196721311475409,
+              0.5147540983606558
+            ]
+          ],
+          "evaluated_samples_per_wheel": [
+            323,
+            323,
+            323,
+            323,
+            305
+          ],
+          "hit_rate": 0.6254824138456072,
+          "mscore": 0.4407629971747111,
+          "checkpoint_sha256": "29b71a971c14c9bfed706e34177db1524342da1d1605f09fd77e3e1d84f46900",
+          "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+          "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+          "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+          "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+          "extraction_sha256": "e277e126a7a404772601c49fbef916f080ff17b26b25739d9c4775261387c200",
+          "evaluator_engine_options": {
+            "gpu_memory_utilization": 0.36,
+            "max_model_len": 4096,
+            "max_num_seqs": 8
+          },
+          "evaluator_distributed_store": "HashStore",
+          "accepted_release_overlap_ids": [],
+          "input_policy": {
+            "input_mode": "zero_pad",
+            "sequence_lengths": [
+              96,
+              50,
+              704
+            ],
+            "sequence_overflow": "truncate_right"
+          },
+          "input_processing_sha256": "85cfd2061ac70e4312679bd72865109a7a2f7df396981daf10d5ca159ccc8882",
+          "truncated_samples": 1
+        }
+      ]
+    },
+    {
+      "run": "mer_omni_av_tokens_frames16_run01",
+      "log_sha256": "7789a1f9eb90851fbe265b6e97430874eb9965296218226f4cf9b201448a5f57",
+      "steps": 10443,
+      "epochs": 1,
+      "sample_visits": 31327,
+      "all_losses_finite": true,
+      "complete_unique_coverage_per_epoch": true,
+      "last100_mean_loss": 1.0832966281154985,
+      "loss_per_1000_steps": [
+        {
+          "start": 1,
+          "end": 1000,
+          "steps": 1000,
+          "mean_loss": 1.5583432746589718
+        },
+        {
+          "start": 1001,
+          "end": 2000,
+          "steps": 1000,
+          "mean_loss": 1.2227042314314287
+        },
+        {
+          "start": 2001,
+          "end": 3000,
+          "steps": 1000,
+          "mean_loss": 1.2043422042944598
+        },
+        {
+          "start": 3001,
+          "end": 4000,
+          "steps": 1000,
+          "mean_loss": 1.1720920656098472
+        },
+        {
+          "start": 4001,
+          "end": 5000,
+          "steps": 1000,
+          "mean_loss": 1.138765083646631
+        },
+        {
+          "start": 5001,
+          "end": 6000,
+          "steps": 1000,
+          "mean_loss": 1.1468362430325354
+        },
+        {
+          "start": 6001,
+          "end": 7000,
+          "steps": 1000,
+          "mean_loss": 1.123357864872016
+        },
+        {
+          "start": 7001,
+          "end": 8000,
+          "steps": 1000,
+          "mean_loss": 1.1267224465900723
+        },
+        {
+          "start": 8001,
+          "end": 9000,
+          "steps": 1000,
+          "mean_loss": 1.1072030005878162
+        },
+        {
+          "start": 9001,
+          "end": 10000,
+          "steps": 1000,
+          "mean_loss": 1.1088386371550365
+        },
+        {
+          "start": 10001,
+          "end": 10443,
+          "steps": 443,
+          "mean_loss": 1.1038707061603237
+        }
+      ],
+      "checkpoint_selection": "final scheduled checkpoint; no benchmark-based selection",
+      "checkpoint_retained_locally": true,
+      "settings": {
+        "omni": {
+          "source": "models/Qwen2.5-Omni-3B",
+          "repo_id": "Qwen/Qwen2.5-Omni-3B",
+          "revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+          "dtype": "bfloat16",
+          "attn_implementation": "sdpa",
+          "gradient_checkpointing": true,
+          "backbone_lora": true,
+          "lora_r": 16,
+          "lora_alpha": 32,
+          "lora_dropout": 0.05,
+          "generative": true,
+          "max_frames": 16,
+          "min_pixels": 3136,
+          "max_pixels": 50176,
+          "max_text_tokens": 1024,
+          "audio_sample_rate": 16000
+        },
+        "spectral": {
+          "reference_preset": "atsuko_mosi",
+          "dim": 256,
+          "heads": 8,
+          "layers": 4,
+          "sequence_length": 50,
+          "partition": "equal_energy",
+          "conv_kernel_sizes": [
+            5,
+            5,
+            5
+          ],
+          "router_input": "pre_attn",
+          "temperature": 0.1,
+          "attn_dropout": [
+            0.3,
+            0.0,
+            0.2
+          ],
+          "relu_dropout": 0.0,
+          "res_dropout": 0.0,
+          "embed_dropout": 0.2,
+          "text_dropout": 0.5,
+          "output_dropout": 0.5,
+          "attn_mask": true,
+          "band_mask_rate": 0.15,
+          "input_mode": "zero_pad",
+          "sequence_lengths": [
+            96,
+            50,
+            704
+          ],
+          "sequence_overflow": "error"
+        },
+        "train": {
+          "seed": 42,
+          "batch_size": 1,
+          "gradient_accumulation": 3,
+          "epochs": 1,
+          "epoch_mode": "full_dataset",
+          "warmup_steps": 500,
+          "lr": 2e-05,
+          "min_lr": 2e-05,
+          "warmup_lr": 1e-06,
+          "weight_decay": 0.05,
+          "label_type": "hybrid",
+          "max_length": 1024,
+          "num_workers": 0,
+          "lr_frontend": 0.0001,
+          "grad_clip": 0.6
+        },
+        "generation": {
+          "seed": 42,
+          "do_sample": true,
+          "temperature": 1.0,
+          "top_p": 0.9,
+          "max_new_tokens": 1200,
+          "max_length": 2000
+        },
+        "evaluator": {
+          "model": "models/Qwen2.5-7B-Instruct",
+          "backend": "vllm",
+          "seed": 42,
+          "batch_size": 8,
+          "vllm_version": "0.6.2",
+          "transformers_version": "4.49.0",
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "repetition_penalty": 1.05,
+          "max_tokens": 512
+        },
+        "prompt": {
+          "include_subtitle": true,
+          "include_av_tokens": true
+        }
+      },
+      "evaluations": [
+        {
+          "score_source": "runs/mer_omni_av_tokens_frames16_run01/evaluation_step10443_affectgpt/MER2023/score.json",
+          "score_sha256": "a88c06398ddd2dcb45de72274a104db47eb99d13f1d285e3b807dc134536ca42",
+          "dataset": "MER2023",
+          "task": "basic",
+          "samples": 411,
+          "strict_protocol": true,
+          "expected_samples": 411,
+          "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+          "primary": 0.6410719179820332,
+          "per_wheel": [
+            [
+              0.6780185758513931,
+              0.4290505675954593
+            ],
+            [
+              0.6656346749226006,
+              0.43524251805985553
+            ],
+            [
+              0.6099071207430341,
+              0.457688338493292
+            ],
+            [
+              0.6222910216718266,
+              0.42879256965944273
+            ],
+            [
+              0.6295081967213115,
+              0.5251366120218579
+            ]
+          ],
+          "evaluated_samples_per_wheel": [
+            323,
+            323,
+            323,
+            323,
+            305
+          ],
+          "hit_rate": 0.6410719179820332,
+          "mscore": 0.45518212116598156,
+          "checkpoint_sha256": "646de594f79c74c1419af6b34c817e2edf8c2b69e233b42d52fe78fae1a51dba",
+          "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+          "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+          "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+          "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+          "extraction_sha256": "992719840c0dfdbb8bfac71a93038fed2807a07636281b8455b54998c847ec70",
+          "evaluator_engine_options": {
+            "gpu_memory_utilization": 0.36,
+            "max_model_len": 4096,
+            "max_num_seqs": 8
+          },
+          "evaluator_distributed_store": "HashStore",
+          "accepted_release_overlap_ids": [],
+          "input_policy": {
+            "input_mode": "zero_pad",
+            "sequence_lengths": [
+              96,
+              50,
+              704
+            ],
+            "sequence_overflow": "truncate_right"
+          },
+          "input_processing_sha256": "d40b8e2baf662efe8836f5534072e275727de936ae9b179c919feeeff9a11a17",
+          "truncated_samples": 1
+        },
+        {
+          "score_source": "runs/mer_omni_av_tokens_frames16_run01/evaluation_step10443_affectgpt/MER2024/score.json",
+          "score_sha256": "e412b0a6c1bb33078aa44103a7b152e9b98748b028552776bf5314c4f6ad2a0f",
+          "dataset": "MER2024",
+          "task": "basic",
+          "samples": 1169,
+          "strict_protocol": true,
+          "expected_samples": 1169,
+          "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+          "primary": 0.6111220058831769,
+          "per_wheel": [
+            [
+              0.6766528925619835,
+              0.45230716253443526
+            ],
+            [
+              0.6652892561983471,
+              0.4509297520661157
+            ],
+            [
+              0.5382231404958677,
+              0.4048725895316804
+            ],
+            [
+              0.5991735537190083,
+              0.43190426997245185
+            ],
+            [
+              0.576271186440678,
+              0.48945386064030133
+            ]
+          ],
+          "evaluated_samples_per_wheel": [
+            968,
+            968,
+            968,
+            968,
+            885
+          ],
+          "hit_rate": 0.6111220058831769,
+          "mscore": 0.4458935269489969,
+          "checkpoint_sha256": "646de594f79c74c1419af6b34c817e2edf8c2b69e233b42d52fe78fae1a51dba",
+          "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+          "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+          "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+          "manifest_sha256": "144676ecb5bfacfc9d0ae799ea8c268ddfc0ac85882d3a3e1a66e09ec4af3347",
+          "extraction_sha256": "34242e74ed59c50e32e777e93fccba144eb1ec217be18bc2496229b2d8c975e4",
+          "evaluator_engine_options": {
+            "gpu_memory_utilization": 0.36,
+            "max_model_len": 4096,
+            "max_num_seqs": 8
+          },
+          "evaluator_distributed_store": "HashStore",
+          "accepted_release_overlap_ids": [],
+          "input_policy": {
+            "input_mode": "zero_pad",
+            "sequence_lengths": [
+              96,
+              50,
+              704
+            ],
+            "sequence_overflow": "truncate_right"
+          },
+          "input_processing_sha256": "0621426b83a411d86116fef21f0f5aa3b0727d5bfe94a8bc950a6764943bc88c",
+          "truncated_samples": 0
+        }
+      ]
+    },
+    {
+      "run": "mer_omni_av_tokens_frames16_epoch3_run01_resume15000",
+      "log_sha256": "6840c0e8cf607580fad98658b6af8311512ef8dd839181382b8ec5e1a22f9480",
+      "steps": 31329,
+      "epochs": 3,
+      "sample_visits": 93981,
+      "all_losses_finite": true,
+      "complete_unique_coverage_per_epoch": true,
+      "last100_mean_loss": 1.019873363487963,
+      "loss_per_1000_steps": [
+        {
+          "start": 1,
+          "end": 1000,
+          "steps": 1000,
+          "mean_loss": 1.5362063356471483
+        },
+        {
+          "start": 1001,
+          "end": 2000,
+          "steps": 1000,
+          "mean_loss": 1.219657633454994
+        },
+        {
+          "start": 2001,
+          "end": 3000,
+          "steps": 1000,
+          "mean_loss": 1.1923145884698403
+        },
+        {
+          "start": 3001,
+          "end": 4000,
+          "steps": 1000,
+          "mean_loss": 1.1697336025211844
+        },
+        {
+          "start": 4001,
+          "end": 5000,
+          "steps": 1000,
+          "mean_loss": 1.1364452823978206
+        },
+        {
+          "start": 5001,
+          "end": 6000,
+          "steps": 1000,
+          "mean_loss": 1.1447591714635552
+        },
+        {
+          "start": 6001,
+          "end": 7000,
+          "steps": 1000,
+          "mean_loss": 1.1223412065594873
+        },
+        {
+          "start": 7001,
+          "end": 8000,
+          "steps": 1000,
+          "mean_loss": 1.1253052607901817
+        },
+        {
+          "start": 8001,
+          "end": 9000,
+          "steps": 1000,
+          "mean_loss": 1.1050874869306668
+        },
+        {
+          "start": 9001,
+          "end": 10000,
+          "steps": 1000,
+          "mean_loss": 1.1062239550816826
+        },
+        {
+          "start": 10001,
+          "end": 11000,
+          "steps": 1000,
+          "mean_loss": 1.0943277050276583
+        },
+        {
+          "start": 11001,
+          "end": 12000,
+          "steps": 1000,
+          "mean_loss": 1.0781389203943188
+        },
+        {
+          "start": 12001,
+          "end": 13000,
+          "steps": 1000,
+          "mean_loss": 1.0759505951214385
+        },
+        {
+          "start": 13001,
+          "end": 14000,
+          "steps": 1000,
+          "mean_loss": 1.0679582366082072
+        },
+        {
+          "start": 14001,
+          "end": 15000,
+          "steps": 1000,
+          "mean_loss": 1.0639576850971222
+        },
+        {
+          "start": 15001,
+          "end": 16000,
+          "steps": 1000,
+          "mean_loss": 1.0678036146518703
+        },
+        {
+          "start": 16001,
+          "end": 17000,
+          "steps": 1000,
+          "mean_loss": 1.0664948860998138
+        },
+        {
+          "start": 17001,
+          "end": 18000,
+          "steps": 1000,
+          "mean_loss": 1.0633500880943394
+        },
+        {
+          "start": 18001,
+          "end": 19000,
+          "steps": 1000,
+          "mean_loss": 1.0579420612050388
+        },
+        {
+          "start": 19001,
+          "end": 20000,
+          "steps": 1000,
+          "mean_loss": 1.0574386835950897
+        },
+        {
+          "start": 20001,
+          "end": 21000,
+          "steps": 1000,
+          "mean_loss": 1.0574805546044508
+        },
+        {
+          "start": 21001,
+          "end": 22000,
+          "steps": 1000,
+          "mean_loss": 1.0397095276480262
+        },
+        {
+          "start": 22001,
+          "end": 23000,
+          "steps": 1000,
+          "mean_loss": 1.038145837525768
+        },
+        {
+          "start": 23001,
+          "end": 24000,
+          "steps": 1000,
+          "mean_loss": 1.0267904524756999
+        },
+        {
+          "start": 24001,
+          "end": 25000,
+          "steps": 1000,
+          "mean_loss": 1.0337538258574275
+        },
+        {
+          "start": 25001,
+          "end": 26000,
+          "steps": 1000,
+          "mean_loss": 1.0335994970400626
+        },
+        {
+          "start": 26001,
+          "end": 27000,
+          "steps": 1000,
+          "mean_loss": 1.0304171665987856
+        },
+        {
+          "start": 27001,
+          "end": 28000,
+          "steps": 1000,
+          "mean_loss": 1.016914883988917
+        },
+        {
+          "start": 28001,
+          "end": 29000,
+          "steps": 1000,
+          "mean_loss": 1.032961049641846
+        },
+        {
+          "start": 29001,
+          "end": 30000,
+          "steps": 1000,
+          "mean_loss": 1.0265415790085113
+        },
+        {
+          "start": 30001,
+          "end": 31000,
+          "steps": 1000,
+          "mean_loss": 1.0132300526008762
+        },
+        {
+          "start": 31001,
+          "end": 31329,
+          "steps": 329,
+          "mean_loss": 1.0251394863580627
+        }
+      ],
+      "checkpoint_selection": "final scheduled checkpoint; no benchmark-based selection",
+      "checkpoint_retained_locally": true,
+      "settings": {
+        "omni": {
+          "source": "models/Qwen2.5-Omni-3B",
+          "repo_id": "Qwen/Qwen2.5-Omni-3B",
+          "revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+          "dtype": "bfloat16",
+          "attn_implementation": "sdpa",
+          "gradient_checkpointing": true,
+          "backbone_lora": true,
+          "lora_r": 16,
+          "lora_alpha": 32,
+          "lora_dropout": 0.05,
+          "generative": true,
+          "max_frames": 16,
+          "min_pixels": 3136,
+          "max_pixels": 50176,
+          "max_text_tokens": 1024,
+          "audio_sample_rate": 16000
+        },
+        "spectral": {
+          "reference_preset": "atsuko_mosi",
+          "dim": 256,
+          "heads": 8,
+          "layers": 4,
+          "sequence_length": 50,
+          "partition": "equal_energy",
+          "conv_kernel_sizes": [
+            5,
+            5,
+            5
+          ],
+          "router_input": "pre_attn",
+          "temperature": 0.1,
+          "attn_dropout": [
+            0.3,
+            0.0,
+            0.2
+          ],
+          "relu_dropout": 0.0,
+          "res_dropout": 0.0,
+          "embed_dropout": 0.2,
+          "text_dropout": 0.5,
+          "output_dropout": 0.5,
+          "attn_mask": true,
+          "band_mask_rate": 0.15,
+          "input_mode": "zero_pad",
+          "sequence_lengths": [
+            96,
+            50,
+            704
+          ],
+          "sequence_overflow": "error"
+        },
+        "train": {
+          "seed": 42,
+          "batch_size": 1,
+          "gradient_accumulation": 3,
+          "epochs": 3,
+          "epoch_mode": "full_dataset",
+          "warmup_steps": 500,
+          "lr": 2e-05,
+          "min_lr": 2e-05,
+          "warmup_lr": 1e-06,
+          "weight_decay": 0.05,
+          "label_type": "hybrid",
+          "max_length": 1024,
+          "num_workers": 0,
+          "lr_frontend": 0.0001,
+          "grad_clip": 0.6
+        },
+        "generation": {
+          "seed": 42,
+          "do_sample": true,
+          "temperature": 1.0,
+          "top_p": 0.9,
+          "max_new_tokens": 1200,
+          "max_length": 2000
+        },
+        "evaluator": {
+          "model": "models/Qwen2.5-7B-Instruct",
+          "backend": "vllm",
+          "seed": 42,
+          "batch_size": 8,
+          "vllm_version": "0.6.2",
+          "transformers_version": "4.49.0",
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "repetition_penalty": 1.05,
+          "max_tokens": 512
+        },
+        "prompt": {
+          "include_subtitle": true,
+          "include_av_tokens": true
+        }
+      },
+      "evaluations": [
+        {
+          "score_source": "runs/mer_omni_av_tokens_frames16_epoch3_run01_resume15000/evaluation_step31329_affectgpt_retry01/MER2023/score.json",
+          "score_sha256": "f6c15e12a2d93ae16194b186302633cb580ce47cd0717b0c7ae705801128d806",
+          "dataset": "MER2023",
+          "task": "basic",
+          "samples": 411,
+          "strict_protocol": true,
+          "expected_samples": 411,
+          "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+          "primary": 0.645625539257981,
+          "per_wheel": [
+            [
+              0.6811145510835913,
+              0.4068627450980392
+            ],
+            [
+              0.6780185758513931,
+              0.4313725490196078
+            ],
+            [
+              0.628482972136223,
+              0.4633642930856553
+            ],
+            [
+              0.5913312693498453,
+              0.37874097007223934
+            ],
+            [
+              0.6491803278688525,
+              0.5158469945355191
+            ]
+          ],
+          "evaluated_samples_per_wheel": [
+            323,
+            323,
+            323,
+            323,
+            305
+          ],
+          "hit_rate": 0.645625539257981,
+          "mscore": 0.4392375103622122,
+          "checkpoint_sha256": "189351d71b5ba3013ea7ab5777c02b3acfc0fad0c4664848a86bffc3d571fcf8",
+          "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+          "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+          "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+          "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+          "extraction_sha256": "ed56a1e6f7df22bc76ad61253873d9eaa290872e6bdb90940dfa118ac8601b43",
+          "evaluator_engine_options": {
+            "gpu_memory_utilization": 0.36,
+            "max_model_len": 4096,
+            "max_num_seqs": 8
+          },
+          "evaluator_distributed_store": "HashStore",
+          "accepted_release_overlap_ids": [],
+          "input_policy": {
+            "input_mode": "zero_pad",
+            "sequence_lengths": [
+              96,
+              50,
+              704
+            ],
+            "sequence_overflow": "truncate_right"
+          },
+          "input_processing_sha256": "d40b8e2baf662efe8836f5534072e275727de936ae9b179c919feeeff9a11a17",
+          "truncated_samples": 1
+        }
+      ]
+    },
+    {
+      "run": "mer_omni_av_tokens_frames16_lora64_run01_resume5750",
+      "log_sha256": "009454804a7481c0d9b77a4139d8731f2a997e00b8abfad94b9f8dbf036e193f",
+      "steps": 10443,
+      "epochs": 1,
+      "sample_visits": 31327,
+      "all_losses_finite": true,
+      "complete_unique_coverage_per_epoch": true,
+      "last100_mean_loss": 1.0596344422898945,
+      "loss_per_1000_steps": [
+        {
+          "start": 1,
+          "end": 1000,
+          "steps": 1000,
+          "mean_loss": 1.4589607109749079
+        },
+        {
+          "start": 1001,
+          "end": 2000,
+          "steps": 1000,
+          "mean_loss": 1.193108020705119
+        },
+        {
+          "start": 2001,
+          "end": 3000,
+          "steps": 1000,
+          "mean_loss": 1.1677721201467306
+        },
+        {
+          "start": 3001,
+          "end": 4000,
+          "steps": 1000,
+          "mean_loss": 1.1479214618284657
+        },
+        {
+          "start": 4001,
+          "end": 5000,
+          "steps": 1000,
+          "mean_loss": 1.115334787295943
+        },
+        {
+          "start": 5001,
+          "end": 6000,
+          "steps": 1000,
+          "mean_loss": 1.1229804986149707
+        },
+        {
+          "start": 6001,
+          "end": 7000,
+          "steps": 1000,
+          "mean_loss": 1.1001769185656105
+        },
+        {
+          "start": 7001,
+          "end": 8000,
+          "steps": 1000,
+          "mean_loss": 1.1025601892827273
+        },
+        {
+          "start": 8001,
+          "end": 9000,
+          "steps": 1000,
+          "mean_loss": 1.0827299883373298
+        },
+        {
+          "start": 9001,
+          "end": 10000,
+          "steps": 1000,
+          "mean_loss": 1.0842070811357862
+        },
+        {
+          "start": 10001,
+          "end": 10443,
+          "steps": 443,
+          "mean_loss": 1.07672381840203
+        }
+      ],
+      "checkpoint_selection": "final scheduled checkpoint; no benchmark-based selection",
+      "checkpoint_retained_locally": false,
+      "settings": {
+        "omni": {
+          "source": "models/Qwen2.5-Omni-3B",
+          "repo_id": "Qwen/Qwen2.5-Omni-3B",
+          "revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+          "dtype": "bfloat16",
+          "attn_implementation": "sdpa",
+          "gradient_checkpointing": true,
+          "backbone_lora": true,
+          "lora_r": 64,
+          "lora_alpha": 128,
+          "lora_dropout": 0.05,
+          "generative": true,
+          "max_frames": 16,
+          "min_pixels": 3136,
+          "max_pixels": 50176,
+          "max_text_tokens": 1024,
+          "audio_sample_rate": 16000
+        },
+        "spectral": {
+          "reference_preset": "atsuko_mosi",
+          "dim": 256,
+          "heads": 8,
+          "layers": 4,
+          "sequence_length": 50,
+          "partition": "equal_energy",
+          "conv_kernel_sizes": [
+            5,
+            5,
+            5
+          ],
+          "router_input": "pre_attn",
+          "temperature": 0.1,
+          "attn_dropout": [
+            0.3,
+            0.0,
+            0.2
+          ],
+          "relu_dropout": 0.0,
+          "res_dropout": 0.0,
+          "embed_dropout": 0.2,
+          "text_dropout": 0.5,
+          "output_dropout": 0.5,
+          "attn_mask": true,
+          "band_mask_rate": 0.15,
+          "input_mode": "zero_pad",
+          "sequence_lengths": [
+            96,
+            50,
+            704
+          ],
+          "sequence_overflow": "error"
+        },
+        "train": {
+          "seed": 42,
+          "batch_size": 1,
+          "gradient_accumulation": 3,
+          "epochs": 1,
+          "epoch_mode": "full_dataset",
+          "warmup_steps": 500,
+          "lr": 2e-05,
+          "min_lr": 2e-05,
+          "warmup_lr": 1e-06,
+          "weight_decay": 0.05,
+          "label_type": "hybrid",
+          "max_length": 1024,
+          "num_workers": 0,
+          "lr_frontend": 0.0001,
+          "grad_clip": 0.6
+        },
+        "generation": {
+          "seed": 42,
+          "do_sample": true,
+          "temperature": 1.0,
+          "top_p": 0.9,
+          "max_new_tokens": 1200,
+          "max_length": 2000
+        },
+        "evaluator": {
+          "model": "models/Qwen2.5-7B-Instruct",
+          "backend": "vllm",
+          "seed": 42,
+          "batch_size": 8,
+          "vllm_version": "0.6.2",
+          "transformers_version": "4.49.0",
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "repetition_penalty": 1.05,
+          "max_tokens": 512
+        },
+        "prompt": {
+          "include_subtitle": true,
+          "include_av_tokens": true
+        }
+      },
+      "evaluations": [
+        {
+          "score_source": "runs/mer_omni_av_tokens_frames16_lora64_run01_resume5750/evaluation_step10443_affectgpt/MER2023/score.json",
+          "score_sha256": "6a9cc25fa4ae1cb8d93f4e09ecb83795fa9cc67ea014b050d88540048e5d9e89",
+          "dataset": "MER2023",
+          "task": "basic",
+          "samples": 411,
+          "strict_protocol": true,
+          "expected_samples": 411,
+          "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+          "primary": 0.6067603918185048,
+          "per_wheel": [
+            [
+              0.631578947368421,
+              0.4047471620227038
+            ],
+            [
+              0.631578947368421,
+              0.41016511867905053
+            ],
+            [
+              0.6006191950464397,
+              0.43988648090815274
+            ],
+            [
+              0.5634674922600619,
+              0.37822497420020634
+            ],
+            [
+              0.6065573770491803,
+              0.48770491803278687
+            ]
+          ],
+          "evaluated_samples_per_wheel": [
+            323,
+            323,
+            323,
+            323,
+            305
+          ],
+          "hit_rate": 0.6067603918185048,
+          "mscore": 0.4241457307685801,
+          "checkpoint_sha256": "55e46a1551971b149c3bb8b9a978f486c5d198445e3a7e4d864a43ed1809d237",
+          "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+          "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+          "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+          "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+          "extraction_sha256": "67d8fdb968a984c55d63f58d0aebeca16e4e8abd29180cdc7de82c2cbc6e4f6c",
+          "evaluator_engine_options": {
+            "gpu_memory_utilization": 0.36,
+            "max_model_len": 4096,
+            "max_num_seqs": 8
+          },
+          "evaluator_distributed_store": "HashStore",
+          "accepted_release_overlap_ids": [],
+          "input_policy": {
+            "input_mode": "zero_pad",
+            "sequence_lengths": [
+              96,
+              50,
+              704
+            ],
+            "sequence_overflow": "truncate_right"
+          },
+          "input_processing_sha256": "d40b8e2baf662efe8836f5534072e275727de936ae9b179c919feeeff9a11a17",
+          "truncated_samples": 1
+        }
+      ]
+    }
+  ],
+  "calibrations": {
+    "frames16": {
+      "format": "atsuko-training-bands-v1",
+      "manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+      "samples": 31327,
+      "model_signature": "9838b932ca081119b3cb05d8fefd9742ff9e1bde3b443ad53985e90a2d78c611",
+      "projection_sha256": "8c23f12779c34875d817d86e25d2b091812e7850896ba104dc31dceda4a0905d",
+      "band_edges": [
+        [
+          29,
+          61
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          32,
+          252
+        ]
+      ],
+      "edge_rule": "atsuko_original_searchsorted_v1",
+      "band_energy_fractions": [
+        [
+          0.3322668319724215,
+          0.3253696042011499,
+          0.342363563826428
+        ],
+        [
+          0.12334509815656848,
+          0.4223918375249412,
+          0.45426306431849045
+        ],
+        [
+          0.33210967514552275,
+          0.33427293643703754,
+          0.33361738841743976
+        ]
+      ],
+      "sha256": "0d0c62ef8bc6109457d932a18601030b15455c984fd419b5741eec6f23468ad2",
+      "energy_lengths": [
+        92,
+        46,
+        700
+      ]
+    },
+    "lora64": {
+      "format": "atsuko-training-bands-v1",
+      "manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+      "samples": 31327,
+      "model_signature": "313adc60bc589f8ecd55bd5e16534ed95a8d0df4160f4dcce97226113819eec4",
+      "projection_sha256": "0ee3df2643df4b9c0a2dd5039cfb89f3f777e7f1b54a4acbd415ff4fa08141bc",
+      "band_edges": [
+        [
+          27,
+          61
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          26,
+          246
+        ]
+      ],
+      "edge_rule": "atsuko_original_searchsorted_v1",
+      "band_energy_fractions": [
+        [
+          0.3286819873611826,
+          0.33790262505866886,
+          0.3334153875801481
+        ],
+        [
+          0.12038773145765383,
+          0.4154714171864815,
+          0.46414085135586475
+        ],
+        [
+          0.3312332756912318,
+          0.33513892250490646,
+          0.3336278018038624
+        ]
+      ],
+      "sha256": "300233cd08647887c201251ced692b3e34dd88664719b1db032f05da101d688e",
+      "energy_lengths": [
+        92,
+        46,
+        700
+      ]
+    }
+  },
+  "native_sequence_audit": {
+    "samples": 31327,
+    "manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+    "summary": {
+      "text": {
+        "minimum": 1,
+        "maximum": 88,
+        "quantiles": {
+          "p50": 11.0,
+          "p90": 19.0,
+          "p95": 24.0,
+          "p99": 35.73999999999796
+        },
+        "over_50": 52,
+        "over_50_fraction": 0.001659909981804833,
+        "fraction_positions_discarded_at_50": 0.0011814131539676018
+      },
+      "audio": {
+        "minimum": 16,
+        "maximum": 673,
+        "quantiles": {
+          "p50": 69.0,
+          "p90": 130.0,
+          "p95": 165.0,
+          "p99": 253.0
+        },
+        "over_50": 30023,
+        "over_50_fraction": 0.9583745650716634,
+        "fraction_positions_discarded_at_50": 0.3985063205218923
+      },
+      "video": {
+        "minimum": 8,
+        "maximum": 8,
+        "quantiles": {
+          "p50": 8.0,
+          "p90": 8.0,
+          "p95": 8.0,
+          "p99": 8.0
+        }
+      },
+      "video_by_max_frames": {
+        "8": {
+          "minimum": 4,
+          "maximum": 4,
+          "quantiles": {
+            "p50": 4.0,
+            "p90": 4.0,
+            "p95": 4.0,
+            "p99": 4.0
+          }
+        },
+        "16": {
+          "minimum": 8,
+          "maximum": 8,
+          "quantiles": {
+            "p50": 8.0,
+            "p90": 8.0,
+            "p95": 8.0,
+            "p99": 8.0
+          }
+        }
+      },
+      "video_duration_seconds": {
+        "minimum": 0.68,
+        "maximum": 26.92,
+        "quantiles": {
+          "p50": 2.76,
+          "p90": 5.2,
+          "p95": 6.58030509999997,
+          "p99": 10.094799999999958
+        }
+      }
+    },
+    "notes": [
+      "Text lengths use the local original English-input tokenizer.",
+      "Audio lengths are estimates from original WAV headers and native Omni downsampling; verify against encoder outputs.",
+      "No media, labels, transcripts, splits or model weights are changed.",
+      "Video counts use verified decoded frames, even when nb_frames differs; unavailable nb_frames/mismatch are null.",
+      "Video positions use min(max_frames, decoded_frames)//2; spatial patches are not counted.",
+      "For one-frame clips this requested formula gives 0; decode_video duplicates the frame and produces 1 temporal position.",
+      "Overflow counts use positions > L, not >= L. --limit selects the first N rows without shuffling."
+    ],
+    "manifest_samples": 31327,
+    "limit": null,
+    "sampling": "all",
+    "overflow_counts": {
+      "text": {
+        "96": 0
+      },
+      "audio": {
+        "400": 15,
+        "512": 5,
+        "704": 0
+      },
+      "video_by_max_frames": {
+        "8": {
+          "50": 0
+        },
+        "16": {
+          "50": 0
+        }
+      }
+    },
+    "video_audit": {
+      "method": "ffprobe_count_frames",
+      "workers": 16,
+      "temporal_patch_size": 2,
+      "max_frames": 16,
+      "compared_max_frames": [
+        8,
+        16
+      ],
+      "frame_count_mismatches": 0,
+      "missing_container_frame_counts": 0,
+      "single_frame_videos": 0
+    }
+  },
+  "source_files": {
+    "config/mer_omni_atsuko_padding.json": "1eba16e1f08c7db18739bf740e0e37e30997bd0129f18d613f58a28ccbaca9a3",
+    "config/mer_omni_audio_segments_ablation.json": "0449a5754db59723a8c39195ab51cf6b7ef015464729499f4902926478a2b10f",
+    "config/mer_omni_audio_segments_evaluation.json": "81665506ef1d9045b1d06ce486ac60d13083d0849d4d9aeb13a3c513b1b8644e",
+    "config/mer_omni_av_tokens_ablation.json": "e9b9f6cbed2ba1a34449aef6aa5a4cbdfbb495bd3b759f75f510b14e35e6ea50",
+    "config/mer_omni_av_tokens_evaluation.json": "54537bd594519601f473360c475ee16d05fc17b3839f98694846a3f7a07de325",
+    "config/mer_omni_av_tokens_frames16.json": "0cc3cbd77dae61ca809f41571d6d2c7b4d9bdd0f6294f89af039ebbdb5f3c53f",
+    "config/mer_omni_av_tokens_frames16_epoch3.json": "63e2930a37b318adb66d44e97b9928a706c4031775e76533e3d72e64fad4b363",
+    "config/mer_omni_av_tokens_frames16_epoch3_evaluation.json": "5834652219cce199cb22d7404913463a3b0f13775a9644fbbfce96f8c543bada",
+    "config/mer_omni_av_tokens_frames16_evaluation.json": "46fa4f035feab93072903dcc07e133306c20814160bbe1289362add6ff0fd4fe",
+    "config/mer_omni_av_tokens_frames16_lora64.json": "4f5a5766e895064b2ed00a2db6dfd4d1cda25195c28029b2df50ba0f6fd83f3c",
+    "config/mer_omni_av_tokens_frames16_lora64_evaluation.json": "a96e4eeb3ecd57cfaff619e4773f521fc21cf045cbfb07d77c681918a33f2ea8",
+    "config/mer_omni_av_tokens_lrschedule.json": "ad177405dd61d26849a28cbccf05559473e867f390d5638eb471fc3dfe8028ab",
+    "config/mer_omni_av_tokens_lrschedule_evaluation.json": "4f6dcafe7c11293dfa5244369444d035849a760d72044dc487bbdeee43208e02",
+    "config/mer_omni_av_tokens_resample.json": "7e5860ab181129920614d5ae680765559787ddbcfc07cae8fdaf5d06a1f7ff48",
+    "config/mer_omni_av_tokens_resample_evaluation.json": "69b9c19fa2a4b1e82fe695a61c77bf0bf1a4bdda9a73833b273db341d42e0476",
+    "config/mer_omni_evaluation.json": "cd7f4fa797a58bdfb9f2e0e04bfc6b6fdec9c591a444b269bd9601432834f939",
+    "config/mer_omni_native_av_ablation.json": "b0cdc101f5e9ab25c69c4c2d209a5c0397adcebb3c46c05516897ea4f9aeab24",
+    "config/mer_omni_native_av_evaluation.json": "fff856c3e3fe314328e82db884d3df8901eda83d6b32dd41f690d598df6c4087",
+    "config/mer_omni_subtitle_ablation.json": "138cb22d7643f6f7b2461f8ddc087e96021959718cd7603f0e1af883dcde23b1",
+    "config/mer_omni_subtitle_evaluation.json": "5b939f392b401dee8f8a5ed3dc2d96ecb671b3ea4ec2ef60d65fb81abc6e185f",
+    "mer_omni/__init__.py": "04b85cca75aab5f58e7599da329f9f72b87f32353e3cb574a36e71b35ccfe567",
+    "mer_omni/calibration.py": "8f7f8d0be46e5315254792aa555c8b2724767e3bdfd53de2a595939b8f0a9bf9",
+    "mer_omni/console.py": "e0339bb44b1e8d038d0e1e6d9004b693bf3f4f9f059ec2251d15bee226b8ef76",
+    "mer_omni/data.py": "920d731c739a81618959d7f25cc3d7ee5ab9f92f2668e9b294bb76f03169a609",
+    "mer_omni/encoders/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mer_omni/encoders/omni.py": "47963105a82ea115b9064e912300cf1534d85bf3e29a47cacbe7a054244ce988",
+    "mer_omni/evaluation.py": "edbcbe45f9d728e6e10b31bead55f07849a9c2eb1a77f61592534124d16c7cc5",
+    "mer_omni/inference_inputs.py": "ecc76f8973263868aa27fdb0144e4143b37ef00b3c7442413013499cc273ddf3",
+    "mer_omni/layers/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mer_omni/layers/multihead_attention.py": "049028f689f8b334fda46467d8e30a342a54a1f5b5ab3ea1d8701185b6181e14",
+    "mer_omni/layers/position_embedding.py": "38a16bcee9cd335fb67011b736ba67fc27a6fe04df383c9e24b5395602de95b7",
+    "mer_omni/layers/router.py": "a1bffb1bc3c33a37cb8a698d79c960d051b4fd8af29b6d4802499b200e87cbbe",
+    "mer_omni/layers/spectral.py": "1e6eedacda084f95a36b83bc7a475752fc278ce1e5ec2d36ef19500b95908749",
+    "mer_omni/layers/transformer.py": "6129002a60b5345dbbc1e1e80ca4e3f9c8887e230dabe6a5c39f7e462afc0a66",
+    "mer_omni/media.py": "4f1c30c9201139fc4c923563d231aae278712b21fbef4b4ba437c84787e6677a",
+    "mer_omni/model.py": "2c42578c895a4f2e7a1d9148976880299d54c5f44936e381df3d27848e3f9daf",
+    "mer_omni/objectives.py": "2585a39f97e084ef032d8b3559c49205f2bf1c79eca6044fc76e6dcddcef9233",
+    "mer_omni/protocol.py": "b2f8c95b37fe9b7d9dd0c4e71823cdb91b0a973db71ef71679458abebd401913",
+    "mer_omni/reference/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mer_omni/reference/affectgpt.py": "5feee1f6484421901681c1e0dbfe3cdf73e22600d953160784c85a9c7b9e57a8",
+    "mer_omni/reference/atsuko_original/atsuko_model.py": "5bdd6838c1d47cf7cfc41ce1b0f0f06928c8d788ba8eb3b7fe0d708b01c43211",
+    "mer_omni/reference/atsuko_original/config.json": "c2cdbad4ad8226316b66e8483a1b69a65a57d53248ae43d8273ddb65744cdf89",
+    "mer_omni/reference/atsuko_original/data_loader.py": "857deb6124a4929f6afac1a5b7f3985169c2f70eb3d0137aadb5ee2230e7991e",
+    "mer_omni/reference/atsuko_original/provenance.json": "39ceb45d244d4204808cd2dd175d4f5802c18fbf013265c4722a63e7632dc2a6",
+    "mer_omni/reference/atsuko_original/spectral_band.py": "1e6eedacda084f95a36b83bc7a475752fc278ce1e5ec2d36ef19500b95908749",
+    "mer_omni/reference/provenance.json": "d7d02aa1e7742799ecf749dfd569670615d6bcfcaac1388e44238e075c2bea1c",
+    "mer_omni/training.py": "0554e877783e17ce816c02071a94361bc98e6f95d87bd51d86b2f0d722ae3fdf",
+    "tests/fixtures/legacy_full_loss.json": "ea5f9f30ea7ba95cd7fe39f04ebae2c138a2305f31dbfe16baed57019377b391",
+    "tests/fixtures/model_before_audio_segments.provenance.json": "aa82b111cda8089e085126166c3dfa697d06d7df7a36eaf94e82bff61a10511c",
+    "tests/fixtures/model_before_audio_segments.py": "6af8b7ac457c109817e393dcfaf4414c68f2fc702b811b3a111867fcb3abae87",
+    "tests/fixtures/model_before_av.provenance.json": "b2e5e0e937f0f14739cbc8fb62adffee629d09c4f7fbef091eb801b1a3b7d3cd",
+    "tests/fixtures/model_before_av.py": "2c2870c1ec52175e0c80fb5a73e448b2b37cc1805811f6e7462aaf9f9977bf33",
+    "tests/fixtures/model_before_native_av.provenance.json": "d5784a55b080a3c6594a9f63d0eb5e4d3ece760f2e8f400ffcf4badc21f2ccd1",
+    "tests/fixtures/model_before_native_av.py": "47991f29306d5929b40daf8f2468e02ffad41ca86b3cb3e973f0480908ec2aff",
+    "tests/fixtures.py": "ddfc1fe7aaf016606921b3152fbb60189840452eb896528ed2aa8dce40b2f631",
+    "tests/test_affectgpt_generation.py": "0478e2ceebea3b738156d6af95c5ec3e846c89f421774eb3ae0ae90cf4710752",
+    "tests/test_assets.py": "b7e691249750943439133ccf4cc2ac7d5a46a8f71e6522f0c285ad4993a47d30",
+    "tests/test_atsuko_alignment.py": "fb32c35367a71a356dcc581826cf751d9eebb0cdc29647559c85b05ac0bf000f",
+    "tests/test_audio_segments.py": "da0ea8278041da04e7abee19020fe0917b09642b5dbdf3335bd9398844e4c3e8",
+    "tests/test_av_runner.py": "aceabce610a50ea012441a4ce2ac2255c4824edb4ed550a10061313dbba87389",
+    "tests/test_av_tokens.py": "4f5711015b39528e765b95a27f36e75251b488b64cae32c10b09b47a78703075",
+    "tests/test_ce_only.py": "9fb17cdda76d25443d82b4057d74457976b99e31c27229712d21093bbfe21ad3",
+    "tests/test_evaluation_runtime.py": "b5aa7e9ebd457ef13cdfbdaa4ada1e0f0f273a518dc12406d8d2d40e9a39cc1b",
+    "tests/test_inference_inputs.py": "44ec06988a719fc9f3112b24b64aadb5050df0ec8f962832100741ecb2ee7520",
+    "tests/test_media_recovery.py": "e3e0e95128196c7a946e7eeaeb05ef52ad031f6abc52ef4a81424cde97f8aa38",
+    "tests/test_mer_omni.py": "4519dd404cb2ea942a18a2ce6f3498192e026e756360e4bb2d3b04a15b33cc5e",
+    "tests/test_native_av_tokens.py": "c4ff13ba7e08c42ab99938f9af283f1db838e62aa9d62c4803b116c9f36b9097",
+    "tests/test_portable_paths.py": "89cbfd273c955a8d072d00531ea50a16a4dbdcd5e07644e99f1d332e88669b96",
+    "tests/test_subtitle_prompt.py": "0d8b8576758d9bf4e212f84384b8098b22719fa432f48f5953fd703fca4d5325",
+    "tests/test_training_epochs.py": "2dd4bcdc3a45c1a9d98e9e84928f5ce9a8ed2bf009d0fd528d6c6f135dc25842",
+    "tools/audit_native_sequence_lengths.py": "cbe174815cae4c3ce0d790ad5683d074fc630db13078c2c2342dc0c866551fba",
+    "tools/mer_omni.py": "97c950f98d1ccc48a60b0c5cfaadb12748140ec31d3ec3f2ac0f654bee2b4c76",
+    "tools/profile_emotion_errors.py": "32340fdb8da9cc6a7f134bad5352941e9d7229d0f2ca8d68ef1e34e348c8bbc1",
+    "tools/profile_router_weights.py": "d28e9ba3025145f5983e54e4ae21b81bf68208b264d182edd9ddbf1d212c2457",
+    "tools/run_audio_segments_ablation.py": "faadcaae3b8205603ff6e3cb228bcac4b5a9df0f7256d7ffe891e4adaf8dee30",
+    "tools/run_av_tokens_ablation.py": "2e1c4917a3c38c6293bb2f38239c9c6092297fdba25ba6930fb87d7084d401d6",
+    "tools/run_native_av_ablation.py": "a59fa61689cc877a486ae70ae158d922a73abd3c855635a2a68dc3b2e3d95396"
+  },
+  "local_cleanup": {
+    "retained_final_checkpoints": [
+      {
+        "path": "runs/mer_omni_av_tokens_frames16_epoch3_run01_resume15000/checkpoint_step_0031329.pt",
+        "sha256": "189351d71b5ba3013ea7ab5777c02b3acfc0fad0c4664848a86bffc3d571fcf8"
+      },
+      {
+        "path": "runs/mer_omni_av_tokens_frames16_run01/checkpoint_step_0010443.pt",
+        "sha256": "646de594f79c74c1419af6b34c817e2edf8c2b69e233b42d52fe78fae1a51dba"
+      }
+    ],
+    "other_checkpoints_deleted": true,
+    "runtime_scripts_archived_locally": true
+  },
+  "limitations": [
+    "Scores are not multi-seed estimates.",
+    "Lower training loss does not establish better generalization.",
+    "Router diagnostic conversational numbers lack a located standalone artifact and are not included as verified results.",
+    "Deleted checkpoints cannot be independently reloaded from the retained local outputs."
+  ],
+  "validation": {
+    "offline_unittest_count": 98,
+    "passed": true,
+    "recipe_checks": {
+      "checks": [
+        "four_groups_parameter_membership_base_rates_decay",
+        "legacy_optimizer_two_groups_preserved",
+        "normalized_schedule_equivalence_and_flat_post_warmup",
+        "optional_positive_finite_config_validation",
+        "grouped_training_clip_and_dual_lr_logging",
+        "grouped_checkpoint_resume_matches_uninterrupted",
+        "legacy_training_no_clipping",
+        "all_production_configs_and_legacy_fixture_load"
+      ],
+      "passed": 8,
+      "configs_loaded": 21,
+      "note": "CPU-only synthetic checks; no production training, calibration or benchmark access."
+    },
+    "legacy_fixture_path": "tests/fixtures/model_before_av.py",
+    "legacy_fixture_content_identical_to_local_archive": true
+  }
+}

@@ -1,0 +1,757 @@
+{
+  "as_of": "2026-10-17",
+  "metric_units": "fraction; multiply by 100 for percent",
+  "source_artifacts_included": false,
+  "experiments": [
+    {
+      "name": "fusion",
+      "train_config": "config/mer_omni_atsuko_padding.json",
+      "evaluation_config": "config/mer_omni_evaluation.json",
+      "training": {
+        "samples": 31327,
+        "unique_samples": 31327,
+        "complete": true,
+        "optimizer_steps": 10443,
+        "seed": 42,
+        "loss_mode": "ce_only",
+        "last100_mean_loss": 1.285591466078072
+      },
+      "scores": [
+        {
+          "dataset": "MER2023",
+          "task": "basic",
+          "samples": 411,
+          "expected_samples": 411,
+          "primary": 0.4296279754352129,
+          "hit_rate": 0.4296279754352129,
+          "checkpoint_sha256": "83be53117af728804345cde7ac1a5ce9025377d00ae80d83e2390270807c3422",
+          "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+          "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+          "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+          "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+          "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+          "extraction_sha256": "bfe8d29b145dc2529ad65bd9b80ef3a3c582e6202a98c61ef8ac06f1c5225604",
+          "input_processing_sha256": "85cfd2061ac70e4312679bd72865109a7a2f7df396981daf10d5ca159ccc8882",
+          "truncated_samples": 1,
+          "evaluated_samples_per_wheel": [
+            323,
+            323,
+            323,
+            323,
+            305
+          ],
+          "source_record": "runs/mer_omni_padding_epoch01/evaluation_step10443_affectgpt/MER2023/score.json",
+          "source_sha256": "78ce1e5142e54956aabbb540ea86267c54c18920a1813d29c9669168591479b3"
+        },
+        {
+          "dataset": "MER2024",
+          "task": "basic",
+          "samples": 1169,
+          "expected_samples": 1169,
+          "primary": 0.4303422514824672,
+          "hit_rate": 0.4303422514824672,
+          "checkpoint_sha256": "83be53117af728804345cde7ac1a5ce9025377d00ae80d83e2390270807c3422",
+          "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+          "manifest_sha256": "144676ecb5bfacfc9d0ae799ea8c268ddfc0ac85882d3a3e1a66e09ec4af3347",
+          "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+          "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+          "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+          "extraction_sha256": "bcbdbe16dd36cfd36cdc7b9622ee058ef7232963d07964d9299ddebaf4c33874",
+          "evaluated_samples_per_wheel": [
+            968,
+            968,
+            968,
+            968,
+            885
+          ],
+          "source_record": "runs/mer_omni_padding_epoch01/evaluation_step10443_affectgpt/MER2024/score.json",
+          "source_sha256": "9ef587f4b7f94df16ee2fc40f9990ed44738ace5d3177e9f02f77b72dfbcd2c5"
+        },
+        {
+          "dataset": "CMUMOSEI",
+          "task": "sentiment",
+          "samples": 4659,
+          "expected_samples": 4659,
+          "primary": 0.5274044206664786,
+          "weighted_f1": 0.5274044206664786,
+          "accuracy": 0.5668684645019263,
+          "checkpoint_sha256": "83be53117af728804345cde7ac1a5ce9025377d00ae80d83e2390270807c3422",
+          "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+          "manifest_sha256": "59284bf14cf08dcc5365348a325da5bbef4d49f140b80ab5f654c77fc8de8abd",
+          "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+          "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+          "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+          "extraction_sha256": "dbefc1f9f7b39c2768f4db1b367ed9cd8094d203a32f03f4735affc91ed0cf8c",
+          "input_processing_sha256": "300215edc375aabceb39b7946239b447907e9734c0e54aefc8cd4aafa37a2314",
+          "truncated_samples": 29,
+          "source_record": "runs/mer_omni_padding_epoch01/evaluation_step10443_affectgpt/CMUMOSEI/score.json",
+          "source_sha256": "30b4f56b81242ddbaaff2e12fb561fb2b3f669f4f42acb6f543293ef2835b1da"
+        }
+      ],
+      "checkpoint_sha256": "83be53117af728804345cde7ac1a5ce9025377d00ae80d83e2390270807c3422"
+    },
+    {
+      "name": "subtitle",
+      "train_config": "config/mer_omni_subtitle_ablation.json",
+      "evaluation_config": "config/mer_omni_subtitle_evaluation.json",
+      "training": {
+        "samples": 31327,
+        "unique_samples": 31327,
+        "complete": true,
+        "optimizer_steps": 10443,
+        "seed": 42,
+        "loss_mode": "ce_only",
+        "last100_mean_loss": 1.12298573529299
+      },
+      "scores": [
+        {
+          "dataset": "MER2023",
+          "task": "basic",
+          "samples": 411,
+          "expected_samples": 411,
+          "primary": 0.6101466781708369,
+          "hit_rate": 0.6101466781708369,
+          "checkpoint_sha256": "ab3b3e1d3239c9577267853f0a282c712ce30aa638f2b31baf8497d0b89b0000",
+          "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+          "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+          "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+          "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+          "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+          "extraction_sha256": "4a29ee6d86b5bcb5042571caa88d1490208b26556569fff7ee7082441ffc9735",
+          "input_processing_sha256": "85cfd2061ac70e4312679bd72865109a7a2f7df396981daf10d5ca159ccc8882",
+          "truncated_samples": 1,
+          "evaluated_samples_per_wheel": [
+            323,
+            323,
+            323,
+            323,
+            305
+          ],
+          "source_record": "runs/mer_omni_subtitle_epoch01/evaluation_step10443_affectgpt/MER2023/score.json",
+          "source_sha256": "040b7c122a9a9c6b566396c684dd6d5d113bcf15d90011d8de5926bb2bda5101"
+        },
+        {
+          "dataset": "MER2024",
+          "task": "basic",
+          "samples": 1169,
+          "expected_samples": 1169,
+          "primary": 0.5661836391651491,
+          "hit_rate": 0.5661836391651491,
+          "checkpoint_sha256": "ab3b3e1d3239c9577267853f0a282c712ce30aa638f2b31baf8497d0b89b0000",
+          "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+          "manifest_sha256": "144676ecb5bfacfc9d0ae799ea8c268ddfc0ac85882d3a3e1a66e09ec4af3347",
+          "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+          "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+          "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+          "extraction_sha256": "c84a67809be3e7fcc6a4618a8fef913f3d02d2236761c53bb1be0895f8074295",
+          "input_processing_sha256": "0621426b83a411d86116fef21f0f5aa3b0727d5bfe94a8bc950a6764943bc88c",
+          "truncated_samples": 0,
+          "evaluated_samples_per_wheel": [
+            968,
+            968,
+            968,
+            968,
+            885
+          ],
+          "source_record": "runs/mer_omni_subtitle_epoch01/evaluation_step10443_affectgpt/MER2024/score.json",
+          "source_sha256": "3d9bc266b38aad391739456bdd596c704a0b749dbc6116be71aacfdcfeee182b"
+        }
+      ],
+      "checkpoint_sha256": "ab3b3e1d3239c9577267853f0a282c712ce30aa638f2b31baf8497d0b89b0000"
+    },
+    {
+      "name": "independent_av",
+      "train_config": "config/mer_omni_av_tokens_ablation.json",
+      "evaluation_config": "config/mer_omni_av_tokens_evaluation.json",
+      "training": {
+        "samples": 31327,
+        "unique_samples": 31327,
+        "complete": true,
+        "optimizer_steps": 10443,
+        "seed": 42,
+        "loss_mode": "ce_only",
+        "last100_mean_loss": 1.12156961812683
+      },
+      "scores": [
+        {
+          "dataset": "MER2023",
+          "task": "basic",
+          "samples": 411,
+          "expected_samples": 411,
+          "primary": 0.6153925798101813,
+          "hit_rate": 0.6153925798101813,
+          "checkpoint_sha256": "5530adfc0893f55b01ee89ba3a52f7ed74cf1872bfb61738cb704cb23b76c306",
+          "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+          "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+          "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+          "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+          "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+          "extraction_sha256": "ed61fc36521eac85a78aefd3359b11fede1cb67647a0bee2660676ff26bf2155",
+          "input_processing_sha256": "85cfd2061ac70e4312679bd72865109a7a2f7df396981daf10d5ca159ccc8882",
+          "truncated_samples": 1,
+          "evaluated_samples_per_wheel": [
+            323,
+            323,
+            323,
+            323,
+            305
+          ],
+          "source_record": "runs/mer_omni_av_tokens_epoch01/evaluation_step10443_affectgpt/MER2023/score.json",
+          "source_sha256": "8dff40125904f94b431b1a5d856d984fa54c79074bafde5fafc94d204663b7e1"
+        }
+      ],
+      "checkpoint_sha256": "5530adfc0893f55b01ee89ba3a52f7ed74cf1872bfb61738cb704cb23b76c306",
+      "requested_datasets": [
+        "MER2023"
+      ],
+      "deferred_datasets": [
+        "MER2024"
+      ],
+      "mer2024_partial_generation": {
+        "samples": 213,
+        "expected_samples": 1169,
+        "complete": false,
+        "scored": false,
+        "reason": "User requested deferral during inference"
+      }
+    },
+    {
+      "name": "native_av_mean",
+      "train_config": "config/mer_omni_native_av_ablation.json",
+      "evaluation_config": "config/mer_omni_native_av_evaluation.json",
+      "training": {
+        "samples": 31327,
+        "unique_samples": 31327,
+        "complete": true,
+        "optimizer_steps": 10443,
+        "seed": 42,
+        "loss_mode": "ce_only",
+        "last100_mean_loss": 1.1235799985293973,
+        "last1000_mean_loss": 1.1435991056251824,
+        "elapsed_seconds": 25395.506305621937,
+        "all_losses_finite": true,
+        "sample_order_and_learning_rate_match_controls": true,
+        "trainable_parameters": 50636684,
+        "additional_parameters_vs_independent_av": 1048576,
+        "source_record": "reports/native_av_validation_20261017/training_summary.json",
+        "source_sha256": "1b52f72450803cb5825a90b1f86c5ba0a34583006085b3211a75aec649428db6"
+      },
+      "scores": [
+        {
+          "dataset": "MER2023",
+          "task": "basic",
+          "samples": 411,
+          "strict_protocol": true,
+          "expected_samples": 411,
+          "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+          "primary": 0.6236613713647667,
+          "per_wheel": [
+            [
+              0.6563467492260062,
+              0.41305469556243546
+            ],
+            [
+              0.653250773993808,
+              0.4158926728586171
+            ],
+            [
+              0.5820433436532507,
+              0.436016511867905
+            ],
+            [
+              0.6037151702786377,
+              0.4066047471620227
+            ],
+            [
+              0.6229508196721312,
+              0.5131147540983606
+            ]
+          ],
+          "evaluated_samples_per_wheel": [
+            323,
+            323,
+            323,
+            323,
+            305
+          ],
+          "hit_rate": 0.6236613713647667,
+          "mscore": 0.43693667630986815,
+          "checkpoint_sha256": "56574cb021659bdd0f3c0e883b0bdedeed761a916b5a58ca805abbf073ffb471",
+          "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+          "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+          "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+          "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+          "extraction_sha256": "3fd8e593f6b2de7428deaf5a5315ae719e28c0a00235e42c29ffa30fcbbf6174",
+          "evaluator_engine_options": {
+            "gpu_memory_utilization": 0.36,
+            "max_model_len": 4096,
+            "max_num_seqs": 8
+          },
+          "evaluator_distributed_store": "HashStore",
+          "accepted_release_overlap_ids": [],
+          "input_policy": {
+            "input_mode": "zero_pad",
+            "sequence_lengths": [
+              96,
+              50,
+              704
+            ],
+            "sequence_overflow": "truncate_right"
+          },
+          "input_processing_sha256": "81db81ed61c26afc4e2a37b2410a4ad7eb69c4eb434623fd90f815c27917de92",
+          "truncated_samples": 1,
+          "source_record": "runs/mer_omni_native_av_epoch01/evaluation_step10443_affectgpt/MER2023/score.json",
+          "source_sha256": "b3838b99f3e7a5754b233ed0a50c42e1b02d77c2648f8e8b0c76eb12092d6002"
+        }
+      ],
+      "checkpoint_sha256": "56574cb021659bdd0f3c0e883b0bdedeed761a916b5a58ca805abbf073ffb471",
+      "requested_datasets": [
+        "MER2023"
+      ],
+      "deferred_datasets": [
+        "MER2024"
+      ],
+      "evaluation": {
+        "status": "complete",
+        "dataset": "MER2023",
+        "expected_samples": 411,
+        "checkpoint_selection": "Only final scheduled step 10443; no checkpoint or hyperparameter selection from benchmark outcomes",
+        "input_scope_note": "Same raw inputs and frontend truncation policy. The new independent AV mean retains all encoder positions. One MER2023 audio has 956 positions, of which fusion retains 704; native independent mean retains all 956.",
+        "live_status_record": "reports/native_av_validation_20261017/evaluation_status.json",
+        "source_record": "reports/native_av_validation_20261017/evaluation_plan.json",
+        "source_sha256": "ef9cd7e2a0010a633d5af199fbf1f13443e67ebf7e3940105caab5cda051e1c1",
+        "completed_at": "2026-10-17T02:07:29+0800",
+        "samples": 411,
+        "protocol_hashes_match": true,
+        "delta_percentage_points_vs_independent_av": 0.8268791554585486,
+        "comparison": {
+          "source_record": "reports/native_av_validation_20261017/evaluation_comparison.json",
+          "source_sha256": "c1b386a4cc14d9cabf0267c54715e91a06445fdd5adb7c796d88ce5d7a3c1355"
+        }
+      },
+      "training_diagnostics": {
+        "samples": 32,
+        "cohort": "MER-Caption+ training only",
+        "selection": "Same previously fixed seed=20261015 sample set and one cyclic permutation; subtitles and targets held fixed",
+        "checkpoint_results": {
+          "av_tokens": {
+            "conditions": {
+              "normal": {
+                "mean_nll": 0.8922677515074611,
+                "mean_delta_nll": 0.0,
+                "nll_increased_count": 0
+              },
+              "swap_audio_all": {
+                "mean_nll": 0.8976878910325468,
+                "mean_delta_nll": 0.005420139525085688,
+                "nll_increased_count": 21
+              },
+              "swap_video_all": {
+                "mean_nll": 0.9016853366047144,
+                "mean_delta_nll": 0.009417585097253323,
+                "nll_increased_count": 20
+              },
+              "swap_av_all": {
+                "mean_nll": 0.905620445497334,
+                "mean_delta_nll": 0.013352693989872932,
+                "nll_increased_count": 17
+              },
+              "swap_audio_direct": {
+                "mean_nll": 0.896499402821064,
+                "mean_delta_nll": 0.004231651313602924,
+                "nll_increased_count": 23
+              },
+              "swap_video_direct": {
+                "mean_nll": 0.900408273562789,
+                "mean_delta_nll": 0.008140522055327892,
+                "nll_increased_count": 20
+              },
+              "swap_audio_fusion": {
+                "mean_nll": 0.8934193230234087,
+                "mean_delta_nll": 0.0011515715159475803,
+                "nll_increased_count": 17
+              },
+              "swap_video_fusion": {
+                "mean_nll": 0.8932008151896298,
+                "mean_delta_nll": 0.0009330636821687222,
+                "nll_increased_count": 18
+              }
+            },
+            "projected_token_variation": {
+              "tokens": {
+                "mean_norm": 19.28665702932438,
+                "mean_pairwise_cosine": 0.859629140678783,
+                "centered_energy_fraction": 0.14175574738851526,
+                "effective_rank": 3.1254352447527833
+              },
+              "audio_tokens": {
+                "mean_norm": 28.158226102904035,
+                "mean_pairwise_cosine": 0.9528557753391246,
+                "centered_energy_fraction": 0.045406886218061764,
+                "effective_rank": 3.099368373249794
+              },
+              "video_tokens": {
+                "mean_norm": 27.629012529916743,
+                "mean_pairwise_cosine": 0.6987254820310486,
+                "centered_energy_fraction": 0.2912062397355673,
+                "effective_rank": 4.373288271531472
+              }
+            },
+            "actual_forward_nll_equal": true,
+            "cache_recheck_bitwise_equal": true,
+            "old_diagnostic_max_nll_difference": 0.0
+          },
+          "native_av": {
+            "conditions": {
+              "normal": {
+                "mean_nll": 0.8970017437823117,
+                "mean_delta_nll": 0.0,
+                "nll_increased_count": 0
+              },
+              "swap_audio_all": {
+                "mean_nll": 0.8971742577850819,
+                "mean_delta_nll": 0.00017251400277018547,
+                "nll_increased_count": 17
+              },
+              "swap_video_all": {
+                "mean_nll": 0.9070241884328425,
+                "mean_delta_nll": 0.010022444650530815,
+                "nll_increased_count": 20
+              },
+              "swap_av_all": {
+                "mean_nll": 0.9061667323112488,
+                "mean_delta_nll": 0.009164988528937101,
+                "nll_increased_count": 20
+              },
+              "swap_audio_direct": {
+                "mean_nll": 0.8974922867491841,
+                "mean_delta_nll": 0.0004905429668724537,
+                "nll_increased_count": 15
+              },
+              "swap_video_direct": {
+                "mean_nll": 0.9074233220890164,
+                "mean_delta_nll": 0.01042157830670476,
+                "nll_increased_count": 21
+              },
+              "swap_audio_fusion": {
+                "mean_nll": 0.8955094963312149,
+                "mean_delta_nll": -0.0014922474510967731,
+                "nll_increased_count": 15
+              },
+              "swap_video_fusion": {
+                "mean_nll": 0.8973670811392367,
+                "mean_delta_nll": 0.0003653373569250107,
+                "nll_increased_count": 17
+              }
+            },
+            "projected_token_variation": {
+              "tokens": {
+                "mean_norm": 20.949805502379604,
+                "mean_pairwise_cosine": 0.9823901813947497,
+                "centered_energy_fraction": 0.017159817591699194,
+                "effective_rank": 3.967503284454446
+              },
+              "audio_tokens": {
+                "mean_norm": 6.372949943034914,
+                "mean_pairwise_cosine": 0.8943668966310896,
+                "centered_energy_fraction": 0.10676410837516515,
+                "effective_rank": 15.158439466766257
+              },
+              "video_tokens": {
+                "mean_norm": 14.812058291972555,
+                "mean_pairwise_cosine": 0.8625982559771537,
+                "centered_energy_fraction": 0.14509769097449535,
+                "effective_rank": 14.392862735504483
+              }
+            },
+            "actual_forward_nll_equal": true,
+            "cache_recheck_bitwise_equal": true
+          }
+        },
+        "caveat": "Training-only sensitivity and representation diagnostics; no optimizer updates; not an accuracy or causal padding test",
+        "source_record": "reports/native_av_validation_20261017/diagnostic_comparison.json",
+        "source_sha256": "b4786d8baebc6f196f2c91162ff24103a0abfc064c79393f4bf07725a45b46d7"
+      },
+      "expanded_training_diagnostics": {
+        "samples": 128,
+        "donor_permutations": 5,
+        "complete": true,
+        "optimizer_updates": 0,
+        "source_record": "docs/results/audio-diagnostics-20261017.json",
+        "source_sha256": "da69be070a0508771756370e65cf821f734260533e8a99c4bc7542d1c247dab0"
+      }
+    },
+    {
+      "name": "audio_segments_4",
+      "train_config": "config/mer_omni_audio_segments_ablation.json",
+      "evaluation_config": "config/mer_omni_audio_segments_evaluation.json",
+      "training": {
+        "complete": true,
+        "status": "complete",
+        "started_at": "2026-10-17T08:08:59+0800",
+        "observed_at": "2026-10-17T16:32:50+0800",
+        "planned_samples": 31327,
+        "planned_optimizer_steps": 10443,
+        "optimizer_steps": 10443,
+        "samples_seen": 31327,
+        "unique_samples": 31327,
+        "seed": 42,
+        "loss_mode": "ce_only",
+        "trainable_parameters": 50636684,
+        "additional_parameters_vs_native_av": 0,
+        "observed_losses_finite": true,
+        "observed_order_and_lr_match_control": true,
+        "live_log": "runs/mer_omni_audio_segments_epoch01/train.jsonl",
+        "completed_at": "2026-10-17T15:10:32+0800",
+        "elapsed_seconds": 25253.066332622897,
+        "mean_last_100_loss": 1.120571333243128,
+        "mean_last_500_loss": 1.1394004481056352,
+        "mean_last_1000_loss": 1.1405908277161243,
+        "all_losses_finite": true,
+        "sample_order_and_learning_rate_match_control": true
+      },
+      "scores": [
+        {
+          "dataset": "MER2023",
+          "task": "basic",
+          "samples": 411,
+          "strict_protocol": true,
+          "expected_samples": 411,
+          "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+          "primary": 0.6148830127391768,
+          "per_wheel": [
+            [
+              0.6253869969040248,
+              0.39060887512899894
+            ],
+            [
+              0.6408668730650154,
+              0.42879256965944273
+            ],
+            [
+              0.6037151702786377,
+              0.45897832817337464
+            ],
+            [
+              0.5913312693498453,
+              0.40608875128998967
+            ],
+            [
+              0.6131147540983607,
+              0.5120218579234973
+            ]
+          ],
+          "evaluated_samples_per_wheel": [
+            323,
+            323,
+            323,
+            323,
+            305
+          ],
+          "hit_rate": 0.6148830127391768,
+          "mscore": 0.43929807643506064,
+          "checkpoint_sha256": "2dc83f5916c14a42324e381b9193879f595cc57f7c3b613e0d4f093c6e40598a",
+          "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+          "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+          "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+          "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+          "extraction_sha256": "42ec19b25e32a845f4221b5885e9a41e9f4069b68aa85386e1eb49505253629b",
+          "evaluator_engine_options": {
+            "gpu_memory_utilization": 0.36,
+            "max_model_len": 4096,
+            "max_num_seqs": 8
+          },
+          "evaluator_distributed_store": "HashStore",
+          "accepted_release_overlap_ids": [],
+          "input_policy": {
+            "input_mode": "zero_pad",
+            "sequence_lengths": [
+              96,
+              50,
+              704
+            ],
+            "sequence_overflow": "truncate_right"
+          },
+          "input_processing_sha256": "2820c2856bad4360a43571808516926748baa5d0432e12632db33e4b208ea13d",
+          "truncated_samples": 1,
+          "source_record": "runs/mer_omni_audio_segments_epoch01/evaluation_step10443_affectgpt/MER2023/score.json",
+          "source_sha256": "b660c76999d586a4fbe435b517eca5f1f760da0a0ea04e19961a77242a15f85f"
+        }
+      ],
+      "only_config_change": {
+        "prompt.audio_token_count": [
+          1,
+          4
+        ]
+      },
+      "checkpoint_selection": "Final scheduled step 10443; no test-based selection",
+      "validation": {
+        "offline_test_count": 98,
+        "training_length_check": {
+          "answers_checked": 62654,
+          "longest_prompt_and_answer": 402,
+          "max_length": 1024,
+          "overflow": 0,
+          "audio_token_upper_bound": 4,
+          "minimum_estimated_audio_positions": 16,
+          "no_sample_replacement": true
+        },
+        "real_3b_smoke_passed": true,
+        "smoke_optimizer_updates": 0,
+        "real_one_token_checkpoint_compatibility": {
+          "loss_difference": 0.0,
+          "generation_identical": true
+        }
+      },
+      "records": {
+        "plan.json": {
+          "source_record": "reports/audio_segments_ablation_20261017/plan.json",
+          "source_sha256": "014957b6c3f8dfba843c9176b9adfa77c1cc1bfd7cddee52012d94efdefcba55"
+        },
+        "smoke.json": {
+          "source_record": "reports/audio_segments_ablation_20261017/smoke.json",
+          "source_sha256": "a847128a313ab616989f2f18e619b7c1d90c29f110a26ff22fa527f6216f4e8e"
+        },
+        "launch.json": {
+          "source_record": "reports/audio_segments_ablation_20261017/launch.json",
+          "source_sha256": "d026efe713e490d13d7ea5f6001c550a630298dcbd9addfd8a6dc4421ef636c2"
+        },
+        "tests.log": {
+          "source_record": "reports/audio_segments_ablation_20261017/tests.log",
+          "source_sha256": "7a1ff820a174338ff5ea749d982a1d1aea0b326f475e9c0789316fb216863b7e"
+        },
+        "reports/audio_segments_ablation_20261017/completion.json": {
+          "source_record": "reports/audio_segments_ablation_20261017/completion.json",
+          "source_sha256": "e8bcf1ca6f18f24e3a5770563b75820b84358bbc8366c54acc49976499df5486"
+        },
+        "reports/audio_segments_validation_20261017/plan.json": {
+          "source_record": "reports/audio_segments_validation_20261017/plan.json",
+          "source_sha256": "091ca687b9e1e8324dd8f1a50bf2aac730fa6c3d980948d1ca55cbbc8ccce856"
+        },
+        "reports/audio_segments_validation_20261017/evaluation_plan.json": {
+          "source_record": "reports/audio_segments_validation_20261017/evaluation_plan.json",
+          "source_sha256": "7dc7ffe2b5dc6427db00be73e325a155a11997df673c21be47360c5be8df3bb1"
+        },
+        "reports/audio_segments_validation_20261017/launch.json": {
+          "source_record": "reports/audio_segments_validation_20261017/launch.json",
+          "source_sha256": "497c6b5b18fced1608084441471ff7b9186829db2f3b77ba9e39ad48da6d27e8"
+        },
+        "reports/audio_segments_validation_20261017/summary.json": {
+          "source_record": "reports/audio_segments_validation_20261017/summary.json",
+          "source_sha256": "ac705daf536019bc6359d6978f430fb98ba7c0882d031f294c6c9adc339c62f1"
+        },
+        "reports/audio_segments_validation_20261017/verification.json": {
+          "source_record": "reports/audio_segments_validation_20261017/verification.json",
+          "source_sha256": "3e095091878f0eccc7bb4d95b07a8f6340caceaae4e5386e2c46482b86c827c3"
+        },
+        "reports/audio_segments_validation_20261017/evaluation_comparison.json": {
+          "source_record": "reports/audio_segments_validation_20261017/evaluation_comparison.json",
+          "source_sha256": "e9353b6dad02ed2b22d8f47128212d5d160c8f08964336f5ad89b853cef37877"
+        },
+        "reports/audio_segments_validation_20261017/evaluation_status.json": {
+          "source_record": "reports/audio_segments_validation_20261017/evaluation_status.json",
+          "source_sha256": "4b044730842f672b5c58e9bcff0644bcf0efd61d5be6b6c1aa29d0cabbf94ef5"
+        }
+      },
+      "automatic_evaluation_datasets": [],
+      "deferred_datasets": [
+        "MER2024"
+      ],
+      "diagnostic_plan": "reports/audio_dependency_expansion_20261017/plan.json",
+      "checkpoint": "runs/mer_omni_audio_segments_epoch01/checkpoint_step_0010443.pt",
+      "checkpoint_sha256": "2dc83f5916c14a42324e381b9193879f595cc57f7c3b613e0d4f093c6e40598a",
+      "validation_workflow": {
+        "diagnostic_status": "complete",
+        "diagnostic_samples": 128,
+        "donor_permutations": 5,
+        "models": [
+          "native_av",
+          "audio_segments"
+        ],
+        "evaluation_datasets": [
+          "MER2023"
+        ],
+        "evaluation_status": "complete",
+        "checkpoint_selection": "Final scheduled step 10443 only",
+        "live_directory": "reports/audio_segments_validation_20261017",
+        "diagnostic_completed_at": "2026-10-17T16:43:54+0800",
+        "evaluation_started_at": "2026-10-17T16:44:13+0800",
+        "evaluation_completed_at": "2026-10-17T16:53:27+0800"
+      },
+      "fixed_training_diagnostics": {
+        "source_record": "docs/results/audio-segments-validation-20261017.json",
+        "source_sha256": "bac8a628d0aab0d685cc36a7857f056443c2c8034615e057601e473d405c8604",
+        "samples": 128,
+        "donor_permutations": 5,
+        "optimizer_updates": 0,
+        "paired_audio_emotion_delta": {
+          "mean": 0.0037686221301555635,
+          "exploratory_ci95": [
+            -0.0034211015561595574,
+            0.011083597259130327
+          ],
+          "positive_recipients": 65,
+          "previous32_mean": 0.013746845722198486,
+          "additional96_mean": 0.0004425475994745889
+        },
+        "paired_audio_first_emotion_js_delta": {
+          "mean": 0.0015071868887190478,
+          "exploratory_ci95": [
+            0.0011551221393174417,
+            0.001892300460677773
+          ],
+          "positive_recipients": 124,
+          "previous32_mean": 0.0013284926686310426,
+          "additional96_mean": 0.0015667516287483825,
+          "permutation_means": [
+            0.0016273329193268182,
+            0.0016317176829829805,
+            0.0013603547303944197,
+            0.0014886117464243398,
+            0.0014279173644666798
+          ]
+        }
+      },
+      "evaluation_comparison": {
+        "dataset": "MER2023",
+        "metric": "hit_rate",
+        "audio_segments": 0.6148830127391768,
+        "native_av_control": 0.6236613713647667,
+        "delta_percentage_points": -0.8778358625589955,
+        "checkpoint_sha256": "2dc83f5916c14a42324e381b9193879f595cc57f7c3b613e0d4f093c6e40598a",
+        "samples": 411,
+        "protocol_hashes_match": true,
+        "input_scope_note": "Same raw inputs and fusion truncation as single-mean control. Both independent AV paths retain all encoder positions; candidate audio uses four ordered nonempty segment means. One MER2023 audio has 956 positions, all retained by both independent paths while fusion retains 704. The candidate adds up to three prompt positions.",
+        "audio_segments_score": "runs/mer_omni_audio_segments_epoch01/evaluation_step10443_affectgpt/MER2023/score.json",
+        "control_score": "runs/mer_omni_native_av_epoch01/evaluation_step10443_affectgpt/MER2023/score.json",
+        "caveat": "Single training seed and fixed sampled generation/extraction; no multi-seed uncertainty estimate"
+      },
+      "interpretation": "Slightly lower training loss and stronger audio-swap distribution response did not yield a MER2023 gain in this single-seed run; no additional training or benchmark scheduled."
+    }
+  ],
+  "official_reference": [
+    {
+      "dataset": "MER2023",
+      "hit_rate": 0.7914693193929858,
+      "samples": 411,
+      "checkpoint_sha256": "71ef35e3ac15c86b4d371574551c9e8af4ceb74541a93c3789fd0c2e6ada33fc",
+      "source_record": "runs/affectgpt_official_frame_run01/MER2023/score.json",
+      "source_sha256": "8a14187daff62bc29ade2d6702c61472361f9cd0c216a82260171b240da5986d"
+    },
+    {
+      "dataset": "MER2024",
+      "hit_rate": 0.7505598356445815,
+      "samples": 1169,
+      "checkpoint_sha256": "71ef35e3ac15c86b4d371574551c9e8af4ceb74541a93c3789fd0c2e6ada33fc",
+      "source_record": "runs/affectgpt_official_frame_run01/MER2024/score.json",
+      "source_sha256": "1a1097278636c81d6ffc1a4b53ae6d00549831705ad3c15c8b06ae83fbc18223"
+    }
+  ],
+  "limitations": [
+    "Official raw-frame weights, not the paper face checkpoint; backbones and training budgets differ.",
+    "One training seed per experiment; no multiple-seed uncertainty estimate.",
+    "Generation and extraction are sampled; scores identify these saved runs.",
+    "No complete nine-dataset average; current MER2024 is deferred."
+  ],
+  "snapshot_at": "2026-10-17T16:54:49+0800"
+}

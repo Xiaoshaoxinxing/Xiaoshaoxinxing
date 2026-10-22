@@ -26,14 +26,29 @@ def move_batch(batch, device):
 
 def build_optimizer(model, settings):
     decay, no_decay = [], []
+    frontend_decay, frontend_no_decay = [], []
     for name, parameter in model.named_parameters():
         if not parameter.requires_grad:
             continue
-        target = no_decay if parameter.ndim < 2 or any(x in name for x in ('bias', 'ln', 'bn')) else decay
+        without_decay = parameter.ndim < 2 or any(x in name for x in ('bias', 'ln', 'bn'))
+        if 'lr_frontend' in settings and name.startswith(('frontend.', 'fusion_in.', 'audio_in.', 'video_in.')):
+            target = frontend_no_decay if without_decay else frontend_decay
+        else:
+            target = no_decay if without_decay else decay
         target.append(parameter)
-    return torch.optim.AdamW([
+    groups = [
         dict(params=decay, weight_decay=settings['weight_decay']),
-        dict(params=no_decay, weight_decay=0.0)], lr=settings['lr'], betas=(0.9, 0.999))
+        dict(params=no_decay, weight_decay=0.0)]
+    if 'lr_frontend' in settings:
+        for group, suffix in zip(groups, ('decay', 'no_decay')):
+            group.update(name='lora_' + suffix, lr=settings['lr'], base_lr=settings['lr'])
+        for params, suffix, weight_decay in (
+                (frontend_decay, 'decay', settings['weight_decay']),
+                (frontend_no_decay, 'no_decay', 0.0)):
+            groups.append(dict(params=params, name='frontend_' + suffix, weight_decay=weight_decay,
+                               lr=settings['lr_frontend'], base_lr=settings['lr_frontend']))
+    # Keep legacy group membership/order and checkpoint layout when no split is requested.
+    return torch.optim.AdamW(groups, lr=settings['lr'], betas=(0.9, 0.999))
 
 
 def training_row(dataset, index, model, *, allow_replacement=True):
@@ -105,11 +120,14 @@ def step_sample_counts(settings, dataset_size, step):
     return [min(batch, count - offset) for offset in range(0, count, batch)]
 
 
-def learning_rate(settings, step):
+def learning_rate(settings, step, *, normalized=False):
+    """Original absolute schedule, optionally normalized for per-group base rates."""
     if step < settings['warmup_steps']:
-        return settings['warmup_lr'] + (settings['lr'] - settings['warmup_lr']) * step / max(settings['warmup_steps'], 1)
-    total = settings['epochs'] * settings['steps_per_epoch']
-    return settings['min_lr'] + (settings['lr'] - settings['min_lr']) * .5 * (1 + math.cos(math.pi * step / total))
+        rate = settings['warmup_lr'] + (settings['lr'] - settings['warmup_lr']) * step / max(settings['warmup_steps'], 1)
+    else:
+        total = settings['epochs'] * settings['steps_per_epoch']
+        rate = settings['min_lr'] + (settings['lr'] - settings['min_lr']) * .5 * (1 + math.cos(math.pi * step / total))
+    return rate / settings['lr'] if normalized else rate
 
 
 def adapter_state(model):
@@ -232,8 +250,10 @@ def train(model, dataset, collator, config, output, device, *, resume=None, max_
     started = time.perf_counter()
     for step in range(start, stop):
         step_started = time.perf_counter()
+        grouped_lr = 'lr_frontend' in settings
+        rate = learning_rate(settings, step, normalized=grouped_lr)
         for group in optimizer.param_groups:
-            group['lr'] = learning_rate(settings, step)
+            group['lr'] = group['base_lr'] * rate if grouped_lr else rate
         optimizer.zero_grad(set_to_none=True)
         sample_counts = step_sample_counts(settings, len(dataset), step)
         index_groups, groups = [], []
@@ -267,6 +287,9 @@ def train(model, dataset, collator, config, output, device, *, resume=None, max_
         metrics['loss'] = combine_losses(metrics, config['mcm'])
         if any(p.grad is not None and not torch.isfinite(p.grad).all() for p in model.parameters() if p.requires_grad):
             raise FloatingPointError(f'Non-finite gradient at step {step}')
+        if 'grad_clip' in settings:
+            torch.nn.utils.clip_grad_norm_(
+                (p for p in model.parameters() if p.requires_grad), settings['grad_clip'])
         optimizer.step()
         if device.type == 'cuda':
             torch.cuda.synchronize(device)
@@ -277,6 +300,9 @@ def train(model, dataset, collator, config, output, device, *, resume=None, max_
                    epoch=step // settings['steps_per_epoch'] + 1, total_steps=total,
                    stop_step=stop, active_epochs=active_epochs,
                    step_seconds=step_seconds, elapsed_seconds=elapsed, eta_seconds=eta_seconds)
+        if grouped_lr:
+            log['lr_frontend'] = next(group['lr'] for group in optimizer.param_groups
+                                      if group['name'] == 'frontend_decay')
         if full_dataset:
             log.update(epoch_samples_seen=stream.position, epoch_samples_total=len(dataset),
                        samples_this_step=sum(sample_counts),
@@ -289,7 +315,11 @@ def train(model, dataset, collator, config, output, device, *, resume=None, max_
         with (output / 'train.jsonl').open('a') as handle:
             handle.write(json.dumps(log) + '\n')
         if step == start or (step+1) % log_every == 0 or step+1 == stop:
-            print(training_progress(log) + '\n', flush=True)
+            progress = training_progress(log)
+            if grouped_lr:
+                progress += (f'\n【分组学习率】LoRA {log["lr"]:.3e}    '
+                             f'前端 {log["lr_frontend"]:.3e}')
+            print(progress + '\n', flush=True)
         if ((step+1) % settings['steps_per_epoch'] == 0 or step+1 == stop or
                 (checkpoint_every is not None and (step+1) % checkpoint_every == 0)):
             checkpoint_path = output / f'checkpoint_step_{step+1:07d}.pt'

@@ -2,6 +2,7 @@
 from pathlib import Path
 import hashlib
 import json
+import math
 
 ROOT = Path(__file__).resolve().parents[1]
 DESCRIPTION_QUESTION = "Please infer the person's emotional state and provide your reasoning process."
@@ -71,7 +72,7 @@ def spectral_sequence_lengths(spectral):
 def includes_raw_subtitle(config):
     """Old checkpoints keep the routed-only prompt unless explicitly enabled."""
     prompt = config.get('prompt', {})
-    if not isinstance(prompt, dict) or set(prompt) - {'include_subtitle', 'include_av_tokens'}:
+    if not isinstance(prompt, dict) or set(prompt) - {'include_subtitle', 'include_av_tokens', 'av_token_source', 'audio_token_count'}:
         raise ValueError('Unknown prompt settings')
     enabled = prompt.get('include_subtitle', False)
     if not isinstance(enabled, bool):
@@ -92,6 +93,28 @@ def includes_av_tokens(config):
     return enabled
 
 
+def av_token_source(config):
+    """Old independent tokens use the spectral frontend unless explicitly changed."""
+    enabled = includes_av_tokens(config)
+    source = config.get('prompt', {}).get('av_token_source', 'frontend')
+    if source not in ('frontend', 'native_mean'):
+        raise ValueError('prompt.av_token_source must be frontend or native_mean')
+    if source != 'frontend' and not enabled:
+        raise ValueError('native_mean requires prompt.include_av_tokens=true')
+    return source
+
+
+def audio_token_count(config):
+    """One-token legacy behavior or four ordered, nonempty native audio means."""
+    source = av_token_source(config)
+    count = config.get('prompt', {}).get('audio_token_count', 1)
+    if not isinstance(count, int) or isinstance(count, bool) or count not in (1, 4):
+        raise ValueError('prompt.audio_token_count must be 1 or 4')
+    if count != 1 and source != 'native_mean':
+        raise ValueError('Multiple audio tokens require prompt.av_token_source=native_mean')
+    return count
+
+
 def load_config(path):
     cfg = json.loads(Path(path).read_text())
     if cfg['training_dataset'] != 'MER-Caption+':
@@ -110,10 +133,18 @@ def load_config(path):
     for key in keys:
         if cfg['train'][key] < 1:
             raise ValueError(f'{key} must be positive')
+    for key in ('lr_frontend', 'grad_clip'):
+        if key in cfg['train']:
+            value = cfg['train'][key]
+            if (not isinstance(value, (int, float)) or isinstance(value, bool) or
+                    not math.isfinite(value) or value <= 0):
+                raise ValueError(f'train.{key} must be a finite positive number')
     if cfg['train']['label_type'] not in ('hybrid', 'description', 'ovlabel'):
         raise ValueError('Unknown instruction target')
     includes_raw_subtitle(cfg)
     includes_av_tokens(cfg)
+    av_token_source(cfg)
+    audio_token_count(cfg)
     if cfg['spectral']['partition'] != 'equal_energy':
         raise ValueError('Atsuko alignment requires fixed training-set equal-energy partitioning')
     if cfg['spectral']['dim'] % cfg['spectral']['heads'] or cfg['spectral']['sequence_length'] < 3:

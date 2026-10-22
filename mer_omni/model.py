@@ -11,7 +11,7 @@ from .layers.spectral import BandRouter, apply_band_masking
 from .layers.router import router
 from .layers.transformer import TransformerEncoder
 from .calibration import TrainingSetSpectralDecomposer
-from .protocol import spectral_sequence_lengths, includes_raw_subtitle, includes_av_tokens
+from .protocol import spectral_sequence_lengths, includes_raw_subtitle, includes_av_tokens, av_token_source, audio_token_count
 from .objectives import entropy_balance, feature_distillation, complementarity, combine_losses
 
 
@@ -175,6 +175,8 @@ class MEROmni(nn.Module):
         self.config, self.tokenizer = config, tokenizer
         self.include_subtitle = includes_raw_subtitle(config)
         self.include_av_tokens = includes_av_tokens(config)
+        self.av_token_source = av_token_source(config)
+        self.audio_token_count = audio_token_count(config)
         options = dict(config['omni'], generative=True)
         self.components = components if components is not None else OmniComponents.from_pretrained(options)
         if not hasattr(self.components.thinker, 'lm_head'):
@@ -202,6 +204,12 @@ class MEROmni(nn.Module):
             with torch.random.fork_rng(devices=[]):
                 self.audio_in = nn.Linear(dim, hidden)
                 self.video_in = nn.Linear(dim, hidden)
+                if self.av_token_source == 'native_mean':
+                    # Preserve the control's output projections and shared RNG.
+                    # Pool native encoder positions before any padding/temporal
+                    # convolution. The new bias-free maps retain a dim bottleneck.
+                    self.audio_native_in = nn.Linear(hidden, dim, bias=False)
+                    self.video_native_in = nn.Linear(hidden, dim, bias=False)
 
     def _amp(self):
         weight = self.components.thinker.get_input_embeddings().weight
@@ -232,9 +240,15 @@ class MEROmni(nn.Module):
                         + question + ' ###Assistant: ')
         return segments
 
-    def validate_training_text(self, question, answer, *, text=None):
+    def validate_training_text(self, question, answer, *, text=None, actual_audio_tokens=None):
         prompt_length = sum(len(self._ids(x)) if isinstance(x, str) else 1
                             for x in self._prompt_segments(None, question, text))
+        count = self.audio_token_count if actual_audio_tokens is None else actual_audio_tokens
+        if not isinstance(count, int) or isinstance(count, bool) or not 1 <= count <= self.audio_token_count:
+            raise ValueError('Invalid actual audio token count')
+        # Text-only preflight uses the maximum. Assembly knows the actual count
+        # when a very short native sequence has fewer than four positions.
+        prompt_length += count - 1
         target_length = len(self._ids(answer + '###'))
         # AffectGPT's limit is checked before the collator appends BOS/EOS.
         if prompt_length + target_length > self.config['train']['max_length']:
@@ -246,9 +260,16 @@ class MEROmni(nn.Module):
         if self.include_subtitle and (texts is None or len(texts) != len(questions)):
             raise ValueError('Raw-subtitle prompt requires one text per question')
         if self.include_av_tokens:
-            if (audio_tokens is None or video_tokens is None or
-                    audio_tokens.shape != tokens.shape or video_tokens.shape != tokens.shape):
+            if (video_tokens is None or video_tokens.shape != tokens.shape or
+                    (self.audio_token_count == 1 and
+                     (not isinstance(audio_tokens, torch.Tensor) or audio_tokens.shape != tokens.shape))):
                 raise ValueError('Audio/video prompt requires one projected token per modality and sample')
+            if self.audio_token_count > 1 and (
+                    not isinstance(audio_tokens, (list, tuple)) or len(audio_tokens) != len(tokens) or
+                    any(not isinstance(v, torch.Tensor) or v.ndim != 2 or
+                        not 1 <= len(v) <= self.audio_token_count or v.shape[1] != tokens.shape[1]
+                        for v in audio_tokens)):
+                raise ValueError('Audio prompt requires one nonempty projected token sequence per sample')
         elif audio_tokens is not None or video_tokens is not None:
             raise ValueError('Audio/video tokens supplied to a prompt with that pathway disabled')
         bos = self.tokenizer.bos_token_id
@@ -257,16 +278,18 @@ class MEROmni(nn.Module):
             raise ValueError('Tokenizer must define eos_token_id')
         for i, question in enumerate(questions):
             text = texts[i] if self.include_subtitle else None
+            audio = (audio_tokens[i:i+1] if self.audio_token_count == 1 else audio_tokens[i]) if self.include_av_tokens else None
             segments = self._prompt_segments(
                 tokens[i:i+1], question, text,
-                audio_token=audio_tokens[i:i+1] if self.include_av_tokens else None,
+                audio_token=audio,
                 video_token=video_tokens[i:i+1] if self.include_av_tokens else None)
             pieces = [self._embed([bos])] if bos is not None else []
             pieces += [self._embed(self._ids(x)) if isinstance(x, str) else x for x in segments]
             prompt = torch.cat(pieces)
             lab = torch.full((len(prompt),), -100, device=prompt.device, dtype=torch.long)
             if answers is not None:
-                self.validate_training_text(question, answers[i], text=text)
+                self.validate_training_text(question, answers[i], text=text,
+                                            actual_audio_tokens=len(audio) if audio is not None else 1)
                 target = self._ids(answers[i] + '###') + [eos]
                 prompt = torch.cat((prompt, self._embed(target)))
                 lab = torch.cat((lab, torch.tensor(target, device=lab.device)))
@@ -310,22 +333,52 @@ class MEROmni(nn.Module):
                    for index, head in enumerate(self.bimodal_heads)]
         return refined, bimodal
 
-    def _project_prompt_features(self, features):
+    def _project_prompt_features(self, features, *, native_sequences=None):
         result = dict(tokens=self.fusion_in(features['fusion']))
         if self.include_av_tokens:
-            # Frontend order is text/video/audio. Use unimodal features before
-            # modality weighting; the original routed fusion remains unchanged.
-            result.update(audio_tokens=self.audio_in(features['modalities'][:, 2]),
-                          video_tokens=self.video_in(features['modalities'][:, 1]))
+            if self.av_token_source == 'native_mean':
+                if native_sequences is None or len(native_sequences) != 3:
+                    raise ValueError('native_mean requires unpadded native text/video/audio sequences')
+                batch_size = features['fusion'].shape[0]
+                for name, index, adapter, output in (
+                        ('audio', 2, self.audio_native_in, self.audio_in),
+                        ('video', 1, self.video_native_in, self.video_in)):
+                    values = native_sequences[index]
+                    if len(values) != batch_size or any(
+                            v.ndim != 2 or v.shape[0] < 1 or v.shape[1] != adapter.in_features
+                            for v in values):
+                        raise ValueError(f'{name}: expected one nonempty native [time, hidden] tensor per sample')
+                    # Encode already removes batch padding. Each sample has its
+                    # own length; even inference truncation in the fusion branch
+                    # must not discard positions from this independent mean.
+                    if name == 'audio' and self.audio_token_count > 1:
+                        # Split all original positions into ordered contiguous
+                        # chunks. Reuse the same two linear maps for every token.
+                        # Short sequences yield fewer tokens, never empty chunks,
+                        # synthetic zeros, repeated positions or resampling.
+                        result['audio_tokens'] = []
+                        for value in values:
+                            chunks = torch.tensor_split(value.float(), min(self.audio_token_count, len(value)))
+                            pooled = torch.stack([chunk.mean(0) for chunk in chunks])
+                            result['audio_tokens'].append(output(adapter(pooled.to(adapter.weight.dtype))))
+                    else:
+                        pooled = torch.stack([v.float().mean(0) for v in values])
+                        result[name + '_tokens'] = output(adapter(pooled.to(adapter.weight.dtype)))
+            else:
+                # Frontend order is text/video/audio. Use unimodal features before
+                # modality weighting; the original routed fusion remains unchanged.
+                result.update(audio_tokens=self.audio_in(features['modalities'][:, 2]),
+                              video_tokens=self.video_in(features['modalities'][:, 1]))
         return result
 
     def forward(self, *, omni_inputs, texts, questions, answers, **unused):
         if answers is None:
             raise ValueError('Training requires assistant answers')
-        features = self.frontend(self.components.encode(omni_inputs))
+        native_sequences = self.components.encode(omni_inputs)
+        features = self.frontend(native_sequences)
         weights = features['modality_weights']
         assembled = self._assemble(questions=questions, answers=answers, texts=texts,
-                                   **self._project_prompt_features(features))
+                                   **self._project_prompt_features(features, native_sequences=native_sequences))
         if self.ce_only:
             full = self._nll(*assembled)
             counts = (assembled[2] != -100).sum(-1)
@@ -356,9 +409,10 @@ class MEROmni(nn.Module):
     @torch.no_grad()
     def generate(self, *, omni_inputs, texts, questions, **unused):
         self.eval()
-        features = self.frontend(self.components.encode(omni_inputs))
+        native_sequences = self.components.encode(omni_inputs)
+        features = self.frontend(native_sequences)
         embeddings, masks, _ = self._assemble(questions=questions, texts=texts,
-                                             **self._project_prompt_features(features))
+                                             **self._project_prompt_features(features, native_sequences=native_sequences))
         results = []
         settings = self.config['generation']
         processors = generation_processors(settings) if settings['do_sample'] else None

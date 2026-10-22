@@ -1,0 +1,6 @@
+{
+  "source": "mer_omni/model.py",
+  "sha256": "47991f29306d5929b40daf8f2468e02ffad41ca86b3cb3e973f0480908ec2aff",
+  "description": "Exact model source before native-mean AV token option, after the independent frontend AV token experiment",
+  "github_snapshot": "4e87d4ba1ca0a5c7d562309363a060a6f8385a08"
+}
