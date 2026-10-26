@@ -1,0 +1,115 @@
+{
+  "experiment": "B3_native_omni_atsuko_core_epoch1",
+  "model_source": "models/Qwen2.5-Omni-3B",
+  "train_manifest": "data/manifests/mercaptionplus.train.jsonl",
+  "reference_config": "config/mer_omni_av_tokens_frames16.json",
+  "reference_train_log": "runs/mer_omni_av_tokens_frames16_run01/train.jsonl",
+  "reference_checkpoint": "runs/mer_omni_av_tokens_frames16_run01/checkpoint_step_0010443.pt",
+  "length_metadata": "reports/native_sequence_lengths_full_20261018_224412.json",
+  "seed": 42,
+  "system_prompt": "You are Qwen, a virtual human developed by the Qwen Team, Alibaba Group, capable of perceiving auditory and visual inputs, as well as generating text and speech.",
+  "lora": {
+    "r": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "target_modules": [
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj",
+      "q_proj",
+      "k_proj"
+    ]
+  },
+  "media": {
+    "max_frames": 16,
+    "min_pixels": 3136,
+    "max_pixels": 50176,
+    "sample_rate": 16000,
+    "use_audio_in_video": false,
+    "implementation": "mer_omni.media.NativeMediaCollator"
+  },
+  "train": {
+    "epochs": 1,
+    "batch_size": 1,
+    "gradient_accumulation": 3,
+    "epoch_mode": "full_dataset",
+    "label_type": "hybrid",
+    "lr": 2e-05,
+    "min_lr": 2e-05,
+    "warmup_lr": 1e-06,
+    "warmup_steps": 500,
+    "weight_decay": 0.05,
+    "grad_clip": 0.6,
+    "max_length": 2048,
+    "num_workers": 0,
+    "gradient_checkpointing": true,
+    "dtype": "bfloat16",
+    "attn_implementation": "sdpa",
+    "lr_frontend": 0.0001
+  },
+  "generation": {
+    "do_sample": false,
+    "max_new_tokens": 192
+  },
+  "checkpoint_every": 1000,
+  "notes": [
+    "B3 combines input LayerNorm, post-attention modality routing, four summary tokens and core auxiliary supervision.",
+    "Native media, subtitle, sample/target order, one-epoch LoRA recipe and fixed zero-padding lengths match B.",
+    "Requires new complete training-only frequency calibration; old B calibration is forbidden.",
+    "No resampling, EMA, entropy regularization, distillation, or 3*w output scaling.",
+    "Fresh pretrained base and frontend. Never initialize from trained A/B adapters."
+  ],
+  "bridge": {
+    "fusion_tokens": 4,
+    "placeholder": "<|quad_start|>",
+    "spectral": {
+      "reference_preset": "atsuko_mosi",
+      "dim": 256,
+      "heads": 8,
+      "layers": 4,
+      "sequence_length": 50,
+      "partition": "equal_energy",
+      "conv_kernel_sizes": [
+        5,
+        5,
+        5
+      ],
+      "router_input": "post_attn",
+      "temperature": 0.1,
+      "attn_dropout": [
+        0.3,
+        0.0,
+        0.2
+      ],
+      "relu_dropout": 0.0,
+      "res_dropout": 0.0,
+      "embed_dropout": 0.2,
+      "text_dropout": 0.5,
+      "output_dropout": 0.5,
+      "attn_mask": true,
+      "band_mask_rate": 0.15,
+      "input_mode": "zero_pad",
+      "sequence_lengths": [
+        96,
+        50,
+        704
+      ],
+      "sequence_overflow": "error"
+    },
+    "calibration_file": "data/calibration/mercaptionplus-atsuko-core-frames16-bands.json",
+    "reference_frontend_config": "config/mer_omni_av_tokens_frames16.json",
+    "loss": "answer_ce_plus_core_auxiliary",
+    "vocab_file": "data/calibration/mercaptionplus-atsuko-core-vocab.json",
+    "input_normalization": "per_modality_layernorm_before_padding",
+    "output_interface": "residual_heads_shared_mlp_slot_embedding_layernorm_no_router_scaling",
+    "auxiliary": {
+      "classes": 64,
+      "weight": 0.5,
+      "bimodal_weight": 0.3,
+      "complementarity_weight": 0.01,
+      "temperature": 0.1
+    }
+  }
+}

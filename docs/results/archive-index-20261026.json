@@ -1,0 +1,1095 @@
+{
+  "archive_root": ".local-archive/sft-transition-20261026",
+  "source_snapshot": ".local-archive/sft-transition-20261026/source_before",
+  "policy": "Lossless local archive; original experiments and checkpoints are retained, not deleted.",
+  "operations": [
+    {
+      "source": "tools/evaluate_native_omni_epoch1.py",
+      "destination": ".local-archive/sft-transition-20261026/content/tools/evaluate_native_omni_epoch1.py",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "tools/native_omni_atsuko_core_epoch1.py",
+      "destination": ".local-archive/sft-transition-20261026/content/tools/native_omni_atsuko_core_epoch1.py",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "tools/native_omni_sft32.py",
+      "destination": ".local-archive/sft-transition-20261026/content/tools/native_omni_sft32.py",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "tools/diagnose_native_omni_modalities.py",
+      "destination": ".local-archive/sft-transition-20261026/content/tools/diagnose_native_omni_modalities.py",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "tools/profile_emotion_errors.py",
+      "destination": ".local-archive/sft-transition-20261026/content/tools/profile_emotion_errors.py",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "tools/audit_native_sequence_lengths.py",
+      "destination": ".local-archive/sft-transition-20261026/content/tools/audit_native_sequence_lengths.py",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "tools/run_affectgpt_face_paper.py",
+      "destination": ".local-archive/sft-transition-20261026/content/tools/run_affectgpt_face_paper.py",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "tools/mer_omni.py",
+      "destination": ".local-archive/sft-transition-20261026/content/tools/mer_omni.py",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "tools/native_omni_epoch1.py",
+      "destination": ".local-archive/sft-transition-20261026/content/tools/native_omni_epoch1.py",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "tools/run_affectgpt_face_paper_pipeline.sh",
+      "destination": ".local-archive/sft-transition-20261026/content/tools/run_affectgpt_face_paper_pipeline.sh",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "tools/draw_model_architecture_fig2.py",
+      "destination": ".local-archive/sft-transition-20261026/content/tools/draw_model_architecture_fig2.py",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "tools/draw_model_architecture.py",
+      "destination": ".local-archive/sft-transition-20261026/content/tools/draw_model_architecture.py",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "tools/evaluate_native_omni_atsuko_core_epoch1.py",
+      "destination": ".local-archive/sft-transition-20261026/content/tools/evaluate_native_omni_atsuko_core_epoch1.py",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/modality_dependence_sft32.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/modality_dependence_sft32.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_subtitle_evaluation.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_subtitle_evaluation.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_native_av_ablation.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_native_av_ablation.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_av_tokens_evaluation.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_av_tokens_evaluation.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/native_omni_sft32.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/native_omni_sft32.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/native_omni_atsuko_epoch1.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/native_omni_atsuko_epoch1.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_evaluation.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_evaluation.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/native_omni_atsuko_core_epoch1.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/native_omni_atsuko_core_epoch1.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/native_omni_epoch1.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/native_omni_epoch1.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_av_tokens_resample.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_av_tokens_resample.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_av_tokens_resample_evaluation.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_av_tokens_resample_evaluation.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_av_tokens_frames16_lora64.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_av_tokens_frames16_lora64.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/native_omni_atsuko_norm_epoch1.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/native_omni_atsuko_norm_epoch1.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_audio_segments_ablation.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_audio_segments_ablation.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_audio_segments_evaluation.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_audio_segments_evaluation.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_av_tokens_frames16_lora64_evaluation.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_av_tokens_frames16_lora64_evaluation.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_av_tokens_frames16_epoch3.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_av_tokens_frames16_epoch3.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_subtitle_ablation.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_subtitle_ablation.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_av_tokens_lrschedule_evaluation.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_av_tokens_lrschedule_evaluation.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_atsuko_padding.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_atsuko_padding.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_av_tokens_frames16_epoch3_evaluation.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_av_tokens_frames16_epoch3_evaluation.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_av_tokens_frames16_evaluation.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_av_tokens_frames16_evaluation.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_av_tokens_lrschedule.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_av_tokens_lrschedule.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_av_tokens_frames16.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_av_tokens_frames16.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_native_av_evaluation.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_native_av_evaluation.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/atsuko_sft32.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/atsuko_sft32.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "config/mer_omni_av_tokens_ablation.json",
+      "destination": ".local-archive/sft-transition-20261026/content/config/mer_omni_av_tokens_ablation.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "runs/mer_omni_av_tokens_frames16_epoch3_run01_resume12000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/mer_omni_av_tokens_frames16_epoch3_run01_resume12000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/mer_omni_run01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/mer_omni_run01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/affectgpt_official_face_merunibench_run01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/affectgpt_official_face_merunibench_run01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/mer_omni_padding_epoch01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/mer_omni_padding_epoch01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/mer_omni_av_tokens_resample_run01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/mer_omni_av_tokens_resample_run01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/mer_omni_av_tokens_frames16_epoch3_run01_resume15000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/mer_omni_av_tokens_frames16_epoch3_run01_resume15000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/mer_omni_av_tokens_epoch01_interrupted_20261016_084331",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/mer_omni_av_tokens_epoch01_interrupted_20261016_084331",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/mer_omni_av_tokens_frames16_lora64_run01_resume5750",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/mer_omni_av_tokens_frames16_lora64_run01_resume5750",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/native_omni_epoch1_run01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/native_omni_epoch1_run01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/affectgpt_official_face_paper_run01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/affectgpt_official_face_paper_run01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/native_omni_sft32_run01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/native_omni_sft32_run01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/modality_dependence_sft32_run02",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/modality_dependence_sft32_run02",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/atsuko_sft32_run01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/atsuko_sft32_run01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/affectgpt_official_frame_run01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/affectgpt_official_frame_run01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/mer_omni_av_tokens_frames16_epoch3_run01_resume9000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/mer_omni_av_tokens_frames16_epoch3_run01_resume9000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/mer_omni_native_av_epoch01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/mer_omni_native_av_epoch01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/mer_omni_audio_segments_epoch01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/mer_omni_audio_segments_epoch01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/affectgpt_official_face_epoch60_run01_initial_load_failed",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/affectgpt_official_face_epoch60_run01_initial_load_failed",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/native_omni_atsuko_epoch1_run01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/native_omni_atsuko_epoch1_run01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/mer_omni_subtitle_epoch01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/mer_omni_subtitle_epoch01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/mer_omni_av_tokens_epoch01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/mer_omni_av_tokens_epoch01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/native_omni_atsuko_core_epoch1_run01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/native_omni_atsuko_core_epoch1_run01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/mer_omni_av_tokens_frames16_epoch3_run01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/mer_omni_av_tokens_frames16_epoch3_run01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/affectgpt_official_face_epoch60_run01_resource_interrupted",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/affectgpt_official_face_epoch60_run01_resource_interrupted",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/mer_omni_av_tokens_lrschedule_run01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/mer_omni_av_tokens_lrschedule_run01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/mer_omni_av_tokens_frames16_run01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/mer_omni_av_tokens_frames16_run01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/affectgpt_official_face_epoch60_run01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/affectgpt_official_face_epoch60_run01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/mer_omni_av_tokens_frames16_lora64_run01",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/mer_omni_av_tokens_frames16_lora64_run01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/cleanup_20261026_peer_source",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/cleanup_20261026_peer_source",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/end_to_end_audit_20261015",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/end_to_end_audit_20261015",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/peer_source_migration_20261026",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/peer_source_migration_20261026",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/maintenance_20261024",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/maintenance_20261024",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/audio_segments_validation_20261017",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/audio_segments_validation_20261017",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/native_omni_atsuko_core_epoch1_20261023",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/native_omni_atsuko_core_epoch1_20261023",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/native_sequence_lengths_full_20261018_224412.json",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/native_sequence_lengths_full_20261018_224412.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "reports/audio_segments_ablation_20261017",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/audio_segments_ablation_20261017",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/subtitle_ablation_20261015",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/subtitle_ablation_20261015",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/sequence_processing_audit_20261016",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/sequence_processing_audit_20261016",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/audio_dependency_expansion_20261017",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/audio_dependency_expansion_20261017",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/native_omni_epoch1_20261022",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/native_omni_epoch1_20261022",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/native_sequence_lengths_full_20261018_224412.log",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/native_sequence_lengths_full_20261018_224412.log",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "reports/affectgpt_face_paper_checkpoint_audit_20261024.json",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/affectgpt_face_paper_checkpoint_audit_20261024.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "reports/maintenance_20261024_followup",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/maintenance_20261024_followup",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/native_av_validation_20261017",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/native_av_validation_20261017",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/av_tokens_ablation_20261015",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/av_tokens_ablation_20261015",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/frames16_modality_diagnostic_20261023",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/frames16_modality_diagnostic_20261023",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/native_omni_modality_diagnostic_20261023",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/native_omni_modality_diagnostic_20261023",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/keyword_extraction_audit_20261015",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/keyword_extraction_audit_20261015",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/affectgpt_comparison_audit_20261024.json",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/affectgpt_comparison_audit_20261024.json",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "reports/native_omni_atsuko_epoch1_20261023",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/native_omni_atsuko_epoch1_20261023",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/cleanup_20261024",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/cleanup_20261024",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "reports/native_av_ablation_20261016",
+      "destination": ".local-archive/sft-transition-20261026/content/reports/native_av_ablation_20261016",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0002000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0002000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0004000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0004000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0006000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0006000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0008000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0008000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0010000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0010000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0012000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0012000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0014000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0014000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0016000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0016000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0018000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0018000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0020000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0020000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0022000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0022000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0024000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0024000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0026000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0026000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0028000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0028000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0030000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0030000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0032000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0032000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0036000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0036000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0038000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0038000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0040000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0040000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0042000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0042000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0044000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0044000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0046000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0046000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0048000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0048000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0050000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0050000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0052000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0052000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0054000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0054000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0056000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0056000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0058000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0058000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0060000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0060000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint-0062000",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint-0062000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/evaluation_step62654_merunibench_greedy",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/evaluation_step62654_merunibench_greedy",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/preflight_adapter",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/preflight_adapter",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/frame_cache",
+      "destination": ".cache/sft/peer_lora_epoch2_run02/train_frames",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/evaluation_selected_step34000_merunibench_greedy_s20/frame_cache",
+      "destination": ".cache/sft/evaluation/evaluation_selected_step34000_merunibench_greedy_s20",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0046000/frame_cache",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0046000/frame_cache",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0062000/frame_cache",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0062000/frame_cache",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0056000/frame_cache",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0056000/frame_cache",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0044000/frame_cache",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0044000/frame_cache",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0050000/frame_cache",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0050000/frame_cache",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0058000/frame_cache",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0058000/frame_cache",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0062654/frame_cache",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0062654/frame_cache",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0034000/frame_cache",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0034000/frame_cache",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0038000/frame_cache",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0038000/frame_cache",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0052000/frame_cache",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0052000/frame_cache",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0040000/frame_cache",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0040000/frame_cache",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0042000/frame_cache",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0042000/frame_cache",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0054000/frame_cache",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0054000/frame_cache",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0048000/frame_cache",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0048000/frame_cache",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0060000/frame_cache",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0060000/frame_cache",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0036000/frame_cache",
+      "destination": ".local-archive/sft-transition-20261026/content/runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42/screen/checkpoint-0036000/frame_cache",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "train.sh",
+      "destination": ".local-archive/sft-transition-20261026/content/train.sh",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "omni_affect",
+      "destination": ".local-archive/sft-transition-20261026/content/omni_affect",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "2603.13340v1.pdf",
+      "destination": ".local-archive/sft-transition-20261026/content/2603.13340v1.pdf",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "AffectGPT对照差距与待排查问题.md",
+      "destination": ".local-archive/sft-transition-20261026/content/AffectGPT对照差距与待排查问题.md",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "docs/figures",
+      "destination": ".local-archive/sft-transition-20261026/content/docs/figures",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "data/calibration",
+      "destination": ".local-archive/sft-transition-20261026/content/data/calibration",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "docs/native-omni-experiment-a.md",
+      "destination": "docs/history/native-omni-experiment-a.md",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "logs/training",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/training",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/affectgpt-face-paper-download.log",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/affectgpt-face-paper-download.log",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "logs/affectgpt-official-seven-download.log",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/affectgpt-official-seven-download.log",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "logs/checkpoint_cleanup",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/checkpoint_cleanup",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/diagnostics",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/diagnostics",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/record_audit",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/record_audit",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/affectgpt-official-face-prepare.log",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/affectgpt-official-face-prepare.log",
+      "same_filesystem_inode_preserved": true,
+      "kind": "file"
+    },
+    {
+      "source": "logs/evaluation/affectgpt_official_face_merunibench_run01",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/affectgpt_official_face_merunibench_run01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/mer_omni_padding_epoch01_step10443_affectgpt",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/mer_omni_padding_epoch01_step10443_affectgpt",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/mer_omni_run01_step5000_affectgpt",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/mer_omni_run01_step5000_affectgpt",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/mer_omni_av_tokens_lrschedule_run01_step10443_affectgpt",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/mer_omni_av_tokens_lrschedule_run01_step10443_affectgpt",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/native_omni_atsuko_core_epoch1_run01_step10443_affectgpt",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/native_omni_atsuko_core_epoch1_run01_step10443_affectgpt",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/affectgpt_official_face_paper_run01",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/affectgpt_official_face_paper_run01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/mer_omni_av_tokens_frames16_epoch3_run01_resume15000_step31329_affectgpt",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/mer_omni_av_tokens_frames16_epoch3_run01_resume15000_step31329_affectgpt",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/native_omni_epoch1_run01_step10443_affectgpt",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/native_omni_epoch1_run01_step10443_affectgpt",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/native_omni_epoch1_run01_step10443_affectgpt_mer2024",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/native_omni_epoch1_run01_step10443_affectgpt_mer2024",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/mer_omni_av_tokens_frames16_run01_step10443_affectgpt_mer2024",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/mer_omni_av_tokens_frames16_run01_step10443_affectgpt_mer2024",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/affectgpt_official_frame_run01",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/affectgpt_official_frame_run01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/native_omni_atsuko_core_epoch1_run01_step10443_affectgpt_mer2024",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/native_omni_atsuko_core_epoch1_run01_step10443_affectgpt_mer2024",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/mer_omni_av_tokens_frames16_lora64_run01_resume5750_step10443_affectgpt",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/mer_omni_av_tokens_frames16_lora64_run01_resume5750_step10443_affectgpt",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/native_omni_atsuko_epoch1_run01_step10443_affectgpt",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/native_omni_atsuko_epoch1_run01_step10443_affectgpt",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/native_omni_atsuko_core_epoch1_run01_step10443_affectgpt_ovmerdplus",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/native_omni_atsuko_core_epoch1_run01_step10443_affectgpt_ovmerdplus",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/affectgpt_official_face_epoch60_run01_initial_load_failed",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/affectgpt_official_face_epoch60_run01_initial_load_failed",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/mer_omni_run01_step5000",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/mer_omni_run01_step5000",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/native_omni_atsuko_epoch1_run01_step10443_affectgpt_initial_load_failed",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/native_omni_atsuko_epoch1_run01_step10443_affectgpt_initial_load_failed",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/mer_omni_av_tokens_frames16_epoch3_run01_resume15000_step31329_affectgpt_retry01",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/mer_omni_av_tokens_frames16_epoch3_run01_resume15000_step31329_affectgpt_retry01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/native_omni_atsuko_epoch1_run01_step10443_affectgpt_overflow_failed",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/native_omni_atsuko_epoch1_run01_step10443_affectgpt_overflow_failed",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/affectgpt_official_face_epoch60_run01_resource_interrupted",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/affectgpt_official_face_epoch60_run01_resource_interrupted",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/mer_omni_av_tokens_frames16_run01_step10443_affectgpt",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/mer_omni_av_tokens_frames16_run01_step10443_affectgpt",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/affectgpt_official_face_epoch60_run01",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/affectgpt_official_face_epoch60_run01",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": "logs/evaluation/mer_omni_av_tokens_resample_run01_step10443_affectgpt",
+      "destination": ".local-archive/sft-transition-20261026/content/logs/evaluation/mer_omni_av_tokens_resample_run01_step10443_affectgpt",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    },
+    {
+      "source": ".local-archive/github-cleanup-20261013",
+      "destination": ".local-archive/sft-transition-20261026/previous/github-cleanup-20261013",
+      "same_filesystem_inode_preserved": true,
+      "kind": "directory"
+    }
+  ],
+  "verification_report": "reports/sft_transition_20261026/preservation-verification.json",
+  "protected_files": 2315
+}

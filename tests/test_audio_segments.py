@@ -153,11 +153,11 @@ class AudioSegmentTests(unittest.TestCase):
         load_adapter(second, adapter_state(first))
         data = batch()
         torch.testing.assert_close(first(**data)['loss'], second(**data)['loss'], rtol=0, atol=0)
-        from tools.mer_omni import run
+        from fixture_cli import run
         for cfg_file, saved_file in [('mer_omni_audio_segments_evaluation.json', 'mer_omni_native_av_ablation.json'),
                                      ('mer_omni_native_av_evaluation.json', 'mer_omni_audio_segments_ablation.json')]:
-            args = SimpleNamespace(config=ROOT/'config'/cfg_file, command='infer', checkpoint='unused')
-            with patch('mer_omni.training.read_checkpoint', return_value={'config': load_config(ROOT/'config'/saved_file)}):
+            args = SimpleNamespace(config=ROOT/'tests/fixtures/config'/cfg_file, command='infer', checkpoint='unused')
+            with patch('mer_omni.training.read_checkpoint', return_value={'config': load_config(ROOT/'tests/fixtures/config'/saved_file)}):
                 with self.assertRaisesRegex(ValueError, 'audio token count differs'):
                     run(args)
 

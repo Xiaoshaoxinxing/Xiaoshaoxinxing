@@ -1,0 +1,270 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-26T13:42:39.981218+08:00",
+  "experiment": "peer_lora_epoch2_run02",
+  "reason": "Organize active SFT work and retire historical experiment A without rewriting results.",
+  "changes": [
+    {
+      "old_path": "config/peer_lora_epoch2.json",
+      "new_path": "config/peer_lora_epoch2.json",
+      "old_sha256": "b6a236546d961e8c08b5f3ecba3b8c2155dc4207df066049e8a6e3f6a25cfe31",
+      "new_sha256": "a9fe8a0c47ea59dc95bf260e248c6fbc0f8b31347ae88e168e290385d9be0c78"
+    },
+    {
+      "old_path": "qwen-lora-mercaption/sft/train_sft.py",
+      "new_path": "mer_omni/peer_lora_sft.py",
+      "old_sha256": "4d01a9bd978f4eb03e8d82b3bb5d622f5512d20adc01bc022233d690c3947101",
+      "new_sha256": "4d01a9bd978f4eb03e8d82b3bb5d622f5512d20adc01bc022233d690c3947101"
+    },
+    {
+      "old_path": "reports/native_omni_epoch1_20261022/audit/plan.json",
+      "new_path": "data/manifests/sft/mercaptionplus-target-plan.json",
+      "old_sha256": "10e7690b01d6f34245b7c214ac271471c2ae426b63729ed70985ef30e86e5447",
+      "new_sha256": "10e7690b01d6f34245b7c214ac271471c2ae426b63729ed70985ef30e86e5447"
+    },
+    {
+      "old_path": "tools/peer_lora_epoch2.py",
+      "new_path": "tools/peer_lora_epoch2.py",
+      "old_sha256": "a67bdbdafbd76523c7b9cd204771b46cdfde8a3add916dbb0ec03711ddc825b9",
+      "new_sha256": "b9c5e3a5e51b9ab42564f86faab741d3c380c3c35b556eedd30bd3dfedc5c56b"
+    },
+    {
+      "old_path": "config/peer_lora_epoch2_evaluation.json",
+      "new_path": "config/peer_lora_epoch2_evaluation.json",
+      "old_sha256": "b44a06e64e1c0792ba2721251d44fa7786ac51c15fbab778f0d8d80a02b0cb66",
+      "new_sha256": "b0b2715cb3c190c5be7840b4667fea86b2c5d45857b0e22fef444347faf6e418"
+    },
+    {
+      "old_path": "tools/evaluate_peer_lora_epoch2.py",
+      "new_path": "tools/evaluate_peer_lora_epoch2.py",
+      "old_sha256": "316a11a7a89317732855012c93e5974c61be901dddbcab69e34055e9f4f9febb",
+      "new_sha256": "6dd0e89ec54b4adc778b8fc281457f61a16ebc3a1386634756859fc57da805d2"
+    },
+    {
+      "old_path": "tools/search_peer_lora_checkpoints.py",
+      "new_path": "tools/search_peer_lora_checkpoints.py",
+      "old_sha256": "53ce3a8efb53137f43cf9537c00badb876b8efe653c704ac6b4e5aee523b67d6",
+      "new_sha256": "d3055e71714172876b7293bbff82aad11ddd5d3eed870b057802cd1124a02693"
+    }
+  ],
+  "retired_sources": {
+    "tools/native_omni_epoch1.py": "6eca18c23403f7c0237fdcd0f1bfbf1999b6eda21fadf21e277b3cda011ac8a6",
+    "tools/native_omni_sft32.py": "82ac9edc03b019f156e09a0199e87b2abf7abc714e3fe8166795479b11bc6d97",
+    "tools/evaluate_native_omni_epoch1.py": "a18cc62bfaef4435e787b5488cfe2b45dce278f93f8366187d9ca8b969881ffa"
+  },
+  "current_files": {
+    "config/peer_lora_epoch2.json": "a9fe8a0c47ea59dc95bf260e248c6fbc0f8b31347ae88e168e290385d9be0c78",
+    "mer_omni/peer_lora_sft.py": "4d01a9bd978f4eb03e8d82b3bb5d622f5512d20adc01bc022233d690c3947101",
+    "data/manifests/sft/mercaptionplus-target-plan.json": "10e7690b01d6f34245b7c214ac271471c2ae426b63729ed70985ef30e86e5447",
+    "tools/peer_lora_epoch2.py": "b9c5e3a5e51b9ab42564f86faab741d3c380c3c35b556eedd30bd3dfedc5c56b",
+    "config/peer_lora_epoch2_evaluation.json": "b0b2715cb3c190c5be7840b4667fea86b2c5d45857b0e22fef444347faf6e418",
+    "tools/evaluate_peer_lora_epoch2.py": "6dd0e89ec54b4adc778b8fc281457f61a16ebc3a1386634756859fc57da805d2",
+    "tools/search_peer_lora_checkpoints.py": "d3055e71714172876b7293bbff82aad11ddd5d3eed870b057802cd1124a02693",
+    "mer_omni/peer_source_migration.py": "f9e02ceb8f32c16a49a9fee30fff0240a518001622b03d3856be4a032bf1cc36",
+    "mer_omni/core_protocol.py": "bd0fcc923af3d58595809d864e9eb5de6f62eaf66149b605f436a49b9cd3493d",
+    "data/manifests/sft/mercaptionplus-length-bounds.json": "4670360f3b2a903173e4e38d07d5a1db02c17e324c94a93f74eae3a522aff016",
+    "mer_omni/sft/native_inputs.py": "6049aa5a175d5e0fee2bb288a98939b8d3582f3949dba39546c6243b22845ed8",
+    "mer_omni/sft/__init__.py": "b1d273dd70c61169c6f9133d9ae95965eda720c0b1c08ce940f260e455780b2a",
+    "mer_omni/sft/omni.py": "f4899ea4b03a0f1d839ed49a07b9f114c090e958c6080be8a3b2f5d2d13679bf",
+    "mer_omni/sft/atsuko.py": "5df7120e4fd9c604cc98daf84a401d655b9c4929054ae494dcb15a3b0e514541"
+  },
+  "training_config_before": {
+    "experiment": "peer_lora_epoch2_run02",
+    "peer_source": "qwen-lora-mercaption/sft/train_sft.py",
+    "peer_commit": "02fd6a0",
+    "model_path": "models/Qwen2.5-Omni-3B",
+    "source_manifest": "data/manifests/mercaptionplus.train.jsonl",
+    "source_plan": "reports/native_omni_epoch1_20261022/audit/plan.json",
+    "manifest": "runs/peer_lora_epoch2_run02/manifest.jsonl",
+    "output_dir": "runs/peer_lora_epoch2_run02",
+    "frame_cache": "runs/peer_lora_epoch2_run02/frame_cache",
+    "epochs": 2,
+    "lr": 0.0001,
+    "seed": 42,
+    "max_frames": 2,
+    "max_pixels": 100352,
+    "max_target_tokens": 384,
+    "lora_r": 8,
+    "lora_alpha": 16,
+    "save_every": 2000,
+    "max_steps": 0,
+    "target_policy": "Keep A's fixed per-ID description/ovlabel assignment, repeat the same target in both epochs.",
+    "checkpoint_selection": "predetermined final step62654; no benchmark selection",
+    "expected_samples_per_epoch": 31327,
+    "expected_optimizer_steps": 62654,
+    "notes": [
+      "Uses the peer's original training implementation with a local compatibility/monitoring wrapper.",
+      "User requested a fresh run from the base model and checkpoint saving every 2000 steps; run01 remains preserved at step1152.",
+      "Peer's actual training manifest/config/113224-step adapter is not available; this is a reproduction of the published default recipe on A's fixed targets.",
+      "No validation split; all A training samples retained as explicitly selected by the user.",
+      "Only LLM attention q/k/v/o LoRA, dropout0.05, AdamW weight_decay0.01, grad_clip1.0, no scheduler/warmup/accumulation.",
+      "Two JPEG85 image inputs, independent audio, unchanged peer conversation and assistant-only CE including im_end.",
+      "Training manifest retains A's known 99-ID OVMERDPlus overlap; future benchmark reports must distinguish overlapping/nonoverlapping samples."
+    ]
+  },
+  "training_config_after": {
+    "experiment": "peer_lora_epoch2_run02",
+    "peer_source": "mer_omni/peer_lora_sft.py",
+    "peer_commit": "02fd6a0",
+    "model_path": "models/Qwen2.5-Omni-3B",
+    "source_manifest": "data/manifests/mercaptionplus.train.jsonl",
+    "source_plan": "data/manifests/sft/mercaptionplus-target-plan.json",
+    "manifest": "runs/peer_lora_epoch2_run02/manifest.jsonl",
+    "output_dir": "runs/peer_lora_epoch2_run02",
+    "frame_cache": ".cache/sft/peer_lora_epoch2_run02/train_frames",
+    "epochs": 2,
+    "lr": 0.0001,
+    "seed": 42,
+    "max_frames": 2,
+    "max_pixels": 100352,
+    "max_target_tokens": 384,
+    "lora_r": 8,
+    "lora_alpha": 16,
+    "save_every": 2000,
+    "max_steps": 0,
+    "target_policy": "Keep A's fixed per-ID description/ovlabel assignment, repeat the same target in both epochs.",
+    "checkpoint_selection": "Training ended at step62654. A separate fixed 180-sample checkpoint search selected step34000 for full MER-UniBench evaluation.",
+    "expected_samples_per_epoch": 31327,
+    "expected_optimizer_steps": 62654,
+    "notes": [
+      "The unchanged upstream training implementation is maintained at mer_omni/peer_lora_sft.py with a local compatibility and monitoring wrapper.",
+      "Fresh run from the base model; checkpoints saved every 2000 steps. The incomplete run01 was previously cleaned up.",
+      "Peer's actual training manifest/config/113224-step adapter is not available; this is a reproduction of the published default recipe on A's fixed targets.",
+      "No validation split; all A training samples retained as explicitly selected by the user.",
+      "Only LLM attention q/k/v/o LoRA, dropout0.05, AdamW weight_decay0.01, grad_clip1.0, no scheduler/warmup/accumulation.",
+      "Two JPEG85 image inputs, independent audio, unchanged peer conversation and assistant-only CE including im_end.",
+      "Training manifest retains A's known 99-ID OVMERDPlus overlap; future benchmark reports must distinguish overlapping/nonoverlapping samples."
+    ],
+    "source_bounds": "data/manifests/sft/mercaptionplus-length-bounds.json"
+  },
+  "evaluation_config_before": {
+    "datasets": [
+      "MER2023",
+      "MER2024",
+      "MELD",
+      "IEMOCAPFour",
+      "CMUMOSI",
+      "CMUMOSEI",
+      "SIMS",
+      "SIMSv2",
+      "OVMERDPlus"
+    ],
+    "generation": {
+      "seed": 42,
+      "do_sample": false,
+      "num_beams": 1,
+      "max_new_tokens": 256,
+      "eos_token_id": 151645,
+      "pad_token_id": 151643,
+      "repetition_penalty": 1.0
+    },
+    "question": "Please recognize all possible emotional states of the character.",
+    "evaluator": {
+      "model": "models/Qwen2.5-7B-Instruct",
+      "backend": "vllm",
+      "seed": 0,
+      "batch_size": 8,
+      "vllm_version": "0.6.2",
+      "transformers_version": "4.49.0",
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "repetition_penalty": 1.05,
+      "max_tokens": 512,
+      "sampling_seed": null
+    },
+    "extraction_runtime": {
+      "gpu_memory_utilization": 0.36,
+      "max_model_len": 4096,
+      "max_num_seqs": 8,
+      "single_process_store": true
+    },
+    "selection": "one predetermined final checkpoint for every dataset: peer step62654, A step10443",
+    "aggregate": "unweighted arithmetic mean of 4 HR + 4 sentiment weighted F1 + OVMERDPlus wheel Fs",
+    "notes": [
+      "Peer retains its two-image prompt and A retains its native sixteen-frame prompt; both share the exact generation and extraction settings here.",
+      "No benchmark labels/targets enter model input. No failed samples may be skipped or replaced.",
+      "OVMERDPlus official 532-row result enters the mean. Additional 99-overlap/433-nonoverlap results never replace it.",
+      "Training/data budgets and visual input differ, so comparison is of complete recipes, not an isolated learning-rate ablation.",
+      "User explicitly selected the peer's greedy256 decoding for both models; official alignment refers to extraction, datasets, metrics and nine-dataset aggregation.",
+      "Omni keeps its native chat template and im_end EOS, exactly as the peer baseline; no AffectGPT-specific ### stopping rule.",
+      "No 2000-token AffectGPT prompt crop is applied. Full media are preserved, with an explicit 32768-token native context guard; oversized inputs fail rather than silently truncate.",
+      "For evaluation audio longer than the processor's 300-second buffer, explicitly extend the buffer and disable truncation; no samples are skipped. All training audio are below 27 seconds and retain the peer's unchanged preprocessing.",
+      "Greedy decoding differs from the original AffectGPT model's generation recipe and is recorded separately from official scoring."
+    ],
+    "official_sources": {
+      "generation_comparison_only": "https://github.com/zeroQiaoba/AffectGPT/blob/master/AffectGPT/inference_hybird.py",
+      "scoring": "https://github.com/zeroQiaoba/AffectGPT/blob/master/AffectGPT/evaluation.py",
+      "extraction": "https://github.com/zeroQiaoba/AffectGPT/blob/master/AffectGPT/my_affectgpt/evaluation/ew_metric.py"
+    }
+  },
+  "evaluation_config_after": {
+    "datasets": [
+      "MER2023",
+      "MER2024",
+      "MELD",
+      "IEMOCAPFour",
+      "CMUMOSI",
+      "CMUMOSEI",
+      "SIMS",
+      "SIMSv2",
+      "OVMERDPlus"
+    ],
+    "generation": {
+      "seed": 42,
+      "do_sample": false,
+      "num_beams": 1,
+      "max_new_tokens": 256,
+      "eos_token_id": 151645,
+      "pad_token_id": 151643,
+      "repetition_penalty": 1.0
+    },
+    "question": "Please recognize all possible emotional states of the character.",
+    "evaluator": {
+      "model": "models/Qwen2.5-7B-Instruct",
+      "backend": "vllm",
+      "seed": 0,
+      "batch_size": 8,
+      "vllm_version": "0.6.2",
+      "transformers_version": "4.49.0",
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "repetition_penalty": 1.05,
+      "max_tokens": 512,
+      "sampling_seed": null
+    },
+    "extraction_runtime": {
+      "gpu_memory_utilization": 0.36,
+      "max_model_len": 4096,
+      "max_num_seqs": 8,
+      "single_process_store": true
+    },
+    "selection": "Checkpoint search binds one selected Qwen LoRA checkpoint for all nine datasets.",
+    "aggregate": "unweighted arithmetic mean of 4 HR + 4 sentiment weighted F1 + OVMERDPlus wheel Fs",
+    "notes": [
+      "Qwen LoRA uses two image frames and greedy256 decoding; official alignment covers dataset membership, extraction and metrics.",
+      "No benchmark labels/targets enter model input. No failed samples may be skipped or replaced.",
+      "OVMERDPlus official 532-row result enters the mean. Additional 99-overlap/433-nonoverlap results never replace it.",
+      "Omni keeps its native chat template and im_end EOS, exactly as the peer baseline; no AffectGPT-specific ### stopping rule.",
+      "No 2000-token AffectGPT prompt crop is applied. Full media are preserved, with an explicit 32768-token native context guard; oversized inputs fail rather than silently truncate.",
+      "For evaluation audio longer than the processor's 300-second buffer, explicitly extend the buffer and disable truncation; no samples are skipped. All training audio are below 27 seconds and retain the peer's unchanged preprocessing.",
+      "Greedy decoding differs from the original AffectGPT model's generation recipe and is recorded separately from official scoring."
+    ],
+    "official_sources": {
+      "generation_comparison_only": "https://github.com/zeroQiaoba/AffectGPT/blob/master/AffectGPT/inference_hybird.py",
+      "scoring": "https://github.com/zeroQiaoba/AffectGPT/blob/master/AffectGPT/evaluation.py",
+      "extraction": "https://github.com/zeroQiaoba/AffectGPT/blob/master/AffectGPT/my_affectgpt/evaluation/ew_metric.py"
+    }
+  },
+  "historical_records_rewritten": false,
+  "archive_index": "reports/sft_transition_20261026/moves.json",
+  "maintenance": [
+    {
+      "at": "2026-10-26T13:59:17.677630+08:00",
+      "file": "mer_omni/sft/omni.py",
+      "before_sha256": "00f946631610309f351e8673438e037659256e5b77a8194827b9e6ee70d940b9",
+      "after_sha256": "f4899ea4b03a0f1d839ed49a07b9f114c090e958c6080be8a3b2f5d2d13679bf",
+      "reason": "Restore the original gradient_stats helper for native_inputs.update(check_gradients=True); upstream function body is unchanged.",
+      "source_before": "reports/sft_transition_20261026/recheck/source_before/mer_omni/sft/omni.py"
+    }
+  ]
+}

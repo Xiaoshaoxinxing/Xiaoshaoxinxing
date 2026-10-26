@@ -1,6 +1,0 @@
-{
-  "description": "Project model snapshot before independent audio/video token additions; test-only, imported as mer_omni.archived_before_av.",
-  "source_archive": "2026-10-15 pre-AV experiment source snapshot",
-  "sha256": "2c2870c1ec52175e0c80fb5a73e448b2b37cc1805811f6e7462aaf9f9977bf33",
-  "used_by": "tests/test_av_tokens.py"
-}

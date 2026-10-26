@@ -19,7 +19,7 @@ from mer_omni.data import (MERDataset, build_train_rows, read_checkpoint_trainin
 from mer_omni.protocol import ROOT, load_config, sha256
 from mer_omni.training import read_checkpoint, seed_all, train
 from test_training_epochs import LossModel, collate
-from tools import mer_omni as cli
+from fixture_cli import cli
 
 
 class PortablePathTests(unittest.TestCase):
@@ -98,7 +98,7 @@ class PortablePathTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             old, new = Path(tmp) / 'before', Path(tmp) / 'after move'
             manifest, _, rows = self.fixture(old)
-            cfg = load_config(ROOT / 'config/mer_omni_atsuko_padding.json')
+            cfg = load_config(ROOT / 'tests/fixtures/config/mer_omni_atsuko_padding.json')
             cfg.update(train_manifest=str(manifest), data_root=str(old / 'data'),
                        benchmark_manifest_dir=str(old / 'data/manifests/benchmark'),
                        calibration_file=str(old / 'data/calibration.json'))
@@ -147,7 +147,7 @@ class PortablePathTests(unittest.TestCase):
     def test_config_resources_are_checkout_relative_and_support_home_paths(self):
         with tempfile.TemporaryDirectory() as tmp:
             checkout = Path(tmp) / 'checkout'
-            cfg = load_config(ROOT / 'config/mer_omni_atsuko_padding.json')
+            cfg = load_config(ROOT / 'tests/fixtures/config/mer_omni_atsuko_padding.json')
             cfg['data_root'] = '~/mer-data'
             cfg['evaluator']['model'] = '~/evaluator'
             with patch.object(cli, 'ROOT', checkout):
@@ -161,11 +161,11 @@ class PortablePathTests(unittest.TestCase):
             checkout = Path(tmp) / 'standalone code with spaces'
             shutil.copytree(ROOT / 'mer_omni', checkout / 'mer_omni',
                             ignore=shutil.ignore_patterns('__pycache__'))
-            (checkout / 'tools').mkdir()
-            (checkout / 'config').mkdir()
-            shutil.copy2(ROOT / 'tools/mer_omni.py', checkout / 'tools/mer_omni.py')
-            shutil.copy2(ROOT / 'config/mer_omni_atsuko_padding.json', checkout / 'config')
-            result = subprocess.run([sys.executable, str(checkout / 'tools/mer_omni.py'), 'preflight'], cwd=tmp,
+            (checkout / 'tests/fixtures/config').mkdir(parents=True)
+
+            shutil.copy2(ROOT / 'tests/fixtures/legacy_cli.py', checkout / 'tests/fixtures/legacy_cli.py')
+            shutil.copy2(ROOT / 'tests/fixtures/config/mer_omni_atsuko_padding.json', checkout / 'tests/fixtures/config')
+            result = subprocess.run([sys.executable, str(checkout / 'tests/fixtures/legacy_cli.py'), 'preflight'], cwd=tmp,
                                     capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, result.stderr)
             status = json.loads(result.stdout)
@@ -179,7 +179,7 @@ class PortablePathTests(unittest.TestCase):
             checkout = Path(tmp) / 'checkout with spaces'
             checkout.mkdir()
             script = checkout / 'train.sh'
-            shutil.copy2(ROOT / 'train.sh', script)
+            shutil.copy2(ROOT / 'tests/fixtures/legacy_train.sh', script)
             calibration = checkout / 'data/calibration/mercaptionplus-atsuko-padding-bands.json'
             calibration.parent.mkdir(parents=True)
             calibration.write_text('{}')

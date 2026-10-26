@@ -1,0 +1,14 @@
+{
+  "experiment": "peer_lora_epoch2_run02",
+  "run_dir": "runs/peer_lora_epoch2_run02/checkpoint_search_20_seed42",
+  "report_dir": "reports/peer_lora_epoch2_run02/checkpoint_search_20_seed42",
+  "samples_per_dataset": 20,
+  "sample_seed": 42,
+  "exclude_training_overlap_from_screening": true,
+  "candidate_steps": [34000, 36000, 38000, 40000, 42000, 44000, 46000, 48000, 50000, 52000, 54000, 56000, 58000, 60000, 62000, 62654],
+  "convergence_window_steps": 2000,
+  "selection_metric": "Equal mean of nine screening scores: four HR, four sentiment weighted F1, and OVMERDPlus wheel Fs.",
+  "tie_break": "earlier checkpoint step",
+  "full_evaluation_after_selection": true,
+  "selection_scope": "User-authorized benchmark-subset checkpoint selection; full benchmark results are not independent held-out model-selection estimates."
+}

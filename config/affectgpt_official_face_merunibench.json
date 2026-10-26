@@ -1,0 +1,57 @@
+{
+  "experiment": "affectgpt_official_face_screen20_run01",
+  "datasets": [
+    "MER2023",
+    "MER2024",
+    "MELD",
+    "IEMOCAPFour",
+    "CMUMOSI",
+    "CMUMOSEI",
+    "SIMS",
+    "SIMSv2",
+    "OVMERDPlus"
+  ],
+  "epochs": [
+    30,
+    35,
+    40,
+    45,
+    50,
+    55,
+    60
+  ],
+  "checkpoint_repo": "MERChallenge/AffectGPT",
+  "checkpoint_revision": "9d82d878cc6f5a530af01c68319a27362c29dc07",
+  "checkpoint_directory": "models/AffectGPT-face",
+  "upstream": "baselines/affectgpt_official_face/upstream",
+  "upstream_commit": "fffca794c6792023234565370e3f69f0488aede9",
+  "yaml": "train_configs/emercoarse_highlevelfilter4_outputhybird_bestsetup_bestfusion_lz.yaml",
+  "dependency_summary": "runs/peer_lora_epoch2_run02/evaluation_selected_step34000_merunibench_greedy_s20/summary.json",
+  "seed": 42,
+  "seed_scope": "Reset seed 42 before each checkpoint for each dataset; reuse the exact ordered 20-sample manifests from peer screening.",
+  "resource_limits": {
+    "inference_gpu_free_mib": 40960,
+    "inference_host_available_mib": 32768,
+    "evaluation_gpu_free_mib": 32768,
+    "evaluation_host_available_mib": 24576
+  },
+  "extraction_runtime": {
+    "gpu_memory_utilization": 0.5,
+    "max_model_len": 4096,
+    "max_num_seqs": 8,
+    "seed": 0
+  },
+  "selection": "Highest equal nine-dataset mean on the same 20 test samples per dataset as peer; tie selects earlier epoch. One selected official checkpoint is then evaluated on all nine complete datasets.",
+  "notes": [
+    "Fresh local inference with the official face checkpoint series, not rescoring author-provided predictions.",
+    "Original inference_hybird.py runs through runpy without editing its source: sampled generation, temperature=1, top_p=0.9, max_new_tokens=1200, max_length=2000, eight faces and original audio sampling.",
+    "Original evaluation.py performs label extraction, sentiment conversion and metrics. Screening restricts its ground-truth IDs to the fixed 20-sample subset; full evaluation uses its complete test loaders.",
+    "Runtime compatibility maps video_llama_proj.{weight,bias} to affectgpt_proj.{weight,bias}; all active trainable tensors are checked after each load.",
+    "Runtime compatibility aliases the removed torchvision.transforms.functional_tensor import to torchvision.transforms._functional_tensor; no media sampling functions are replaced.",
+    "Local paths, CPU thread limits, seed and evaluator memory/context limits are recorded separately from the upstream numerical settings.",
+    "Both models use one checkpoint selected on the same 180 test samples. Face retains official sampled generation, while peer uses greedy generation. Test-subset selection introduces selection bias.",
+    "The original full 532-row OV-MERD+ score is retained, including its known 99 overlaps with MER-Caption+."
+  ],
+  "peer_screening_plan": "reports/peer_lora_epoch2_run02/checkpoint_search_20_seed42/plan.json",
+  "samples_per_dataset": 20
+}

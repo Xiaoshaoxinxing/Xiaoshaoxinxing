@@ -24,6 +24,7 @@ htmlcov/
 .vscode/
 /.agents/
 /.codex/
+/.aws/
 
 # Download sessions, credentials and large generated files.
 .env

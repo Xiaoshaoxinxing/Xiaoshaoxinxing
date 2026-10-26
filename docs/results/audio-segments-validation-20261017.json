@@ -2166,8 +2166,8 @@
     "samples": 411,
     "protocol_hashes_match": true,
     "input_scope_note": "Same raw inputs and fusion truncation as single-mean control. Both independent AV paths retain all encoder positions; candidate audio uses four ordered nonempty segment means. One MER2023 audio has 956 positions, all retained by both independent paths while fusion retains 704. The candidate adds up to three prompt positions.",
-    "audio_segments_score": "runs/mer_omni_audio_segments_epoch01/evaluation_step10443_affectgpt/MER2023/score.json",
-    "control_score": "runs/mer_omni_native_av_epoch01/evaluation_step10443_affectgpt/MER2023/score.json",
+    "audio_segments_score": "/data/user02/Xiaoshaoxinxing/runs/mer_omni_audio_segments_epoch01/evaluation_step10443_affectgpt/MER2023/score.json",
+    "control_score": "/data/user02/Xiaoshaoxinxing/runs/mer_omni_native_av_epoch01/evaluation_step10443_affectgpt/MER2023/score.json",
     "caveat": "Single training seed and fixed sampled generation/extraction; no multi-seed uncertainty estimate"
   }
 }

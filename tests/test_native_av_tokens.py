@@ -120,9 +120,9 @@ class NativeAVTests(unittest.TestCase):
         torch.testing.assert_close(first(**data)['loss'],second(**data)['loss'],rtol=0,atol=0)
         with self.assertRaisesRegex(ValueError,'Adapter state mismatch'):
             load_adapter(make_model(av_config()),saved)
-        from tools.mer_omni import run
-        args = SimpleNamespace(config=ROOT/'config/mer_omni_native_av_evaluation.json',command='infer',checkpoint='unused')
-        old_cfg = load_config(ROOT/'config/mer_omni_av_tokens_ablation.json')
+        from fixture_cli import run
+        args = SimpleNamespace(config=ROOT/'tests/fixtures/config/mer_omni_native_av_evaluation.json',command='infer',checkpoint='unused')
+        old_cfg = load_config(ROOT/'tests/fixtures/config/mer_omni_av_tokens_ablation.json')
         with patch('mer_omni.training.read_checkpoint',return_value={'config':old_cfg}):
             with self.assertRaisesRegex(ValueError,'token source differs'):
                 run(args)

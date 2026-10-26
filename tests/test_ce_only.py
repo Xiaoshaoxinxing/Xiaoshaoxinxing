@@ -23,7 +23,7 @@ from test_atsuko_alignment import split_batch
 
 def ce_config():
     cfg = config()
-    cfg['mcm'] = load_config(ROOT / 'config/mer_omni_atsuko_padding.json')['mcm']
+    cfg['mcm'] = load_config(ROOT / 'tests/fixtures/config/mer_omni_atsuko_padding.json')['mcm']
     return cfg
 
 
@@ -134,7 +134,7 @@ class CEOnlyTests(unittest.TestCase):
             self.assertEqual(read_checkpoint(final)['config']['mcm']['loss_mode'], 'ce_only')
 
     def test_invalid_ce_settings_are_rejected(self):
-        cfg = load_config(ROOT/'config/mer_omni_atsuko_padding.json')
+        cfg = load_config(ROOT/'tests/fixtures/config/mer_omni_atsuko_padding.json')
         for key, value in [('loss_mode', 'typo'), ('enabled', True), ('distillation_weight', .1)]:
             with self.subTest(key=key), tempfile.TemporaryDirectory() as tmp:
                 invalid = copy.deepcopy(cfg)

@@ -1,0 +1,305 @@
+{
+  "updated_at": "2026-10-26T13:47:16.115862+08:00",
+  "stage": "SFT",
+  "roadmap": [
+    "Qwen LoRA SFT baseline",
+    "Atsuko plus SFT matched comparison",
+    "RL"
+  ],
+  "qwen_lora": {
+    "run": "peer_lora_epoch2_run02",
+    "selected_step": 34000,
+    "retained_steps": [
+      31327,
+      34000,
+      62654
+    ],
+    "dataset_mean": 0.7598611652722326,
+    "summary_path": "runs/peer_lora_epoch2_run02/evaluation_selected_step34000_merunibench_greedy_s20/summary.json",
+    "summary_sha256": "0e629f29adfb32a67d463ccc827d8bd07481ad71d2668b6363d51c82f9044d25",
+    "screening_mean": 0.7542163009646087,
+    "screening_candidate_count": 16,
+    "screening_ranking": [
+      {
+        "step": 34000,
+        "mean": 0.7542163009646087
+      },
+      {
+        "step": 62654,
+        "mean": 0.7455538967555438
+      },
+      {
+        "step": 48000,
+        "mean": 0.740827276013625
+      },
+      {
+        "step": 50000,
+        "mean": 0.7393794917715727
+      },
+      {
+        "step": 58000,
+        "mean": 0.7393693348828418
+      },
+      {
+        "step": 56000,
+        "mean": 0.7377704941596631
+      },
+      {
+        "step": 44000,
+        "mean": 0.7337079371625561
+      },
+      {
+        "step": 52000,
+        "mean": 0.7303542263698296
+      },
+      {
+        "step": 46000,
+        "mean": 0.720985405449071
+      },
+      {
+        "step": 54000,
+        "mean": 0.7208100873731333
+      },
+      {
+        "step": 42000,
+        "mean": 0.7199223628412283
+      },
+      {
+        "step": 38000,
+        "mean": 0.71840549448263
+      },
+      {
+        "step": 62000,
+        "mean": 0.7110426128888806
+      },
+      {
+        "step": 60000,
+        "mean": 0.7096838447345534
+      },
+      {
+        "step": 40000,
+        "mean": 0.708599586883664
+      },
+      {
+        "step": 36000,
+        "mean": 0.7041206610659477
+      }
+    ],
+    "datasets": [
+      {
+        "dataset": "MER2023",
+        "samples": 411,
+        "primary": 0.8042551895650408
+      },
+      {
+        "dataset": "MER2024",
+        "samples": 1169,
+        "primary": 0.7915403651305037
+      },
+      {
+        "dataset": "MELD",
+        "samples": 2610,
+        "primary": 0.5843605779826125
+      },
+      {
+        "dataset": "IEMOCAPFour",
+        "samples": 1241,
+        "primary": 0.6396732788798133
+      },
+      {
+        "dataset": "CMUMOSI",
+        "samples": 686,
+        "primary": 0.8393647548307334
+      },
+      {
+        "dataset": "CMUMOSEI",
+        "samples": 4659,
+        "primary": 0.8274180716556074
+      },
+      {
+        "dataset": "SIMS",
+        "samples": 457,
+        "primary": 0.8478657096246097
+      },
+      {
+        "dataset": "SIMSv2",
+        "samples": 1034,
+        "primary": 0.8496799554581006
+      },
+      {
+        "dataset": "OVMERDPlus",
+        "samples": 532,
+        "primary": 0.6545925843230714
+      }
+    ]
+  },
+  "affectgpt_face": {
+    "run": "affectgpt_official_face_screen20_run01",
+    "selected_epoch": 50,
+    "dataset_mean": 0.7355149242261325,
+    "summary_path": "runs/affectgpt_official_face_screen20_run01/summary.json",
+    "summary_sha256": "75d236dbb5351330a6073ef16410e1cebd8f31543c1bc64d5a621a7db8d684e3",
+    "screening_mean": 0.7601900415669101,
+    "screening_candidate_count": 7,
+    "screening_ranking": [
+      {
+        "epoch": 50,
+        "screening_mean": 0.7601900415669101,
+        "checkpoint_sha256": "1d017d734ef95861ea2efbc7f48dd135f210cfb3b61f47d4d3d06666bd4ca6f3"
+      },
+      {
+        "epoch": 40,
+        "screening_mean": 0.7338389937229818,
+        "checkpoint_sha256": "f06528493ae220bb87ad7f525c2f1e1afb43956072fa6c1801590936e9ff69b9"
+      },
+      {
+        "epoch": 35,
+        "screening_mean": 0.7267674129223469,
+        "checkpoint_sha256": "ef2f9337fe76b5cb1898b8c18a14d2cca8e147621431ef6c0c17b512de94cf5b"
+      },
+      {
+        "epoch": 55,
+        "screening_mean": 0.7226780041307799,
+        "checkpoint_sha256": "bdd4135eb4d9101a08c9b293e2ce114844a998d5296efad460c6a54dd911a6e1"
+      },
+      {
+        "epoch": 30,
+        "screening_mean": 0.7218066039989623,
+        "checkpoint_sha256": "e22274ab541e537ffd5a1be3a73065948afb33b3d83cc9618c5a79b658f5338f"
+      },
+      {
+        "epoch": 45,
+        "screening_mean": 0.719144386788804,
+        "checkpoint_sha256": "4999bf6be0fda45b9d8f004fedf433c1f95d95c0a882692e37c7aaea5f55485a"
+      },
+      {
+        "epoch": 60,
+        "screening_mean": 0.7145128082836077,
+        "checkpoint_sha256": "49c0423239441af851bb5cd014a17472072da64cfe2a2471bd19740c7d9b0539"
+      }
+    ],
+    "datasets": [
+      {
+        "dataset": "MER2023",
+        "samples": 411,
+        "primary": 0.7923077703902959
+      },
+      {
+        "dataset": "MER2024",
+        "samples": 1169,
+        "primary": 0.7903588270999673
+      },
+      {
+        "dataset": "MELD",
+        "samples": 2610,
+        "primary": 0.5593874086315438
+      },
+      {
+        "dataset": "IEMOCAPFour",
+        "samples": 1241,
+        "primary": 0.576196032672112
+      },
+      {
+        "dataset": "CMUMOSI",
+        "samples": 686,
+        "primary": 0.7863666162975756
+      },
+      {
+        "dataset": "CMUMOSEI",
+        "samples": 4659,
+        "primary": 0.7929774132211711
+      },
+      {
+        "dataset": "SIMS",
+        "samples": 457,
+        "primary": 0.8614325291792154
+      },
+      {
+        "dataset": "SIMSv2",
+        "samples": 1034,
+        "primary": 0.8551263850311694
+      },
+      {
+        "dataset": "OVMERDPlus",
+        "samples": 532,
+        "primary": 0.6054813355121418
+      }
+    ]
+  },
+  "comparison": {
+    "peer_selected_step": 34000,
+    "peer_mean": 0.7598611652722326,
+    "face_mean": 0.7355149242261325,
+    "face_minus_peer_percentage_points": -2.434624104610006,
+    "datasets": [
+      {
+        "dataset": "MER2023",
+        "face": 0.7923077703902959,
+        "peer": 0.8042551895650408,
+        "face_minus_peer_percentage_points": -1.1947419174744955
+      },
+      {
+        "dataset": "MER2024",
+        "face": 0.7903588270999673,
+        "peer": 0.7915403651305037,
+        "face_minus_peer_percentage_points": -0.11815380305364442
+      },
+      {
+        "dataset": "MELD",
+        "face": 0.5593874086315438,
+        "peer": 0.5843605779826125,
+        "face_minus_peer_percentage_points": -2.4973169351068747
+      },
+      {
+        "dataset": "IEMOCAPFour",
+        "face": 0.576196032672112,
+        "peer": 0.6396732788798133,
+        "face_minus_peer_percentage_points": -6.347724620770134
+      },
+      {
+        "dataset": "CMUMOSI",
+        "face": 0.7863666162975756,
+        "peer": 0.8393647548307334,
+        "face_minus_peer_percentage_points": -5.299813853315771
+      },
+      {
+        "dataset": "CMUMOSEI",
+        "face": 0.7929774132211711,
+        "peer": 0.8274180716556074,
+        "face_minus_peer_percentage_points": -3.4440658434436333
+      },
+      {
+        "dataset": "SIMS",
+        "face": 0.8614325291792154,
+        "peer": 0.8478657096246097,
+        "face_minus_peer_percentage_points": 1.3566819554605702
+      },
+      {
+        "dataset": "SIMSv2",
+        "face": 0.8551263850311694,
+        "peer": 0.8496799554581006,
+        "face_minus_peer_percentage_points": 0.5446429573068845
+      },
+      {
+        "dataset": "OVMERDPlus",
+        "face": 0.6054813355121418,
+        "peer": 0.6545925843230714,
+        "face_minus_peer_percentage_points": -4.911124881092965
+      }
+    ],
+    "note": "Both use one checkpoint selected on the same 180 test samples. Face uses official sampled generation; peer uses greedy generation. Different models and inference recipes remain."
+  },
+  "sample_selection": {
+    "samples_per_dataset": 20,
+    "total": 180,
+    "test_subset_used_for_selection": true,
+    "independent_heldout_selection": false,
+    "shared_sample_plan_sha256": "162ea984b7089ecec26d9247ed03af30e758a697000d5cf9c72ccb4cea6052b6"
+  },
+  "caveats": [
+    "LoRA greedy256 and official AffectGPT sampled generation are different inference recipes.",
+    "OV-MERD+ full 532 samples include 99 known overlaps with MER-Caption+.",
+    "Atsuko components are retained and tested; no new Atsuko experiment on the current LoRA recipe has been run."
+  ],
+  "archive": "docs/results/archive-index-20261026.json"
+}

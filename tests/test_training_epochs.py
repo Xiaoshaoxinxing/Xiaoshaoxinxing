@@ -52,7 +52,7 @@ def collate(rows):
 
 class FullDatasetEpochTests(unittest.TestCase):
     def setup_run(self, root, size=7):
-        cfg = load_config(ROOT / 'config/mer_omni_atsuko_padding.json')
+        cfg = load_config(ROOT / 'tests/fixtures/config/mer_omni_atsuko_padding.json')
         cfg['train'].update(batch_size=2, gradient_accumulation=2,
                             warmup_steps=0, lr=.01, min_lr=.01)
         manifest = root / 'manifest.jsonl'
@@ -127,7 +127,7 @@ class FullDatasetEpochTests(unittest.TestCase):
                 self.assertCountEqual(saved['stream']['order'], range(size))
 
     def test_real_config_budget_and_legacy_budget(self):
-        new = load_config(ROOT / 'config/mer_omni_atsuko_padding.json')
+        new = load_config(ROOT / 'tests/fixtures/config/mer_omni_atsuko_padding.json')
         settings = epoch_settings(new['train'], 31327)
         self.assertEqual(settings['epochs'], 1)
         self.assertEqual(settings['steps_per_epoch'], 10443)

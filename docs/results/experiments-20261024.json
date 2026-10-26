@@ -1,0 +1,1982 @@
+{
+  "updated": "2026-10-24T21:38:30.851341",
+  "scores": [
+    {
+      "path": "runs/affectgpt_official_face_paper_run01/MER2023/score.json",
+      "sha256": "6cc52c781f52fd3ac20589e02a74121f489a3e15d9e00defb3331af52dd75356",
+      "result": {
+        "dataset": "MER2023",
+        "task": "basic",
+        "samples": 411,
+        "strict_protocol": true,
+        "expected_samples": 411,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.7923077703902959,
+        "per_wheel": [
+          [
+            0.826625386996904,
+            0.5066563467492259
+          ],
+          [
+            0.8204334365325078,
+            0.5309597523219814
+          ],
+          [
+            0.7678018575851393,
+            0.5789473684210527
+          ],
+          [
+            0.7368421052631579,
+            0.4969040247678019
+          ],
+          [
+            0.8098360655737705,
+            0.6480874316939891
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          323,
+          323,
+          323,
+          323,
+          305
+        ],
+        "hit_rate": 0.7923077703902959,
+        "mscore": 0.5523109847908103,
+        "model": "Official AffectGPT face, paper-matched dataset-specific released checkpoints",
+        "checkpoint_sha256": "1d017d734ef95861ea2efbc7f48dd135f210cfb3b61f47d4d3d06666bd4ca6f3",
+        "checkpoint_epoch": 50,
+        "paper_reported_percent": 78.54,
+        "author_cached_hit_rate": 0.7853869969040248,
+        "fresh_minus_paper_percentage_points": 0.6907770390295838,
+        "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+        "extraction_sha256": "af30e6e61455a09bba2e8beed3bd378308723b2fbecd4b07f6b20f2c877c6f0f",
+        "generation": {
+          "seed": 42,
+          "do_sample": true,
+          "temperature": 1.0,
+          "top_p": 0.9,
+          "max_new_tokens": 1200,
+          "max_length": 2000,
+          "top_k": 20,
+          "eos_token_ids": [
+            151645,
+            151643
+          ]
+        },
+        "input_policy": "Original AffectGPT face/audio sampling (8 faces, 8 audio clips); full subtitle; no prompt truncation"
+      }
+    },
+    {
+      "path": "runs/affectgpt_official_face_paper_run01/MER2024/score.json",
+      "sha256": "5579533f3b23fea459b90ddb86997e7c3bbeaa7de64412c3e6e61d3a4fcd14bd",
+      "result": {
+        "dataset": "MER2024",
+        "task": "basic",
+        "samples": 1169,
+        "strict_protocol": true,
+        "expected_samples": 1169,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.7857874585609563,
+        "per_wheel": [
+          [
+            0.8150826446280992,
+            0.5487258953168044
+          ],
+          [
+            0.8171487603305785,
+            0.54991391184573
+          ],
+          [
+            0.7458677685950413,
+            0.5415805785123967
+          ],
+          [
+            0.7892561983471075,
+            0.5770488980716253
+          ],
+          [
+            0.7615819209039548,
+            0.5909604519774011
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          968,
+          968,
+          968,
+          968,
+          885
+        ],
+        "hit_rate": 0.7857874585609563,
+        "mscore": 0.5616459471447917,
+        "model": "Official AffectGPT face, paper-matched dataset-specific released checkpoints",
+        "checkpoint_sha256": "4999bf6be0fda45b9d8f004fedf433c1f95d95c0a882692e37c7aaea5f55485a",
+        "checkpoint_epoch": 45,
+        "paper_reported_percent": 78.8,
+        "author_cached_hit_rate": 0.7879698370453379,
+        "fresh_minus_paper_percentage_points": -0.2212541439043605,
+        "manifest_sha256": "144676ecb5bfacfc9d0ae799ea8c268ddfc0ac85882d3a3e1a66e09ec4af3347",
+        "extraction_sha256": "031384ee5b95254e515e52834d4b7da25240c40559409ded5a6435896e334d31",
+        "generation": {
+          "seed": 42,
+          "do_sample": true,
+          "temperature": 1.0,
+          "top_p": 0.9,
+          "max_new_tokens": 1200,
+          "max_length": 2000,
+          "top_k": 20,
+          "eos_token_ids": [
+            151645,
+            151643
+          ]
+        },
+        "input_policy": "Original AffectGPT face/audio sampling (8 faces, 8 audio clips); full subtitle; no prompt truncation"
+      }
+    },
+    {
+      "path": "runs/affectgpt_official_frame_run01/MER2023/score.json",
+      "sha256": "8a14187daff62bc29ade2d6702c61472361f9cd0c216a82260171b240da5986d",
+      "result": {
+        "dataset": "MER2023",
+        "task": "basic",
+        "samples": 411,
+        "strict_protocol": true,
+        "expected_samples": 411,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.7914693193929858,
+        "per_wheel": [
+          [
+            0.8204334365325078,
+            0.5059339525283798
+          ],
+          [
+            0.826625386996904,
+            0.5308049535603715
+          ],
+          [
+            0.7554179566563467,
+            0.5526315789473685
+          ],
+          [
+            0.7647058823529411,
+            0.5180598555211557
+          ],
+          [
+            0.7901639344262295,
+            0.6322404371584699
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          323,
+          323,
+          323,
+          323,
+          305
+        ],
+        "hit_rate": 0.7914693193929858,
+        "mscore": 0.5479341555431491,
+        "model": "Official AffectGPT, raw-frame variant",
+        "checkpoint_sha256": "71ef35e3ac15c86b4d371574551c9e8af4ceb74541a93c3789fd0c2e6ada33fc",
+        "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+        "extraction_sha256": "ade3453489fb3296584e2e5cb45394cb4510ba2ed990be6b32229ff82421ad82",
+        "generation": {
+          "seed": 42,
+          "do_sample": true,
+          "temperature": 1.0,
+          "top_p": 0.9,
+          "max_new_tokens": 1200,
+          "max_length": 2000,
+          "top_k": 20,
+          "eos_token_ids": [
+            151645,
+            151643
+          ]
+        },
+        "input_policy": "Original AffectGPT frame/audio sampling; full original subtitle prompt; no spectral length clipping"
+      }
+    },
+    {
+      "path": "runs/affectgpt_official_frame_run01/MER2024/score.json",
+      "sha256": "1a1097278636c81d6ffc1a4b53ae6d00549831705ad3c15c8b06ae83fbc18223",
+      "result": {
+        "dataset": "MER2024",
+        "task": "basic",
+        "samples": 1169,
+        "strict_protocol": true,
+        "expected_samples": 1169,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.7505598356445815,
+        "per_wheel": [
+          [
+            0.7944214876033058,
+            0.5279614325068871
+          ],
+          [
+            0.7830578512396694,
+            0.5304063360881542
+          ],
+          [
+            0.6900826446280992,
+            0.49629820936639113
+          ],
+          [
+            0.7778925619834711,
+            0.5612086776859504
+          ],
+          [
+            0.7073446327683616,
+            0.5645951035781543
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          968,
+          968,
+          968,
+          968,
+          885
+        ],
+        "hit_rate": 0.7505598356445815,
+        "mscore": 0.5360939518451076,
+        "model": "Official AffectGPT, raw-frame variant",
+        "checkpoint_sha256": "71ef35e3ac15c86b4d371574551c9e8af4ceb74541a93c3789fd0c2e6ada33fc",
+        "manifest_sha256": "144676ecb5bfacfc9d0ae799ea8c268ddfc0ac85882d3a3e1a66e09ec4af3347",
+        "extraction_sha256": "2f8ded493a49a3ac60b54b432baa20f339fb180a0161fd818dd1f0cffddd9af3",
+        "generation": {
+          "seed": 42,
+          "do_sample": true,
+          "temperature": 1.0,
+          "top_p": 0.9,
+          "max_new_tokens": 1200,
+          "max_length": 2000,
+          "top_k": 20,
+          "eos_token_ids": [
+            151645,
+            151643
+          ]
+        },
+        "input_policy": "Original AffectGPT frame/audio sampling; full original subtitle prompt; no spectral length clipping"
+      }
+    },
+    {
+      "path": "runs/mer_omni_audio_segments_epoch01/evaluation_step10443_affectgpt/MER2023/score.json",
+      "sha256": "b660c76999d586a4fbe435b517eca5f1f760da0a0ea04e19961a77242a15f85f",
+      "result": {
+        "dataset": "MER2023",
+        "task": "basic",
+        "samples": 411,
+        "strict_protocol": true,
+        "expected_samples": 411,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.6148830127391768,
+        "per_wheel": [
+          [
+            0.6253869969040248,
+            0.39060887512899894
+          ],
+          [
+            0.6408668730650154,
+            0.42879256965944273
+          ],
+          [
+            0.6037151702786377,
+            0.45897832817337464
+          ],
+          [
+            0.5913312693498453,
+            0.40608875128998967
+          ],
+          [
+            0.6131147540983607,
+            0.5120218579234973
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          323,
+          323,
+          323,
+          323,
+          305
+        ],
+        "hit_rate": 0.6148830127391768,
+        "mscore": 0.43929807643506064,
+        "checkpoint_sha256": "2dc83f5916c14a42324e381b9193879f595cc57f7c3b613e0d4f093c6e40598a",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+        "extraction_sha256": "42ec19b25e32a845f4221b5885e9a41e9f4069b68aa85386e1eb49505253629b",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.36,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [],
+        "input_policy": {
+          "input_mode": "zero_pad",
+          "sequence_lengths": [
+            96,
+            50,
+            704
+          ],
+          "sequence_overflow": "truncate_right"
+        },
+        "input_processing_sha256": "2820c2856bad4360a43571808516926748baa5d0432e12632db33e4b208ea13d",
+        "truncated_samples": 1
+      }
+    },
+    {
+      "path": "runs/mer_omni_av_tokens_epoch01/evaluation_step10443_affectgpt/MER2023/score.json",
+      "sha256": "8dff40125904f94b431b1a5d856d984fa54c79074bafde5fafc94d204663b7e1",
+      "result": {
+        "dataset": "MER2023",
+        "task": "basic",
+        "samples": 411,
+        "strict_protocol": true,
+        "expected_samples": 411,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.6153925798101813,
+        "per_wheel": [
+          [
+            0.628482972136223,
+            0.39705882352941174
+          ],
+          [
+            0.6408668730650154,
+            0.42156862745098045
+          ],
+          [
+            0.6006191950464397,
+            0.45691434468524245
+          ],
+          [
+            0.6037151702786377,
+            0.42621259029927755
+          ],
+          [
+            0.6032786885245902,
+            0.5049180327868853
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          323,
+          323,
+          323,
+          323,
+          305
+        ],
+        "hit_rate": 0.6153925798101813,
+        "mscore": 0.4413344837503595,
+        "checkpoint_sha256": "5530adfc0893f55b01ee89ba3a52f7ed74cf1872bfb61738cb704cb23b76c306",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+        "extraction_sha256": "ed61fc36521eac85a78aefd3359b11fede1cb67647a0bee2660676ff26bf2155",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.36,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [],
+        "input_policy": {
+          "input_mode": "zero_pad",
+          "sequence_lengths": [
+            96,
+            50,
+            704
+          ],
+          "sequence_overflow": "truncate_right"
+        },
+        "input_processing_sha256": "85cfd2061ac70e4312679bd72865109a7a2f7df396981daf10d5ca159ccc8882",
+        "truncated_samples": 1
+      }
+    },
+    {
+      "path": "runs/mer_omni_av_tokens_frames16_epoch3_run01_resume15000/evaluation_step31329_affectgpt_retry01/MER2023/score.json",
+      "sha256": "f6c15e12a2d93ae16194b186302633cb580ce47cd0717b0c7ae705801128d806",
+      "result": {
+        "dataset": "MER2023",
+        "task": "basic",
+        "samples": 411,
+        "strict_protocol": true,
+        "expected_samples": 411,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.645625539257981,
+        "per_wheel": [
+          [
+            0.6811145510835913,
+            0.4068627450980392
+          ],
+          [
+            0.6780185758513931,
+            0.4313725490196078
+          ],
+          [
+            0.628482972136223,
+            0.4633642930856553
+          ],
+          [
+            0.5913312693498453,
+            0.37874097007223934
+          ],
+          [
+            0.6491803278688525,
+            0.5158469945355191
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          323,
+          323,
+          323,
+          323,
+          305
+        ],
+        "hit_rate": 0.645625539257981,
+        "mscore": 0.4392375103622122,
+        "checkpoint_sha256": "189351d71b5ba3013ea7ab5777c02b3acfc0fad0c4664848a86bffc3d571fcf8",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+        "extraction_sha256": "ed56a1e6f7df22bc76ad61253873d9eaa290872e6bdb90940dfa118ac8601b43",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.36,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [],
+        "input_policy": {
+          "input_mode": "zero_pad",
+          "sequence_lengths": [
+            96,
+            50,
+            704
+          ],
+          "sequence_overflow": "truncate_right"
+        },
+        "input_processing_sha256": "d40b8e2baf662efe8836f5534072e275727de936ae9b179c919feeeff9a11a17",
+        "truncated_samples": 1
+      }
+    },
+    {
+      "path": "runs/mer_omni_av_tokens_frames16_lora64_run01_resume5750/evaluation_step10443_affectgpt/MER2023/score.json",
+      "sha256": "6a9cc25fa4ae1cb8d93f4e09ecb83795fa9cc67ea014b050d88540048e5d9e89",
+      "result": {
+        "dataset": "MER2023",
+        "task": "basic",
+        "samples": 411,
+        "strict_protocol": true,
+        "expected_samples": 411,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.6067603918185048,
+        "per_wheel": [
+          [
+            0.631578947368421,
+            0.4047471620227038
+          ],
+          [
+            0.631578947368421,
+            0.41016511867905053
+          ],
+          [
+            0.6006191950464397,
+            0.43988648090815274
+          ],
+          [
+            0.5634674922600619,
+            0.37822497420020634
+          ],
+          [
+            0.6065573770491803,
+            0.48770491803278687
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          323,
+          323,
+          323,
+          323,
+          305
+        ],
+        "hit_rate": 0.6067603918185048,
+        "mscore": 0.4241457307685801,
+        "checkpoint_sha256": "55e46a1551971b149c3bb8b9a978f486c5d198445e3a7e4d864a43ed1809d237",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+        "extraction_sha256": "67d8fdb968a984c55d63f58d0aebeca16e4e8abd29180cdc7de82c2cbc6e4f6c",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.36,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [],
+        "input_policy": {
+          "input_mode": "zero_pad",
+          "sequence_lengths": [
+            96,
+            50,
+            704
+          ],
+          "sequence_overflow": "truncate_right"
+        },
+        "input_processing_sha256": "d40b8e2baf662efe8836f5534072e275727de936ae9b179c919feeeff9a11a17",
+        "truncated_samples": 1
+      }
+    },
+    {
+      "path": "runs/mer_omni_av_tokens_frames16_run01/evaluation_step10443_affectgpt/MER2023/score.json",
+      "sha256": "a88c06398ddd2dcb45de72274a104db47eb99d13f1d285e3b807dc134536ca42",
+      "result": {
+        "dataset": "MER2023",
+        "task": "basic",
+        "samples": 411,
+        "strict_protocol": true,
+        "expected_samples": 411,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.6410719179820332,
+        "per_wheel": [
+          [
+            0.6780185758513931,
+            0.4290505675954593
+          ],
+          [
+            0.6656346749226006,
+            0.43524251805985553
+          ],
+          [
+            0.6099071207430341,
+            0.457688338493292
+          ],
+          [
+            0.6222910216718266,
+            0.42879256965944273
+          ],
+          [
+            0.6295081967213115,
+            0.5251366120218579
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          323,
+          323,
+          323,
+          323,
+          305
+        ],
+        "hit_rate": 0.6410719179820332,
+        "mscore": 0.45518212116598156,
+        "checkpoint_sha256": "646de594f79c74c1419af6b34c817e2edf8c2b69e233b42d52fe78fae1a51dba",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+        "extraction_sha256": "992719840c0dfdbb8bfac71a93038fed2807a07636281b8455b54998c847ec70",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.36,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [],
+        "input_policy": {
+          "input_mode": "zero_pad",
+          "sequence_lengths": [
+            96,
+            50,
+            704
+          ],
+          "sequence_overflow": "truncate_right"
+        },
+        "input_processing_sha256": "d40b8e2baf662efe8836f5534072e275727de936ae9b179c919feeeff9a11a17",
+        "truncated_samples": 1
+      }
+    },
+    {
+      "path": "runs/mer_omni_av_tokens_frames16_run01/evaluation_step10443_affectgpt/MER2024/score.json",
+      "sha256": "e412b0a6c1bb33078aa44103a7b152e9b98748b028552776bf5314c4f6ad2a0f",
+      "result": {
+        "dataset": "MER2024",
+        "task": "basic",
+        "samples": 1169,
+        "strict_protocol": true,
+        "expected_samples": 1169,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.6111220058831769,
+        "per_wheel": [
+          [
+            0.6766528925619835,
+            0.45230716253443526
+          ],
+          [
+            0.6652892561983471,
+            0.4509297520661157
+          ],
+          [
+            0.5382231404958677,
+            0.4048725895316804
+          ],
+          [
+            0.5991735537190083,
+            0.43190426997245185
+          ],
+          [
+            0.576271186440678,
+            0.48945386064030133
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          968,
+          968,
+          968,
+          968,
+          885
+        ],
+        "hit_rate": 0.6111220058831769,
+        "mscore": 0.4458935269489969,
+        "checkpoint_sha256": "646de594f79c74c1419af6b34c817e2edf8c2b69e233b42d52fe78fae1a51dba",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "144676ecb5bfacfc9d0ae799ea8c268ddfc0ac85882d3a3e1a66e09ec4af3347",
+        "extraction_sha256": "34242e74ed59c50e32e777e93fccba144eb1ec217be18bc2496229b2d8c975e4",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.36,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [],
+        "input_policy": {
+          "input_mode": "zero_pad",
+          "sequence_lengths": [
+            96,
+            50,
+            704
+          ],
+          "sequence_overflow": "truncate_right"
+        },
+        "input_processing_sha256": "0621426b83a411d86116fef21f0f5aa3b0727d5bfe94a8bc950a6764943bc88c",
+        "truncated_samples": 0
+      }
+    },
+    {
+      "path": "runs/mer_omni_av_tokens_lrschedule_run01/evaluation_step10443_affectgpt/MER2023/score.json",
+      "sha256": "320e62b7a1bf61d0b11c4527953fb5230b5d5a699770caa30e8e52d492127ed5",
+      "result": {
+        "dataset": "MER2023",
+        "task": "basic",
+        "samples": 411,
+        "strict_protocol": true,
+        "expected_samples": 411,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.6254824138456072,
+        "per_wheel": [
+          [
+            0.6594427244582043,
+            0.4244066047471621
+          ],
+          [
+            0.6687306501547987,
+            0.4282249742002064
+          ],
+          [
+            0.5758513931888545,
+            0.43240454076367385
+          ],
+          [
+            0.6037151702786377,
+            0.4040247678018576
+          ],
+          [
+            0.6196721311475409,
+            0.5147540983606558
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          323,
+          323,
+          323,
+          323,
+          305
+        ],
+        "hit_rate": 0.6254824138456072,
+        "mscore": 0.4407629971747111,
+        "checkpoint_sha256": "29b71a971c14c9bfed706e34177db1524342da1d1605f09fd77e3e1d84f46900",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+        "extraction_sha256": "e277e126a7a404772601c49fbef916f080ff17b26b25739d9c4775261387c200",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.36,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [],
+        "input_policy": {
+          "input_mode": "zero_pad",
+          "sequence_lengths": [
+            96,
+            50,
+            704
+          ],
+          "sequence_overflow": "truncate_right"
+        },
+        "input_processing_sha256": "85cfd2061ac70e4312679bd72865109a7a2f7df396981daf10d5ca159ccc8882",
+        "truncated_samples": 1
+      }
+    },
+    {
+      "path": "runs/mer_omni_av_tokens_resample_run01/evaluation_step10443_affectgpt/MER2023/score.json",
+      "sha256": "54b0e77ba613cb29e2bdb5fa0ffa0d774a127ea2a2bb6680bc382586a63a6527",
+      "result": {
+        "dataset": "MER2023",
+        "task": "basic",
+        "samples": 411,
+        "strict_protocol": true,
+        "expected_samples": 411,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.6148464700806984,
+        "per_wheel": [
+          [
+            0.6563467492260062,
+            0.4223426212590299
+          ],
+          [
+            0.6470588235294118,
+            0.422858617131063
+          ],
+          [
+            0.5851393188854489,
+            0.43034055727554177
+          ],
+          [
+            0.5758513931888545,
+            0.4006707946336429
+          ],
+          [
+            0.6098360655737705,
+            0.49945355191256824
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          323,
+          323,
+          323,
+          323,
+          305
+        ],
+        "hit_rate": 0.6148464700806984,
+        "mscore": 0.4351332284423692,
+        "checkpoint_sha256": "7f7019ebfdf2222563a0717fdd3ddda48f50c178fa904072ea7e69442b73927b",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+        "extraction_sha256": "8389842df0f30aeae67a149a6e19bb28ff0b6f7b4bca2ef6b5456400e789078c",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.36,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [],
+        "input_policy": {
+          "input_mode": "omni_resample",
+          "sequence_lengths": [
+            96,
+            50,
+            704
+          ],
+          "sequence_overflow": "error"
+        },
+        "input_processing_sha256": "077bc1531b750738dd0ebb82780fb3e1d2d5d49abcab747afe1dd10aa76d453c",
+        "truncated_samples": 0
+      }
+    },
+    {
+      "path": "runs/mer_omni_native_av_epoch01/evaluation_step10443_affectgpt/MER2023/score.json",
+      "sha256": "b3838b99f3e7a5754b233ed0a50c42e1b02d77c2648f8e8b0c76eb12092d6002",
+      "result": {
+        "dataset": "MER2023",
+        "task": "basic",
+        "samples": 411,
+        "strict_protocol": true,
+        "expected_samples": 411,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.6236613713647667,
+        "per_wheel": [
+          [
+            0.6563467492260062,
+            0.41305469556243546
+          ],
+          [
+            0.653250773993808,
+            0.4158926728586171
+          ],
+          [
+            0.5820433436532507,
+            0.436016511867905
+          ],
+          [
+            0.6037151702786377,
+            0.4066047471620227
+          ],
+          [
+            0.6229508196721312,
+            0.5131147540983606
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          323,
+          323,
+          323,
+          323,
+          305
+        ],
+        "hit_rate": 0.6236613713647667,
+        "mscore": 0.43693667630986815,
+        "checkpoint_sha256": "56574cb021659bdd0f3c0e883b0bdedeed761a916b5a58ca805abbf073ffb471",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+        "extraction_sha256": "3fd8e593f6b2de7428deaf5a5315ae719e28c0a00235e42c29ffa30fcbbf6174",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.36,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [],
+        "input_policy": {
+          "input_mode": "zero_pad",
+          "sequence_lengths": [
+            96,
+            50,
+            704
+          ],
+          "sequence_overflow": "truncate_right"
+        },
+        "input_processing_sha256": "81db81ed61c26afc4e2a37b2410a4ad7eb69c4eb434623fd90f815c27917de92",
+        "truncated_samples": 1
+      }
+    },
+    {
+      "path": "runs/mer_omni_padding_epoch01/evaluation_step10443_affectgpt/CMUMOSEI/score.json",
+      "sha256": "30b4f56b81242ddbaaff2e12fb561fb2b3f669f4f42acb6f543293ef2835b1da",
+      "result": {
+        "dataset": "CMUMOSEI",
+        "task": "sentiment",
+        "samples": 4659,
+        "strict_protocol": true,
+        "expected_samples": 4659,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.5274044206664786,
+        "weighted_f1": 0.5274044206664786,
+        "accuracy": 0.5668684645019263,
+        "evaluated_samples": 3634,
+        "invalid_sentiment_outputs": 15,
+        "checkpoint_sha256": "83be53117af728804345cde7ac1a5ce9025377d00ae80d83e2390270807c3422",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "59284bf14cf08dcc5365348a325da5bbef4d49f140b80ab5f654c77fc8de8abd",
+        "extraction_sha256": "dbefc1f9f7b39c2768f4db1b367ed9cd8094d203a32f03f4735affc91ed0cf8c",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.5,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [],
+        "input_policy": {
+          "input_mode": "zero_pad",
+          "sequence_lengths": [
+            96,
+            50,
+            704
+          ],
+          "sequence_overflow": "truncate_right"
+        },
+        "input_processing_sha256": "300215edc375aabceb39b7946239b447907e9734c0e54aefc8cd4aafa37a2314",
+        "truncated_samples": 29
+      }
+    },
+    {
+      "path": "runs/mer_omni_padding_epoch01/evaluation_step10443_affectgpt/MER2023/score.json",
+      "sha256": "78ce1e5142e54956aabbb540ea86267c54c18920a1813d29c9669168591479b3",
+      "result": {
+        "dataset": "MER2023",
+        "task": "basic",
+        "samples": 411,
+        "strict_protocol": true,
+        "expected_samples": 411,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.4296279754352129,
+        "per_wheel": [
+          [
+            0.43653250773993807,
+            0.2719298245614035
+          ],
+          [
+            0.4551083591331269,
+            0.3152734778121775
+          ],
+          [
+            0.43034055727554177,
+            0.3304953560371517
+          ],
+          [
+            0.39009287925696595,
+            0.28121775025799794
+          ],
+          [
+            0.4360655737704918,
+            0.3721311475409836
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          323,
+          323,
+          323,
+          323,
+          305
+        ],
+        "hit_rate": 0.4296279754352129,
+        "mscore": 0.31420951124194285,
+        "checkpoint_sha256": "83be53117af728804345cde7ac1a5ce9025377d00ae80d83e2390270807c3422",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+        "extraction_sha256": "bfe8d29b145dc2529ad65bd9b80ef3a3c582e6202a98c61ef8ac06f1c5225604",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.5,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [],
+        "input_policy": {
+          "input_mode": "zero_pad",
+          "sequence_lengths": [
+            96,
+            50,
+            704
+          ],
+          "sequence_overflow": "truncate_right"
+        },
+        "input_processing_sha256": "85cfd2061ac70e4312679bd72865109a7a2f7df396981daf10d5ca159ccc8882",
+        "truncated_samples": 1
+      }
+    },
+    {
+      "path": "runs/mer_omni_padding_epoch01/evaluation_step10443_affectgpt/MER2024/score.json",
+      "sha256": "9ef587f4b7f94df16ee2fc40f9990ed44738ace5d3177e9f02f77b72dfbcd2c5",
+      "result": {
+        "dataset": "MER2024",
+        "task": "basic",
+        "samples": 1169,
+        "strict_protocol": true,
+        "expected_samples": 1169,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.4303422514824672,
+        "per_wheel": [
+          [
+            0.4772727272727273,
+            0.2933023415977961
+          ],
+          [
+            0.46797520661157027,
+            0.31628787878787873
+          ],
+          [
+            0.3884297520661157,
+            0.303116391184573
+          ],
+          [
+            0.41012396694214875,
+            0.2920110192837465
+          ],
+          [
+            0.40790960451977404,
+            0.3489642184557439
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          968,
+          968,
+          968,
+          968,
+          885
+        ],
+        "hit_rate": 0.4303422514824672,
+        "mscore": 0.31073636986194764,
+        "checkpoint_sha256": "83be53117af728804345cde7ac1a5ce9025377d00ae80d83e2390270807c3422",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "144676ecb5bfacfc9d0ae799ea8c268ddfc0ac85882d3a3e1a66e09ec4af3347",
+        "extraction_sha256": "bcbdbe16dd36cfd36cdc7b9622ee058ef7232963d07964d9299ddebaf4c33874",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.5,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": []
+      }
+    },
+    {
+      "path": "runs/mer_omni_run01/evaluation_step5000_affectgpt/CMUMOSEI/score.json",
+      "sha256": "1ae24a097dc65961362c067c31aa03d6a08f4fe6747d08ff9c67b91f7a84e344",
+      "result": {
+        "dataset": "CMUMOSEI",
+        "task": "sentiment",
+        "samples": 4659,
+        "strict_protocol": true,
+        "expected_samples": 4659,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.3298191881226827,
+        "weighted_f1": 0.3298191881226827,
+        "accuracy": 0.4042377545404513,
+        "evaluated_samples": 3634,
+        "invalid_sentiment_outputs": 9,
+        "checkpoint_sha256": "c398b1c2339e30cf38d024a80a2a1c451d93bbee44fe14b6019820b5934cba21",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "59284bf14cf08dcc5365348a325da5bbef4d49f140b80ab5f654c77fc8de8abd",
+        "extraction_sha256": "4f11ef1499bccc5819005568487ba86851a0752d469306e234143d05d8e57099",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.5,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": []
+      }
+    },
+    {
+      "path": "runs/mer_omni_run01/evaluation_step5000_affectgpt/CMUMOSI/score.json",
+      "sha256": "f67e8e0a52c1976b637477d23e4913bcabfa00b4e6899eb643d8b71c7d92d6e9",
+      "result": {
+        "dataset": "CMUMOSI",
+        "task": "sentiment",
+        "samples": 686,
+        "strict_protocol": true,
+        "expected_samples": 686,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.48067085566947837,
+        "weighted_f1": 0.48067085566947837,
+        "accuracy": 0.5426829268292683,
+        "evaluated_samples": 656,
+        "invalid_sentiment_outputs": 0,
+        "checkpoint_sha256": "c398b1c2339e30cf38d024a80a2a1c451d93bbee44fe14b6019820b5934cba21",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "9427f90d0ed78a3dbca77ba24399989615ac1d70b23d54d9257c19f124e3b1a7",
+        "extraction_sha256": "1aa671222afdc093b406937b2cf85a334391641145d43c60c63d1ddff4dd8a76",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.5,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": []
+      }
+    },
+    {
+      "path": "runs/mer_omni_run01/evaluation_step5000_affectgpt/MER2023/score.json",
+      "sha256": "b3e8f2e112fb87c3d6688e45ae8b1859be3dc8231190d1a4a4f8766d182005c9",
+      "result": {
+        "dataset": "MER2023",
+        "task": "basic",
+        "samples": 411,
+        "strict_protocol": true,
+        "expected_samples": 411,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.36613916662437196,
+        "per_wheel": [
+          [
+            0.3653250773993808,
+            0.20278637770897834
+          ],
+          [
+            0.38080495356037153,
+            0.22058823529411764
+          ],
+          [
+            0.34365325077399383,
+            0.22807017543859645
+          ],
+          [
+            0.39009287925696595,
+            0.2260061919504644
+          ],
+          [
+            0.35081967213114756,
+            0.23934426229508196
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          323,
+          323,
+          323,
+          323,
+          305
+        ],
+        "hit_rate": 0.36613916662437196,
+        "mscore": 0.22335904853744776,
+        "checkpoint_sha256": "c398b1c2339e30cf38d024a80a2a1c451d93bbee44fe14b6019820b5934cba21",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+        "extraction_sha256": "f0fa5c5a80e62bd2d0eab1cff36d1367f2f3122e4503baa4bb211dc3d6c320ec",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.5,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": []
+      }
+    },
+    {
+      "path": "runs/mer_omni_run01/evaluation_step5000_affectgpt/MER2024/score.json",
+      "sha256": "2b0a83a19fd657516f8fc52dcde4cabd2d4aff74044b1d8138395a07f9752cb0",
+      "result": {
+        "dataset": "MER2024",
+        "task": "basic",
+        "samples": 1169,
+        "strict_protocol": true,
+        "expected_samples": 1169,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.3375533454732222,
+        "per_wheel": [
+          [
+            0.3760330578512397,
+            0.20540633608815426
+          ],
+          [
+            0.378099173553719,
+            0.20850550964187325
+          ],
+          [
+            0.2572314049586777,
+            0.17243457300275483
+          ],
+          [
+            0.4142561983471074,
+            0.23760330578512398
+          ],
+          [
+            0.2621468926553672,
+            0.18022598870056497
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          968,
+          968,
+          968,
+          968,
+          885
+        ],
+        "hit_rate": 0.3375533454732222,
+        "mscore": 0.20083514264369423,
+        "checkpoint_sha256": "c398b1c2339e30cf38d024a80a2a1c451d93bbee44fe14b6019820b5934cba21",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "144676ecb5bfacfc9d0ae799ea8c268ddfc0ac85882d3a3e1a66e09ec4af3347",
+        "extraction_sha256": "2917ee5e4986a25f77b4d7c15ddb3d179251d60e8ae836ed20c6a8778c2ddcb3",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.5,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": []
+      }
+    },
+    {
+      "path": "runs/mer_omni_run01/evaluation_step5000_affectgpt/OVMERDPlus/score.json",
+      "sha256": "bbb5aab71b0cbdc83dddb78b58d733eae3f0c2692f63a81fde7c7bf1c3a047ed",
+      "result": {
+        "dataset": "OVMERDPlus",
+        "task": "fine_grained",
+        "samples": 532,
+        "strict_protocol": true,
+        "expected_samples": 532,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.3316706021426916,
+        "per_wheel": [
+          [
+            0.30888611186526554,
+            0.28980051480051483,
+            0.33066280566280565
+          ],
+          [
+            0.3052008907915452,
+            0.2840398201669878,
+            0.3297687861271676
+          ],
+          [
+            0.34293304249311257,
+            0.35779517286366597,
+            0.3292563600782779
+          ],
+          [
+            0.3593625553872904,
+            0.36031746031746037,
+            0.35841269841269846
+          ],
+          [
+            0.3419704101762445,
+            0.3499667332002661,
+            0.3343313373253493
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          518,
+          519,
+          511,
+          525,
+          501
+        ],
+        "wheel_f1": 0.3316706021426916,
+        "precision": 0.328383940269779,
+        "recall": 0.3364863975212598,
+        "checkpoint_sha256": "c398b1c2339e30cf38d024a80a2a1c451d93bbee44fe14b6019820b5934cba21",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "b2ead7c6d30696f610a246076eabad1bb3d73b11a01c5643fce8de74f5c87bbb",
+        "extraction_sha256": "97aa0e806840111ac82a98ab947e68f80ae79bb4a15d6069f3db54a5d0752b12",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.5,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [
+          "samplenew3_00001616",
+          "samplenew3_00002016",
+          "samplenew3_00004138",
+          "samplenew3_00004480",
+          "samplenew3_00005177",
+          "samplenew3_00005428",
+          "samplenew3_00008894",
+          "samplenew3_00008922",
+          "samplenew3_00013230",
+          "samplenew3_00013786",
+          "samplenew3_00014862",
+          "samplenew3_00015189",
+          "samplenew3_00015325",
+          "samplenew3_00017257",
+          "samplenew3_00017374",
+          "samplenew3_00018863",
+          "samplenew3_00019346",
+          "samplenew3_00019916",
+          "samplenew3_00023765",
+          "samplenew3_00024776",
+          "samplenew3_00025597",
+          "samplenew3_00027722",
+          "samplenew3_00031439",
+          "samplenew3_00032048",
+          "samplenew3_00032572",
+          "samplenew3_00032910",
+          "samplenew3_00034167",
+          "samplenew3_00035621",
+          "samplenew3_00037970",
+          "samplenew3_00038185",
+          "samplenew3_00038791",
+          "samplenew3_00039259",
+          "samplenew3_00039607",
+          "samplenew3_00040410",
+          "samplenew3_00041388",
+          "samplenew3_00042360",
+          "samplenew3_00043190",
+          "samplenew3_00044584",
+          "samplenew3_00045907",
+          "samplenew3_00051156",
+          "samplenew3_00052226",
+          "samplenew3_00052531",
+          "samplenew3_00056050",
+          "samplenew3_00056147",
+          "samplenew3_00056512",
+          "samplenew3_00056776",
+          "samplenew3_00057128",
+          "samplenew3_00057707",
+          "samplenew3_00057796",
+          "samplenew3_00058321",
+          "samplenew3_00058384",
+          "samplenew3_00060047",
+          "samplenew3_00061121",
+          "samplenew3_00061827",
+          "samplenew3_00061957",
+          "samplenew3_00062270",
+          "samplenew3_00062824",
+          "samplenew3_00063931",
+          "samplenew3_00065552",
+          "samplenew3_00066371",
+          "samplenew3_00067666",
+          "samplenew3_00067687",
+          "samplenew3_00068744",
+          "samplenew3_00070019",
+          "samplenew3_00070557",
+          "samplenew3_00070631",
+          "samplenew3_00071475",
+          "samplenew3_00074901",
+          "samplenew3_00075351",
+          "samplenew3_00078009",
+          "samplenew3_00079253",
+          "samplenew3_00082522",
+          "samplenew3_00083127",
+          "samplenew3_00083665",
+          "samplenew3_00090020",
+          "samplenew3_00090931",
+          "samplenew3_00092772",
+          "samplenew3_00093267",
+          "samplenew3_00093435",
+          "samplenew3_00094838",
+          "samplenew3_00098157",
+          "samplenew3_00099717",
+          "samplenew3_00101735",
+          "samplenew3_00102898",
+          "samplenew3_00104444",
+          "samplenew3_00104457",
+          "samplenew3_00104795",
+          "samplenew3_00106521",
+          "samplenew3_00108029",
+          "samplenew3_00108205",
+          "samplenew3_00108514",
+          "samplenew3_00109302",
+          "samplenew3_00110123",
+          "samplenew3_00110691",
+          "samplenew3_00111584",
+          "samplenew3_00112591",
+          "samplenew3_00113347",
+          "samplenew3_00113581",
+          "samplenew3_00114298"
+        ]
+      }
+    },
+    {
+      "path": "runs/mer_omni_subtitle_epoch01/evaluation_step10443_affectgpt/MER2023/score.json",
+      "sha256": "040b7c122a9a9c6b566396c684dd6d5d113bcf15d90011d8de5926bb2bda5101",
+      "result": {
+        "dataset": "MER2023",
+        "task": "basic",
+        "samples": 411,
+        "strict_protocol": true,
+        "expected_samples": 411,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.6101466781708369,
+        "per_wheel": [
+          [
+            0.653250773993808,
+            0.4050567595459236
+          ],
+          [
+            0.6501547987616099,
+            0.4291537667698659
+          ],
+          [
+            0.5789473684210527,
+            0.43085655314757487
+          ],
+          [
+            0.5913312693498453,
+            0.3988648090815274
+          ],
+          [
+            0.5770491803278689,
+            0.46448087431693985
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          323,
+          323,
+          323,
+          323,
+          305
+        ],
+        "hit_rate": 0.6101466781708369,
+        "mscore": 0.42568255257236637,
+        "checkpoint_sha256": "ab3b3e1d3239c9577267853f0a282c712ce30aa638f2b31baf8497d0b89b0000",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+        "extraction_sha256": "4a29ee6d86b5bcb5042571caa88d1490208b26556569fff7ee7082441ffc9735",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.36,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [],
+        "input_policy": {
+          "input_mode": "zero_pad",
+          "sequence_lengths": [
+            96,
+            50,
+            704
+          ],
+          "sequence_overflow": "truncate_right"
+        },
+        "input_processing_sha256": "85cfd2061ac70e4312679bd72865109a7a2f7df396981daf10d5ca159ccc8882",
+        "truncated_samples": 1
+      }
+    },
+    {
+      "path": "runs/mer_omni_subtitle_epoch01/evaluation_step10443_affectgpt/MER2024/score.json",
+      "sha256": "3d9bc266b38aad391739456bdd596c704a0b749dbc6116be71aacfdcfeee182b",
+      "result": {
+        "dataset": "MER2024",
+        "task": "basic",
+        "samples": 1169,
+        "strict_protocol": true,
+        "expected_samples": 1169,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.5661836391651491,
+        "per_wheel": [
+          [
+            0.609504132231405,
+            0.40766184573002756
+          ],
+          [
+            0.6136363636363636,
+            0.40886707988980714
+          ],
+          [
+            0.5082644628099173,
+            0.3784435261707989
+          ],
+          [
+            0.5774793388429752,
+            0.41382575757575757
+          ],
+          [
+            0.5220338983050847,
+            0.43615819209039547
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          968,
+          968,
+          968,
+          968,
+          885
+        ],
+        "hit_rate": 0.5661836391651491,
+        "mscore": 0.4089912802913574,
+        "checkpoint_sha256": "ab3b3e1d3239c9577267853f0a282c712ce30aa638f2b31baf8497d0b89b0000",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "144676ecb5bfacfc9d0ae799ea8c268ddfc0ac85882d3a3e1a66e09ec4af3347",
+        "extraction_sha256": "c84a67809be3e7fcc6a4618a8fef913f3d02d2236761c53bb1be0895f8074295",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.36,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [],
+        "input_policy": {
+          "input_mode": "zero_pad",
+          "sequence_lengths": [
+            96,
+            50,
+            704
+          ],
+          "sequence_overflow": "truncate_right"
+        },
+        "input_processing_sha256": "0621426b83a411d86116fef21f0f5aa3b0727d5bfe94a8bc950a6764943bc88c",
+        "truncated_samples": 0
+      }
+    },
+    {
+      "path": "runs/native_omni_atsuko_core_epoch1_run01/evaluation_step10443_affectgpt/MER2023/score.json",
+      "sha256": "410c77fe4be56489c2028875d9a7323ecc2753c5cd1c88dcef449ac3de1803b5",
+      "result": {
+        "dataset": "MER2023",
+        "task": "basic",
+        "samples": 411,
+        "strict_protocol": true,
+        "expected_samples": 411,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.7344648023143684,
+        "per_wheel": [
+          [
+            0.7523219814241486,
+            0.49509803921568624
+          ],
+          [
+            0.7616099071207431,
+            0.5108359133126935
+          ],
+          [
+            0.7151702786377709,
+            0.5523735810113519
+          ],
+          [
+            0.7120743034055728,
+            0.4891640866873065
+          ],
+          [
+            0.7311475409836066,
+            0.6032786885245902
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          323,
+          323,
+          323,
+          323,
+          305
+        ],
+        "hit_rate": 0.7344648023143684,
+        "mscore": 0.5301500617503256,
+        "checkpoint_sha256": "ed3ee3f9aee0596d5f5e53dcc2b496402b1396720c2a493f9fa457c934a01776",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+        "extraction_sha256": "f0a74148de9f9c75c3965f4257f54a7740b79583340f8efc1644aa12dafc358e",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.36,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [],
+        "input_policy": "native_full_sequence_plus_atsuko_four_tokens",
+        "input_processing_sha256": "ff452a15dbd4d2a79f869b1128e894c44ff76d2df59504718fdf70dc0a0360bd",
+        "truncated_samples": 1
+      }
+    },
+    {
+      "path": "runs/native_omni_atsuko_core_epoch1_run01/evaluation_step10443_affectgpt/MER2024/score.json",
+      "sha256": "5be20d1d66bbe70cd69632bbed3be6f5bd6149021d3a457e22c353bb0636d94a",
+      "result": {
+        "dataset": "MER2024",
+        "task": "basic",
+        "samples": 1169,
+        "strict_protocol": true,
+        "expected_samples": 1169,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.7408103375822945,
+        "per_wheel": [
+          [
+            0.7975206611570248,
+            0.5301652892561984
+          ],
+          [
+            0.7892561983471075,
+            0.5306473829201102
+          ],
+          [
+            0.6663223140495868,
+            0.4950068870523416
+          ],
+          [
+            0.7458677685950413,
+            0.5388257575757576
+          ],
+          [
+            0.7050847457627119,
+            0.5806967984934086
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          968,
+          968,
+          968,
+          968,
+          885
+        ],
+        "hit_rate": 0.7408103375822945,
+        "mscore": 0.5350684230595633,
+        "checkpoint_sha256": "ed3ee3f9aee0596d5f5e53dcc2b496402b1396720c2a493f9fa457c934a01776",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "144676ecb5bfacfc9d0ae799ea8c268ddfc0ac85882d3a3e1a66e09ec4af3347",
+        "extraction_sha256": "51fd5b4b37368d975384f6a3851c3b0e92eb1a100a639ce6f54e79a08857ab5b",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.36,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [],
+        "input_policy": "native_full_sequence_plus_atsuko_four_tokens",
+        "input_processing_sha256": "b6779956689af160d9c36e97687e81d5f8db49b63386fc287029c2aecafb59b2",
+        "truncated_samples": 0
+      }
+    },
+    {
+      "path": "runs/native_omni_atsuko_core_epoch1_run01/evaluation_step10443_affectgpt/OVMERDPlus/score.json",
+      "sha256": "1e7baca1ccadf9416214058e94c5ba22c6e3657417e135ee37a4ea3b7b741332",
+      "result": {
+        "dataset": "OVMERDPlus",
+        "task": "fine_grained",
+        "samples": 532,
+        "strict_protocol": true,
+        "expected_samples": 532,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.6348212716836334,
+        "per_wheel": [
+          [
+            0.6446424557761146,
+            0.6153474903474904,
+            0.6768661518661518
+          ],
+          [
+            0.6281892331765533,
+            0.5899165061014772,
+            0.6717726396917149
+          ],
+          [
+            0.6355184236088409,
+            0.6351924331376386,
+            0.6358447488584476
+          ],
+          [
+            0.6414698461386237,
+            0.63,
+            0.6533650793650794
+          ],
+          [
+            0.6242863997180347,
+            0.6328675981370591,
+            0.6159347970725216
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          518,
+          519,
+          511,
+          525,
+          501
+        ],
+        "wheel_f1": 0.6348212716836334,
+        "precision": 0.620664805544733,
+        "recall": 0.650756683370783,
+        "checkpoint_sha256": "ed3ee3f9aee0596d5f5e53dcc2b496402b1396720c2a493f9fa457c934a01776",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "b2ead7c6d30696f610a246076eabad1bb3d73b11a01c5643fce8de74f5c87bbb",
+        "extraction_sha256": "f7b08d0c99156da7b4f6338a0eaf2fed8475d6db7e8ebab88dc34e8d5b97be58",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.36,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [
+          "samplenew3_00001616",
+          "samplenew3_00002016",
+          "samplenew3_00004138",
+          "samplenew3_00004480",
+          "samplenew3_00005177",
+          "samplenew3_00005428",
+          "samplenew3_00008894",
+          "samplenew3_00008922",
+          "samplenew3_00013230",
+          "samplenew3_00013786",
+          "samplenew3_00014862",
+          "samplenew3_00015189",
+          "samplenew3_00015325",
+          "samplenew3_00017257",
+          "samplenew3_00017374",
+          "samplenew3_00018863",
+          "samplenew3_00019346",
+          "samplenew3_00019916",
+          "samplenew3_00023765",
+          "samplenew3_00024776",
+          "samplenew3_00025597",
+          "samplenew3_00027722",
+          "samplenew3_00031439",
+          "samplenew3_00032048",
+          "samplenew3_00032572",
+          "samplenew3_00032910",
+          "samplenew3_00034167",
+          "samplenew3_00035621",
+          "samplenew3_00037970",
+          "samplenew3_00038185",
+          "samplenew3_00038791",
+          "samplenew3_00039259",
+          "samplenew3_00039607",
+          "samplenew3_00040410",
+          "samplenew3_00041388",
+          "samplenew3_00042360",
+          "samplenew3_00043190",
+          "samplenew3_00044584",
+          "samplenew3_00045907",
+          "samplenew3_00051156",
+          "samplenew3_00052226",
+          "samplenew3_00052531",
+          "samplenew3_00056050",
+          "samplenew3_00056147",
+          "samplenew3_00056512",
+          "samplenew3_00056776",
+          "samplenew3_00057128",
+          "samplenew3_00057707",
+          "samplenew3_00057796",
+          "samplenew3_00058321",
+          "samplenew3_00058384",
+          "samplenew3_00060047",
+          "samplenew3_00061121",
+          "samplenew3_00061827",
+          "samplenew3_00061957",
+          "samplenew3_00062270",
+          "samplenew3_00062824",
+          "samplenew3_00063931",
+          "samplenew3_00065552",
+          "samplenew3_00066371",
+          "samplenew3_00067666",
+          "samplenew3_00067687",
+          "samplenew3_00068744",
+          "samplenew3_00070019",
+          "samplenew3_00070557",
+          "samplenew3_00070631",
+          "samplenew3_00071475",
+          "samplenew3_00074901",
+          "samplenew3_00075351",
+          "samplenew3_00078009",
+          "samplenew3_00079253",
+          "samplenew3_00082522",
+          "samplenew3_00083127",
+          "samplenew3_00083665",
+          "samplenew3_00090020",
+          "samplenew3_00090931",
+          "samplenew3_00092772",
+          "samplenew3_00093267",
+          "samplenew3_00093435",
+          "samplenew3_00094838",
+          "samplenew3_00098157",
+          "samplenew3_00099717",
+          "samplenew3_00101735",
+          "samplenew3_00102898",
+          "samplenew3_00104444",
+          "samplenew3_00104457",
+          "samplenew3_00104795",
+          "samplenew3_00106521",
+          "samplenew3_00108029",
+          "samplenew3_00108205",
+          "samplenew3_00108514",
+          "samplenew3_00109302",
+          "samplenew3_00110123",
+          "samplenew3_00110691",
+          "samplenew3_00111584",
+          "samplenew3_00112591",
+          "samplenew3_00113347",
+          "samplenew3_00113581",
+          "samplenew3_00114298"
+        ],
+        "input_policy": "native_full_sequence_plus_atsuko_four_tokens",
+        "input_processing_sha256": "8d8fb9898f2cb0fe09b04780b33932b945bad399f4138eefe6b36332c4e9d978",
+        "truncated_samples": 1
+      }
+    },
+    {
+      "path": "runs/native_omni_atsuko_epoch1_run01/evaluation_step10443_affectgpt/MER2023/score.json",
+      "sha256": "e3913dc2d50084cb62139f563abb29d6ccfbfac000198e10d6f24da6ddaf23fc",
+      "result": {
+        "dataset": "MER2023",
+        "task": "basic",
+        "samples": 411,
+        "strict_protocol": true,
+        "expected_samples": 411,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.7186925848855504,
+        "per_wheel": [
+          [
+            0.7430340557275542,
+            0.48297213622291024
+          ],
+          [
+            0.7461300309597523,
+            0.48565531475748197
+          ],
+          [
+            0.6965944272445821,
+            0.541795665634675
+          ],
+          [
+            0.7027863777089783,
+            0.48864809081527344
+          ],
+          [
+            0.7049180327868853,
+            0.592896174863388
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          323,
+          323,
+          323,
+          323,
+          305
+        ],
+        "hit_rate": 0.7186925848855504,
+        "mscore": 0.5183934764587457,
+        "checkpoint_sha256": "1c00788acb8cb08bb18e47f584854fb16340cddd63bc5c11eb364953815666e9",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+        "extraction_sha256": "9e742166ff031a171dd0b62d283c38e58851e8082f6bced09afa6d7336caf324",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.36,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [],
+        "input_policy": "native_full_sequence_plus_atsuko_fusion",
+        "input_processing_sha256": "1a1ef8f193683737ad2df0e7d75ea212934b1038ff09f49bab1f9cf8f784dd1c",
+        "truncated_samples": 1
+      }
+    },
+    {
+      "path": "runs/native_omni_epoch1_run01/evaluation_step10443_affectgpt/MER2023/score.json",
+      "sha256": "b49b2fce467b2e521525eb779e2001c36fb9d32ba5cafed4ec28955d48f58a0c",
+      "result": {
+        "dataset": "MER2023",
+        "task": "basic",
+        "samples": 411,
+        "strict_protocol": true,
+        "expected_samples": 411,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.7207328833172613,
+        "per_wheel": [
+          [
+            0.7430340557275542,
+            0.4742002063983488
+          ],
+          [
+            0.7430340557275542,
+            0.49613003095975233
+          ],
+          [
+            0.7027863777089783,
+            0.5268317853457172
+          ],
+          [
+            0.6934984520123839,
+            0.4747162022703818
+          ],
+          [
+            0.7213114754098361,
+            0.5901639344262295
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          323,
+          323,
+          323,
+          323,
+          305
+        ],
+        "hit_rate": 0.7207328833172613,
+        "mscore": 0.5124084318800859,
+        "checkpoint_sha256": "310d71e152e9cbdf67498cdd41d33174184e26c6825b06fecf16a70d1f4f40a4",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+        "extraction_sha256": "0f9297797d122909c3773d95efa4880ad83e020a6e3801c7a38650fb42de70f4",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.36,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [],
+        "input_policy": "native_full_sequence",
+        "input_processing_sha256": "a440f9935e53fae3d30212a2f5fabaf969c6f840a70ec3d77f279750fb1d54e9",
+        "truncated_samples": 0
+      }
+    },
+    {
+      "path": "runs/native_omni_epoch1_run01/evaluation_step10443_affectgpt/MER2024/score.json",
+      "sha256": "dc094b40f3c61526680fe7b733eed980f9cb1a7f6aefaa4ea72aedb12f5d24ad",
+      "result": {
+        "dataset": "MER2024",
+        "task": "basic",
+        "samples": 1169,
+        "strict_protocol": true,
+        "expected_samples": 1169,
+        "reference_sha256": "bb3daee8a39d180e93f38a47f90413c10d83dd56f1e9f15cd64c1693bd8e2cda",
+        "primary": 0.750437269458841,
+        "per_wheel": [
+          [
+            0.8026859504132231,
+            0.5367596418732783
+          ],
+          [
+            0.7975206611570248,
+            0.5414944903581267
+          ],
+          [
+            0.6818181818181818,
+            0.5021005509641873
+          ],
+          [
+            0.7458677685950413,
+            0.5391701101928374
+          ],
+          [
+            0.7242937853107345,
+            0.5977401129943503
+          ]
+        ],
+        "evaluated_samples_per_wheel": [
+          968,
+          968,
+          968,
+          968,
+          885
+        ],
+        "hit_rate": 0.750437269458841,
+        "mscore": 0.5434529812765561,
+        "checkpoint_sha256": "310d71e152e9cbdf67498cdd41d33174184e26c6825b06fecf16a70d1f4f40a4",
+        "train_manifest_sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+        "generation_sha256": "0507a14386a990aab9c6671bf2e52726ca1a9360aa466e88f73f3d2d4070332e",
+        "evaluator_sha256": "8668ec3173a37a8be2d016bb9fd13bd1f0915651c280b72e6ab49afe73ce9c64",
+        "manifest_sha256": "144676ecb5bfacfc9d0ae799ea8c268ddfc0ac85882d3a3e1a66e09ec4af3347",
+        "extraction_sha256": "bcdf3f6bdbc15f3a19dc5d1fd72135be484a8df38c2b83650ca0377e281b6341",
+        "evaluator_engine_options": {
+          "gpu_memory_utilization": 0.36,
+          "max_model_len": 4096,
+          "max_num_seqs": 8
+        },
+        "evaluator_distributed_store": "HashStore",
+        "accepted_release_overlap_ids": [],
+        "input_policy": "native_full_sequence",
+        "input_processing_sha256": "7ec102bc550107dae3723381e818c455bfb789d1ad65dc20efd0456007192165",
+        "truncated_samples": 0
+      }
+    }
+  ],
+  "retained_checkpoints": [
+    "runs/native_omni_epoch1_run01/checkpoint_step_0010443.pt",
+    "runs/native_omni_atsuko_core_epoch1_run01/checkpoint_step_0010443.pt"
+  ]
+}

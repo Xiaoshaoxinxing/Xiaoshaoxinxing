@@ -1,0 +1,15 @@
+{
+  "samples": 31327,
+  "target_counts": {
+    "description": 15664,
+    "ovlabel": 15663
+  },
+  "files": {
+    "data/manifests/mercaptionplus.train.jsonl": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+    "data/manifests/sft/mercaptionplus-target-plan.json": "10e7690b01d6f34245b7c214ac271471c2ae426b63729ed70985ef30e86e5447",
+    "data/manifests/sft/mercaptionplus-length-bounds.json": "4670360f3b2a903173e4e38d07d5a1db02c17e324c94a93f74eae3a522aff016",
+    "data/manifests/sft/native-media-metadata.json": "dd6f9d419a6b6ef8821665122cd67870bd0c3ebe677fc8f3b175498138e732c1"
+  },
+  "target_assignment": "The original fixed A assignment, extracted unchanged as a shared data artifact. plan_for in mer_omni/sft/native_inputs.py reproduces the torch permutation and seeded Python question assignment from the same ordered manifest.",
+  "length_bounds": "Historical conservative native-video bounds, retained for selecting the long-input preflight case; no training labels are changed."
+}

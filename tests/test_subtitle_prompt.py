@@ -107,9 +107,9 @@ class SubtitlePromptTests(unittest.TestCase):
             includes_raw_subtitle(cfg)
 
     def test_inference_rejects_checkpoint_with_different_subtitle_policy(self):
-        from tools.mer_omni import run
-        baseline = load_config(ROOT / 'config/mer_omni_atsuko_padding.json')
-        args = SimpleNamespace(config=ROOT / 'config/mer_omni_subtitle_evaluation.json',
+        from fixture_cli import run
+        baseline = load_config(ROOT / 'tests/fixtures/config/mer_omni_atsuko_padding.json')
+        args = SimpleNamespace(config=ROOT / 'tests/fixtures/config/mer_omni_subtitle_evaluation.json',
                                command='infer', checkpoint='unused')
         with patch('mer_omni.training.read_checkpoint', return_value={'config': baseline}):
             with self.assertRaisesRegex(ValueError, 'subtitle prompt differs'):

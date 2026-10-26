@@ -131,9 +131,9 @@ class AVPromptTests(unittest.TestCase):
         torch.testing.assert_close(first(**data)['loss'], second(**data)['loss'], rtol=0, atol=0)
         with self.assertRaisesRegex(ValueError, 'Adapter state mismatch'):
             load_adapter(make_model(subtitle_config()), saved)
-        from tools.mer_omni import run
-        control = load_config(ROOT / 'config/mer_omni_subtitle_ablation.json')
-        args = SimpleNamespace(config=ROOT / 'config/mer_omni_av_tokens_evaluation.json',
+        from fixture_cli import run
+        control = load_config(ROOT / 'tests/fixtures/config/mer_omni_subtitle_ablation.json')
+        args = SimpleNamespace(config=ROOT / 'tests/fixtures/config/mer_omni_av_tokens_evaluation.json',
                                command='infer', checkpoint='unused')
         with patch('mer_omni.training.read_checkpoint', return_value={'config': control}):
             with self.assertRaisesRegex(ValueError, 'audio/video token prompt differs'):
@@ -152,7 +152,7 @@ class AVPromptTests(unittest.TestCase):
             includes_av_tokens(cfg)
 
     def test_legacy_model_output_matches_archived_source_exactly(self):
-        path = ROOT / 'tests/fixtures/model_before_av.py'
+        path = ROOT / 'tests/fixtures/model_before_av_tokens.py'
         spec = importlib.util.spec_from_file_location('mer_omni.archived_before_av', path)
         archived = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(archived)

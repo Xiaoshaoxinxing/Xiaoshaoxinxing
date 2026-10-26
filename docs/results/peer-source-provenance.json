@@ -1,0 +1,15 @@
+{
+  "repository": "https://github.com/zbh-afk/qwen-lora-mercaption",
+  "commit": "02fd6a0182bf86ea3b3b6362e45a952a81252869",
+  "upstream_file": "sft/train_sft.py",
+  "sha256": "4d01a9bd978f4eb03e8d82b3bb5d622f5512d20adc01bc022233d690c3947101",
+  "local_import_path": "mer_omni/peer_lora_sft.py",
+  "local_historical_snapshot": "runs/peer_lora_epoch2_run02/source/train_sft.py",
+  "local_cleanup_date": "2026-10-26",
+  "usage": "The peer-recipe LoRA training and evaluation load this upstream trainer. Its unchanged content is included in the original experiment identity.",
+  "implementation_in_repository": true,
+  "original_author": "zbh-afk",
+  "implementation_changes": "None; byte-identical relocation of the upstream training file.",
+  "migration_record": "docs/results/sft-layout-migration-20261026.json",
+  "migration_receipt": "reports/sft_transition_20261026/result.json"
+}

@@ -1,66 +1,69 @@
 # Xiaoshaoxinxing
 
-多模态情绪识别研究代码：**Atsuko 频带分解与路由 + Qwen2.5-Omni-3B**，使用 MER-Caption+ 训练、MER-UniBench 评测。
+多模态情绪识别项目，研究路线为 **Qwen SFT → Atsuko＋SFT → RL**。当前处于 SFT 阶段，先建立稳定的 Qwen LoRA 基线，再检验 Atsuko 模块的增益，最后开展 RL。
 
-更新至 **2026-10-22**：已完成序列插值、优化日程、16帧采样、3轮预算及LoRA容量对照。本项目这组AV-token实验中，16帧、rank16、3epoch的MER2023 Hit Rate为 **64.56%**；相同设置1epoch为 **64.11%**，mscore更高，且已完成MER2024。LoRA64虽降低训练loss，MER2023降至 **60.68%**。
+更新于 **2026-10-26**。当前 Qwen LoRA 与官方 AffectGPT face 均已完成 MER-UniBench 九集全量评测。实验 A/B/B3 已退役为历史对照，整理前现存的源码、保留权重和原始结果保存在本地归档。
 
-## 结果与配置
+## 当前结果
 
-| 实验 | 训练配置 | MER2023 Hit Rate / mscore | MER2024 Hit Rate / mscore |
-| --- | --- | ---: | ---: |
-| 原独立AV token，8帧 | [ablation](config/mer_omni_av_tokens_ablation.json) | 61.54% / 44.13% | 未完成 |
-| omni_resample | [resample](config/mer_omni_av_tokens_resample.json) | 61.48% / 43.51% | 未评测 |
-| 分组学习率、短warmup、梯度裁剪 | [lrschedule](config/mer_omni_av_tokens_lrschedule.json) | 62.55% / 44.08% | 未评测 |
-| **16帧，rank16，1epoch** | [frames16](config/mer_omni_av_tokens_frames16.json) | **64.11% / 45.52%** | **61.11% / 44.59%** |
-| **16帧，rank16，3epoch** | [frames16_epoch3](config/mer_omni_av_tokens_frames16_epoch3.json) | **64.56% / 43.92%** | 未评测 |
-| 16帧，rank64，1epoch | [frames16_lora64](config/mer_omni_av_tokens_frames16_lora64.json) | 60.68% / 42.41% | 未评测 |
+单位为百分比。九项平均为四个情绪识别 HR、四个情感极性 weighted F1 和 OV-MERD+ 五情绪轮 Fₛ 的等权平均。
 
-各配置有对应评测配置，原ablation对应 `mer_omni_av_tokens_evaluation.json`，其余为同名 `_evaluation.json`。每个实验从预训练基座重新初始化，同一实验中断才从其自身检查点恢复。评测使用预定最终step：1epoch为10443，3epoch为31329；没有按测试分数挑中间检查点。
+| 数据集 | Qwen LoRA SFT | AffectGPT face |
+| --- | ---: | ---: |
+| MER2023 | 80.43 | 79.23 |
+| MER2024 | 79.15 | 79.04 |
+| MELD | 58.44 | 55.94 |
+| IEMOCAPFour | 63.97 | 57.62 |
+| CMUMOSI | 83.94 | 78.64 |
+| CMUMOSEI | 82.74 | 79.30 |
+| SIMS | 84.79 | 86.14 |
+| SIMSv2 | 84.97 | 85.51 |
+| OVMERDPlus | 65.46 | 60.55 |
+| **九项平均** | **75.99** | **73.55** |
 
-这些是单seed、单次生成/抽取结果，不能据此证明稳定收益或唯一退化原因。MER2023为411条，MER2024为1,169条；每个情绪轮有自己的适用样本数。Hit Rate/mscore不等同于accuracy/F1，尚无当前模型的九集均分。
+两组均评测全部 **12,799** 条样本。LoRA 在 16 个收敛区间 checkpoint 中选中 **step34000**；face 在 7 个官方 checkpoint 中选中 **epoch50**。两者都使用同一批每集 20 条、共 180 条测试样本筛选，所以这不是独立验证集选模结果。
 
-更早的单融合token、字幕直达、原生均值和四段音频实验见[实验记录](docs/experiment-status.md)及[10月17日结果快照](docs/results/experiments-20261017.json)。官方AffectGPT frame发布权重MER2023/2024为79.15%/75.06%，其主干、编码器与训练预算不同，不是等条件结构消融。
+LoRA 使用贪心生成，face 保留官方采样生成。OV-MERD+ 全量 532 条含 99 条已知训练重叠；保留官方全量分数，并记录 LoRA 的重叠／非重叠子集结果。不能将上述分差归因于单一模块或训练超参数。
 
-## 当前保留设置
+完整精度、checkpoint 排名及来源哈希见[当前结果索引](docs/results/experiments-20261026.json)。
 
-两组保留方案都使用 **zero_pad**（文本/视频/音频96/50/704）、最多16帧、LoRA r16/alpha32、完整字幕及前端末位独立音视频token、仅主路径CE。不是原生均值旁路，也不是resample模式。
+## 当前 SFT 基线
 
-- seed42，batch_size1，gradient_accumulation3；每轮31,327条各一次，尾步只处理剩余1条，不跨轮补样本。
-- warmup500，LoRA lr=min_lr=2e-5、warmup_lr=1e-6，前端基础lr=1e-4；所有组共享归一化日程因子，warmup之后恒定。
-- weight_decay0.05，grad_clip0.6，hybrid描述/标签目标，max_length1024，num_workers0。
-- 1epoch和3epoch共用frames16训练集校准，频带边界text/video/audio为 `[29,61]/[1,3]/[32,252]`。改变帧数或LoRA的omni设置需对应的新校准；仅改训练预算不需要。
+- 基座：Qwen2.5-Omni-3B Thinker；训练集：MER-Caption+ 的 31,327 个唯一视频。
+- 固定目标：15,664 条解释、15,663 条情绪标签；每条样本的目标在两轮中保持一致。
+- 两轮、62,654 次更新，batch1、无梯度累积；attention q/k/v/o LoRA，r8、alpha16、dropout0.05。
+- 学习率 1e-4，AdamW weight decay0.01，无 warmup／scheduler；两张 JPEG 帧、独立音频和字幕。
+- 活动目录保留 step31327（第一轮结束）、step34000（本轮选中）、step62654（最终状态）。其他 30 个 checkpoint 已完整归档。
 
-本地保留两组最终检查点；其余实验权重已清理，配置、日志及评分证据保留。**本仓库不分发模型权重、原始数据、训练日志或逐样本预测**；公开摘要与哈希见[10月22日结果快照](docs/results/experiments-20261022.json)。
+训练实现位于[peer_lora_sft.py](mer_omni/peer_lora_sft.py)，来源与固定上游版本见[代码来源记录](docs/results/peer-source-provenance.json)。`peer_*` 文件名对应这一轮已完成的配方复现。
 
-## 检查与运行
+## 后续 Atsuko 工作
 
-Linux / Python3.10，系统安装ffmpeg/ffprobe；训练与标签抽取使用独立依赖环境。
+[mer_omni/sft](mer_omni/sft) 包含从旧实验拆出的公共加载、原生输入、训练状态和 Atsuko 校准／优化器组件。Atsuko 模型实现继续保留在 `mer_omni/native_atsuko*.py`、`mer_omni/layers/`。
+
+**尚未运行“当前两帧 LoRA 配方＋Atsuko”的新实验。**旧 B3 使用不同输入及训练配方，其结果只能作为历史参考。下一轮需要先确定两帧输入与 Atsuko 的接口，完成前缀、梯度和训练集校准检查，再登记新的配置和输出目录。RL 尚未启动。
+
+## 检查当前工作区
 
 ```bash
-git clone https://github.com/Xiaoshaoxinxing/Xiaoshaoxinxing.git
-cd Xiaoshaoxinxing
-python3.10 -m venv .venv
-source .venv/bin/activate
-python -m pip install --extra-index-url https://download.pytorch.org/whl/cu121 -r requirements/train.txt
+# 只读核验三个保留 checkpoint、九集预测、缓存评分及官方 face 身份；不启动 GPU 推理
+.venv/bin/python -B tools/check_sft_workspace.py
+
+# CPU 回归测试
 OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 \
-  python -m unittest discover -s tests -v
-python tools/mer_omni.py --help
-python tools/mer_omni.py --config config/mer_omni_av_tokens_frames16.json preflight
+  .venv/bin/python -B -m unittest discover -s tests -v
 ```
 
-此次发布副本通过98项离线测试，并完成8项优化配方CPU验证（含分组恢复和旧配置兼容）。离线测试使用合成输入与微型Omni组件，不需要实际3B权重。真实训练/评测需自行准备配置指定的本地模型、数据、清单及校准。资源路径相对仓库根目录解析；详见[运行协议](docs/protocol.md)。`train.sh`和统一CLI的默认配置仍是早期padding基线；运行当前方案必须显式传 `--config`，并使用新的输出目录。
+当前基线已经训练和评测完成。新实验使用新配置、审计及输出身份；不要把已有完成目录当成新任务的输出位置。数据、模型、缓存、运行产物和历史归档均不上传 GitHub。
 
-## 文件入口
+## 导航
 
-| 文件 | 内容 |
+| 入口 | 内容 |
 | --- | --- |
-| [docs/experiment-status.md](docs/experiment-status.md) | 实验结果、训练恢复、检查点指纹与保留状态 |
-| [docs/protocol.md](docs/protocol.md) | 资源、校准、训练、恢复、三阶段评测与迁移 |
-| [问题记录](AffectGPT对照差距与待排查问题.md) | 证据支持的结论、尚未确定的解释 |
-| [mer_omni/model.py](mer_omni/model.py) | 前端、提示、独立音视频入口和生成 |
-| [mer_omni/training.py](mer_omni/training.py) | 分组优化、日程、梯度裁剪与恢复 |
-| [tools/audit_native_sequence_lengths.py](tools/audit_native_sequence_lengths.py) | 全量训练清单的文本、音频估计和视频长度审计 |
-| [tools/profile_router_weights.py](tools/profile_router_weights.py) | 前256条训练样本的只读模态/频带路由诊断 |
-| [mer_omni/reference](mer_omni/reference/) | Atsuko原文件、AffectGPT评分函数与来源许可证 |
+| [实验状态](docs/experiment-status.md) | SFT 主线、已完成结果和下一步 |
+| [运行协议](docs/protocol.md) | 环境、配置、检查与运行边界 |
+| [目录指南](docs/directory-guide.md) | 活动代码、数据产物、缓存与历史归档 |
+| [历史 A 记录](docs/history/native-omni-experiment-a.md) | A 的退役说明与恢复位置 |
+| [归档索引](docs/results/archive-index-20261026.json) | 旧、新路径映射及核验记录 |
 
-`tools/run_*_ablation.py`为历史服务器调度记录，依赖未发布的本机reports，不作为新克隆的统一入口。复现使用 `tools/mer_omni.py`，不要直接重启依赖旧收据的脚本。
+本次整理完整保留实验文件；A、B3 最终权重、其他 LoRA checkpoint 和历史预测均可在本地归档找到。

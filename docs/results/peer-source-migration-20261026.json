@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-26T13:14:37.730777+08:00",
+  "experiment": "peer_lora_epoch2_run02",
+  "reason": "User requested moving the used upstream implementation into the project source tree and deleting the original checkout directory.",
+  "training_source": {
+    "old_path": "qwen-lora-mercaption/sft/train_sft.py",
+    "new_path": "mer_omni/peer_lora_sft.py"
+  },
+  "changes": [
+    {
+      "old_path": "qwen-lora-mercaption/sft/train_sft.py",
+      "new_path": "mer_omni/peer_lora_sft.py",
+      "old_sha256": "4d01a9bd978f4eb03e8d82b3bb5d622f5512d20adc01bc022233d690c3947101",
+      "new_sha256": "4d01a9bd978f4eb03e8d82b3bb5d622f5512d20adc01bc022233d690c3947101"
+    },
+    {
+      "old_path": "config/peer_lora_epoch2.json",
+      "new_path": "config/peer_lora_epoch2.json",
+      "old_sha256": "b6a236546d961e8c08b5f3ecba3b8c2155dc4207df066049e8a6e3f6a25cfe31",
+      "new_sha256": "53053fc28fad79c84f4bd08431cde773cfa10c8085c06722339d5484305556fb"
+    },
+    {
+      "old_path": "tools/peer_lora_epoch2.py",
+      "new_path": "tools/peer_lora_epoch2.py",
+      "old_sha256": "a67bdbdafbd76523c7b9cd204771b46cdfde8a3add916dbb0ec03711ddc825b9",
+      "new_sha256": "b606853500059cfad9fdedf9d222ea62f4c33da7ed4387e8f7cde27ad3dd33f9"
+    },
+    {
+      "old_path": "tools/evaluate_peer_lora_epoch2.py",
+      "new_path": "tools/evaluate_peer_lora_epoch2.py",
+      "old_sha256": "316a11a7a89317732855012c93e5974c61be901dddbcab69e34055e9f4f9febb",
+      "new_sha256": "e451e67d1a02b7a1e2bb9e8c2d0af1f02839bcb7a22969ad553c2c259b787324"
+    },
+    {
+      "old_path": "tools/search_peer_lora_checkpoints.py",
+      "new_path": "tools/search_peer_lora_checkpoints.py",
+      "old_sha256": "53ce3a8efb53137f43cf9537c00badb876b8efe653c704ac6b4e5aee523b67d6",
+      "new_sha256": "2f5f6bb290560e2df975cf2bbf05ff40786597f8e154bb7fa8fdc952e7da0e40"
+    }
+  ],
+  "current_files": {
+    "mer_omni/peer_lora_sft.py": "4d01a9bd978f4eb03e8d82b3bb5d622f5512d20adc01bc022233d690c3947101",
+    "config/peer_lora_epoch2.json": "53053fc28fad79c84f4bd08431cde773cfa10c8085c06722339d5484305556fb",
+    "tools/peer_lora_epoch2.py": "b606853500059cfad9fdedf9d222ea62f4c33da7ed4387e8f7cde27ad3dd33f9",
+    "tools/evaluate_peer_lora_epoch2.py": "e451e67d1a02b7a1e2bb9e8c2d0af1f02839bcb7a22969ad553c2c259b787324",
+    "tools/search_peer_lora_checkpoints.py": "2f5f6bb290560e2df975cf2bbf05ff40786597f8e154bb7fa8fdc952e7da0e40",
+    "mer_omni/peer_source_migration.py": "c8b59fae218dc6813fb64012bb1cdf5ffd1ed5dcbc315ab3db1827656f86487f"
+  },
+  "numerical_behavior": "Training implementation is byte-identical. Wrapper changes are limited to source location and explicit historical identity comparisons.",
+  "historical_records_rewritten": false
+}

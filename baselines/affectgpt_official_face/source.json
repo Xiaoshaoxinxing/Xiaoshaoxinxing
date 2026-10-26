@@ -1,0 +1,639 @@
+{
+  "source": "https://github.com/zeroQiaoba/AffectGPT",
+  "commit": "fffca794c6792023234565370e3f69f0488aede9",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "README.md",
+      "sha256": "6a8d8b22c6de3cb0173fa4d549b8d3e327609479c33b9b1e7767c0ca87b500d6"
+    },
+    {
+      "path": "config.py",
+      "sha256": "526653bfc0525ad949ed40da28e3356b05c40a8284f974f6dcd7f0598ee8f60c"
+    },
+    {
+      "path": "emotion_wheel/format.csv",
+      "sha256": "ba6de7d61db8e129d1d7ef8a2aae22a9e93a2c2e3e683e6f2735d04455f016f2"
+    },
+    {
+      "path": "emotion_wheel/synonym.xlsx",
+      "sha256": "23f81f9ab1d2418aaf96775304fb5dc52c62bb5d5ef652a97471d045fc9d2e29"
+    },
+    {
+      "path": "emotion_wheel/wheel1.jpg",
+      "sha256": "2f21442343b0df09a5d874e1ce6280c8d9a3dddd02868aa75a985603c5b0035f"
+    },
+    {
+      "path": "emotion_wheel/wheel1.xlsx",
+      "sha256": "e70485d354b82a7491ff24648273182a5f4f13f92c76e6b3e4f9033f5e6afcc1"
+    },
+    {
+      "path": "emotion_wheel/wheel2.jpg",
+      "sha256": "f64ec8947ab184d56c5090da48cb8854f9b1c1f04aa8f884a591376060e9ba9f"
+    },
+    {
+      "path": "emotion_wheel/wheel2.xlsx",
+      "sha256": "acc001e076a8e60440361f58dd8c05ed900c4890c84bb7d8d1df93708a7d9c87"
+    },
+    {
+      "path": "emotion_wheel/wheel3.webp",
+      "sha256": "53d95a24202deb96e57aa0901ea364c98c3d6e4cdfe8a85b703b94aa06a6da33"
+    },
+    {
+      "path": "emotion_wheel/wheel3.xlsx",
+      "sha256": "d62f30bf88c17c55876634cd088eacaef98278fc25457474364439872f9dbf83"
+    },
+    {
+      "path": "emotion_wheel/wheel4.jpg",
+      "sha256": "5f79eb61df1315dbbc2358fb231a4f043324b7c6bd55bde458fb45347f3d2341"
+    },
+    {
+      "path": "emotion_wheel/wheel4.xlsx",
+      "sha256": "660260561b7fe15550f3679a01e7c783608ce3403d4c28db0a88520f68d83aea"
+    },
+    {
+      "path": "emotion_wheel/wheel5.webp",
+      "sha256": "4007c4ee56041641cfbe63dd7bb6411533e8b7198e6d701ce2990ae34f31b849"
+    },
+    {
+      "path": "emotion_wheel/wheel5.xlsx",
+      "sha256": "2dd4595b2cf8e7628ca06a416a8e38ac831614b244f23d1ae613dc34007649f1"
+    },
+    {
+      "path": "environment.yml",
+      "sha256": "ed77a06fb0cc2cef030f5864645c8989ae6988abbce33f77c217cbadb4674c64"
+    },
+    {
+      "path": "evaluation-scoreonly.py",
+      "sha256": "981ab8b7a23832e909f11dd9ad880e29a050ba541a57637e873037e157a28c73"
+    },
+    {
+      "path": "evaluation.py",
+      "sha256": "9e91bb83029d864f816f4cdeb2cdfc9302ee3edf62c602bcaba90a604c0ad967"
+    },
+    {
+      "path": "inference_hybird.py",
+      "sha256": "2fde4b43e1566c870746ee60333ff9220ebbc1410c6dcbfbf456511ad0679a58"
+    },
+    {
+      "path": "inference_sample.py",
+      "sha256": "625549d0e393ff0d3ed91c1f17da7ef61f13cceb926c4bf2eb4bf56391240416"
+    },
+    {
+      "path": "my_affectgpt/__init__.py",
+      "sha256": "1193dcf49e92749cf62db8b03e2760f4a5be6024023be90489829a4103fba469"
+    },
+    {
+      "path": "my_affectgpt/common/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "my_affectgpt/common/config.py",
+      "sha256": "9d62150e2880b6330a0f680cec80f3e02a610ecc6d263bf8f82bf0c5f6753af7"
+    },
+    {
+      "path": "my_affectgpt/common/dist_utils.py",
+      "sha256": "f3ebcfc074900203cdd8a9bf682b1826065cfbf5600689e88edb35315e62de57"
+    },
+    {
+      "path": "my_affectgpt/common/logger.py",
+      "sha256": "ad21fe96f66226dd031d63ba52e88a40e9f3ed02af8aaff42464f7dd71330c5e"
+    },
+    {
+      "path": "my_affectgpt/common/optims.py",
+      "sha256": "65ac9c844228efbca3e04c542501ed93ee93f9241f2da6c5dd3a4ecf3379ef95"
+    },
+    {
+      "path": "my_affectgpt/common/registry.py",
+      "sha256": "572b9228428b8997e4755c9d42a9fcd9d1f1d5bbedeb05a35ae013bca4173ca4"
+    },
+    {
+      "path": "my_affectgpt/common/utils.py",
+      "sha256": "3ba7db235b6d23bcba913978ae1cfba69d635a27a26101119ac3f59aab55f192"
+    },
+    {
+      "path": "my_affectgpt/conversation/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "my_affectgpt/conversation/conversation_video.py",
+      "sha256": "42e1fbdc2daca57746a6cb983878116894da50b87f9077e8c9f5e7c8728cdbef"
+    },
+    {
+      "path": "my_affectgpt/datasets/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "my_affectgpt/datasets/builders/__init__.py",
+      "sha256": "160250e297bce0560abfae2c0fb14769bc1bbc521c45c5cd2b24f74aabe95a59"
+    },
+    {
+      "path": "my_affectgpt/datasets/builders/base_dataset_builder.py",
+      "sha256": "7a253091f8943841c03576878764bb6f38f7c41565f64f59337b19d91d7117b9"
+    },
+    {
+      "path": "my_affectgpt/datasets/builders/image_text_pair_builder.py",
+      "sha256": "e049ec7a231cf0975725bbca0d978de7e9735bc2b4b24a5d5ce7141ad3e4595d"
+    },
+    {
+      "path": "my_affectgpt/datasets/data_utils.py",
+      "sha256": "30d5f403efd4f51fd56add310aff89cb2888f66de88ec92308776ff578794d30"
+    },
+    {
+      "path": "my_affectgpt/datasets/datasets/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "my_affectgpt/datasets/datasets/base_dataset.py",
+      "sha256": "9cc1f3435f5cc8e1cfbc7bf551d0518a7197c3f2da789ed5889e61831341152c"
+    },
+    {
+      "path": "my_affectgpt/datasets/datasets/cmumosei.py",
+      "sha256": "a29a32d79e1e3542c4535204ddb4f0133df32d471b7cbf949f5fbba6a2038a22"
+    },
+    {
+      "path": "my_affectgpt/datasets/datasets/cmumosi.py",
+      "sha256": "9c78b6ecdc25bb04d53cb4414aacf7d87b3eb9a40da5ef2791501194c2940e11"
+    },
+    {
+      "path": "my_affectgpt/datasets/datasets/dataloader_utils.py",
+      "sha256": "8f4f50e2847ed1b51cdd10b09ee120c78e0be2f27bc0d957c48ec62c153f5183"
+    },
+    {
+      "path": "my_affectgpt/datasets/datasets/iemocap.py",
+      "sha256": "a02cd8a78695da412fed39f77e41a5889a3579024a371c06f816e2b9e9ba1e56"
+    },
+    {
+      "path": "my_affectgpt/datasets/datasets/meld.py",
+      "sha256": "56eafe0981f92cb74154ffb3e98942fb0ce4835e9a3ad7d3024d53eab4fb1a13"
+    },
+    {
+      "path": "my_affectgpt/datasets/datasets/mer2023.py",
+      "sha256": "12890dc45430f19ba7e246c907448179ea57091cdc642f94c376d6b38a8c3f7f"
+    },
+    {
+      "path": "my_affectgpt/datasets/datasets/mer2024.py",
+      "sha256": "58d4de12b7a51677b6a7b5b7538b70abc1a451f3b725f384c72e98137996bfff"
+    },
+    {
+      "path": "my_affectgpt/datasets/datasets/mer2025ov_dataset.py",
+      "sha256": "70fa4a741dbca6b7a3fb977fbf1f969b2afa3fc4dbb3903579cf5afebf4f25e2"
+    },
+    {
+      "path": "my_affectgpt/datasets/datasets/mercaptionplus_dataset.py",
+      "sha256": "d2f32cdd4d51a4cfde11474fb1d110027825edd4461e864dea946f45cc643d35"
+    },
+    {
+      "path": "my_affectgpt/datasets/datasets/ovmerd_dataset.py",
+      "sha256": "096237ed60a642c1da710d1326889843abc4d92b0c2be9fc7b7513dfaa094ab4"
+    },
+    {
+      "path": "my_affectgpt/datasets/datasets/ovmerdplus_dataset.py",
+      "sha256": "55efe8a5883bed99bb831c8a1942b9a5a475504963f33529ab1140eb113681e2"
+    },
+    {
+      "path": "my_affectgpt/datasets/datasets/sims.py",
+      "sha256": "41169a91e9865042c6bf36fc1ab6ef10a154159c49c3d2dbf83221cf0dce9613"
+    },
+    {
+      "path": "my_affectgpt/datasets/datasets/simsv2.py",
+      "sha256": "e584ce252391e4757e1ade57ec314405c406680d226663cfc0480c69121b0041"
+    },
+    {
+      "path": "my_affectgpt/evaluation/ew_metric.py",
+      "sha256": "fd799f3e303fd81589691d0ac289096d2301843e3071b9f929a40b135011d9ab"
+    },
+    {
+      "path": "my_affectgpt/evaluation/wheel.py",
+      "sha256": "2072ae0f6b18721cac9b51e154fac30c013cb73800366797a474f616f2631f54"
+    },
+    {
+      "path": "my_affectgpt/models/ImageBind/data.py",
+      "sha256": "67a304162ec03b1cc6eec76b217d420cbc396790e0e53080d5b9415380a41d96"
+    },
+    {
+      "path": "my_affectgpt/models/ImageBind/models/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "my_affectgpt/models/ImageBind/models/helpers.py",
+      "sha256": "ee5d71dde0c9c2016272ee461edb7c9f4acb3449df829aa56757963c893a8396"
+    },
+    {
+      "path": "my_affectgpt/models/ImageBind/models/imagebind_model.py",
+      "sha256": "d553e3a25fbd023c0a9e1afa07b964a1302a89b1fcda3fb23f8f82606f6797cc"
+    },
+    {
+      "path": "my_affectgpt/models/ImageBind/models/multimodal_preprocessors.py",
+      "sha256": "fab69ddfe599b8ca471086b24db2c9c171622fa61478a10d73ef1641e4764930"
+    },
+    {
+      "path": "my_affectgpt/models/ImageBind/models/transformer.py",
+      "sha256": "d04df11c0df45a47a6674199aca9c4e7097901505e7a68ace47363a9c3097f38"
+    },
+    {
+      "path": "my_affectgpt/models/Qformer.py",
+      "sha256": "537d5e0c27184e4e3abc96a6a681cc9950969a19eb8c5e99b7739f6242626d15"
+    },
+    {
+      "path": "my_affectgpt/models/__init__.py",
+      "sha256": "3aebbdcfb9a3a7bbcc214c35f9c74fb3be3bcdb3fc75d10d4c5ecad1380c7250"
+    },
+    {
+      "path": "my_affectgpt/models/affectgpt.py",
+      "sha256": "29d0e88767b4cefaee2dc715f21c50a6e857bb951e7ea2daacfe61956283b8f7"
+    },
+    {
+      "path": "my_affectgpt/models/base_model.py",
+      "sha256": "f756caf3f6fb04b0d44dbe005df1ae7580079e7be8dfe4a2c0a47b0b2c32a15f"
+    },
+    {
+      "path": "my_affectgpt/models/blip2.py",
+      "sha256": "3222b25aeb156302d2085c94e0b9739590c309e0baf2b31d5f34bc23ca886273"
+    },
+    {
+      "path": "my_affectgpt/models/blip2_outputs.py",
+      "sha256": "24bb792fadc468fd69985019a4609d41af1c946c279184e9430157ac5a05d172"
+    },
+    {
+      "path": "my_affectgpt/models/encoder.py",
+      "sha256": "1e4acbc44bb0de6afb9dda58323ce5c4c6cdb4ee38b9c6b1ed8e2d5067a7aa35"
+    },
+    {
+      "path": "my_affectgpt/models/eva_vit.py",
+      "sha256": "8401aad28c7361e101d9e1e798f5903683f5092686f393215d7be1db0ce42d80"
+    },
+    {
+      "path": "my_affectgpt/models/modeling_llama.py",
+      "sha256": "b210f166a917585a61138844e5cdf440fc615705fc1e5a5f03e3649490b89709"
+    },
+    {
+      "path": "my_affectgpt/models/tokenizer.py",
+      "sha256": "3c17bfe9a638cdfe96529f152cd2d745b000cfb5d10592a43af262870effcad1"
+    },
+    {
+      "path": "my_affectgpt/processors/__init__.py",
+      "sha256": "f40394c5e22cdf5b5a434f5b543c246fe032221f6509c9c0367e69fef112950e"
+    },
+    {
+      "path": "my_affectgpt/processors/base_processor.py",
+      "sha256": "d17c3c045e0fc74e994b7f034aa0d3198e471984b37c7632c553f0c36a414e49"
+    },
+    {
+      "path": "my_affectgpt/processors/blip_processors.py",
+      "sha256": "2fac73a8d855d789c64a21e50dc4a5c50c85211704ef40d77ba5b3e8ce6ec0c4"
+    },
+    {
+      "path": "my_affectgpt/processors/functional_video.py",
+      "sha256": "772daa8d396bd20e7163810f4392dde4db1b811795c11193d9264af7bc604ec2"
+    },
+    {
+      "path": "my_affectgpt/processors/randaugment.py",
+      "sha256": "3e0701da8f54ce4eaa36adcdc73ce7e84ca1a9e74cffe52c4913232a4d076191"
+    },
+    {
+      "path": "my_affectgpt/processors/transforms_video.py",
+      "sha256": "09410d8c155942e1dee9d888ecc691b3222d457070c01f06f54802193445ea08"
+    },
+    {
+      "path": "my_affectgpt/processors/video_processor.py",
+      "sha256": "76e1b983bf99ff8527fbe0244e022cc0d6735a531031731724437547dbac1b09"
+    },
+    {
+      "path": "my_affectgpt/runners/__init__.py",
+      "sha256": "d065c825df0b8e99a598d362063f67e307ee8e66de2bc121c35a50220985a791"
+    },
+    {
+      "path": "my_affectgpt/runners/runner_base.py",
+      "sha256": "5ea14a53a36033e80dc243b5d98155b68d2323f584ed361d007d7be0ae8bb86a"
+    },
+    {
+      "path": "my_affectgpt/tasks/__init__.py",
+      "sha256": "bc3ed68649ad9d2b33d5776afaf720a2d5a34de37d5f8fca3cf002ce8cd73370"
+    },
+    {
+      "path": "my_affectgpt/tasks/base_task.py",
+      "sha256": "a417206302692fa3a3723e4e05d5155a93487682f61034f8f46b5ef2f302f950"
+    },
+    {
+      "path": "my_affectgpt/tasks/video_text_pretrain.py",
+      "sha256": "ebfcc670a0d87ebfd2ca66341ab82a281d264e7136a88bf0d84c9aa1ea4e9d4e"
+    },
+    {
+      "path": "toolkit/data/__init__.py",
+      "sha256": "6f4c45c430f3a1eb184ce61682f4611e3d21399c31e00fa24423b2ffcb8d451c"
+    },
+    {
+      "path": "toolkit/data/e2e_data.py",
+      "sha256": "1e50f799884f2d7dad3ec95a17257586ca021bad3585b48582576766c94609a2"
+    },
+    {
+      "path": "toolkit/data/feat_data.py",
+      "sha256": "fa62549bb6c6a792db7018898475424dec9f937cd8b96cea5aa65cd9bb35d41c"
+    },
+    {
+      "path": "toolkit/data/feat_data_topn.py",
+      "sha256": "6c3ef22e73a9a352d15bd316c0ef123018202bb2acd4c72bc574bfe3caaac576"
+    },
+    {
+      "path": "toolkit/data/videomae_data.py",
+      "sha256": "e735f9754dc526d10a980576a2f4cbbc38d598bbb2fb003b7d9b8ff9de77969f"
+    },
+    {
+      "path": "toolkit/dataloader/__init__.py",
+      "sha256": "ec19ab723467eb4c32d631e82415790a72ae7749a433009ecee0ac2b6b148551"
+    },
+    {
+      "path": "toolkit/dataloader/cmudata.py",
+      "sha256": "459d94ea0cd2c7f99426ebe4bbb0695f9db563ef5b7c1fbc9bf62e8279d007e1"
+    },
+    {
+      "path": "toolkit/dataloader/crossdim.py",
+      "sha256": "83146ab9cdb41b8ce186af01c93563a50e1b3a1d69f1a6330a8241f64c1c15ab"
+    },
+    {
+      "path": "toolkit/dataloader/crossdis.py",
+      "sha256": "787e358c1fce40add899dcff47a12609c36655d7764abd5dc23039e247d12413"
+    },
+    {
+      "path": "toolkit/dataloader/iemocap.py",
+      "sha256": "83c9e6b35fb9af84f6ce6a7d991f4a34e6a39fbcd761e8e0225fd34c4f7aa671"
+    },
+    {
+      "path": "toolkit/dataloader/meld.py",
+      "sha256": "39043a72e0cd565ec3688a4e650e2d08454351863fc32b699976faabaca0e914"
+    },
+    {
+      "path": "toolkit/dataloader/mer2023.py",
+      "sha256": "0a330dd11ca58be7ce47e99ea81d45bcc6a8e0c860e4d6e833bbd5d693d05556"
+    },
+    {
+      "path": "toolkit/dataloader/mer2023_unlabel.py",
+      "sha256": "b88e963c9cb5c2c1821eca11f3ff3e8046a019961e4c0ab6768e62e52ce55a3d"
+    },
+    {
+      "path": "toolkit/dataloader/mer2024.py",
+      "sha256": "aad84eb5fc912c460ebd1db3a30be59d5270a3fd97bfc738ee729272b572a21c"
+    },
+    {
+      "path": "toolkit/dataloader/sims.py",
+      "sha256": "b761ef2c40912f3417999b2bec9076892868b7283b9ac7f189f3bccd01e5ec36"
+    },
+    {
+      "path": "toolkit/dataloader/simsv2.py",
+      "sha256": "471d445fde34f9f8be8c6c71a837836cef0b4f3f5574edd0edd11f4cb6e94582"
+    },
+    {
+      "path": "toolkit/globals.py",
+      "sha256": "502961b3c12e5affac19c8a81b25c71f192f3e7b8b989975186b2af735474a98"
+    },
+    {
+      "path": "toolkit/gptv/abstract.py",
+      "sha256": "118091b0d977ebe7f86b10586b2a2fc4fc0181fd0f3f287f98b265e24a9ef1e9"
+    },
+    {
+      "path": "toolkit/gptv/affectnet.py",
+      "sha256": "7b1cd4245e8795db9b13a18e79c917a0e1562f85e364c8102db413fe477172c5"
+    },
+    {
+      "path": "toolkit/gptv/artphoto.py",
+      "sha256": "9f23cdd981be572f2b8e8e0fa03a531644bc3e804588076643bdb17bdc310a63"
+    },
+    {
+      "path": "toolkit/gptv/casme.py",
+      "sha256": "f14b0bdf46df184497d3b9c0e140b09a4117efc1691d64fb1f1fd2fb638b14e4"
+    },
+    {
+      "path": "toolkit/gptv/casme2.py",
+      "sha256": "5b6b8f12cd3084c749bbe2524c7b6e978e50265aad6ed874f9ec740a91c7d97f"
+    },
+    {
+      "path": "toolkit/gptv/ckplus.py",
+      "sha256": "0b89cab74cefae1252d0aa5ad90ff4edddb68dbbd92abb017d405e8612c41b07"
+    },
+    {
+      "path": "toolkit/gptv/cmumosi.py",
+      "sha256": "9f62a876e2d8a3902a65ce35b654ea4b2aad6cbed01b5a08c8cfcaccfd5a9876"
+    },
+    {
+      "path": "toolkit/gptv/dfew.py",
+      "sha256": "718988870d5d770794ab1ab58e4d7053208b2c6b8e65f5b161c2f23dc439ce53"
+    },
+    {
+      "path": "toolkit/gptv/enterface.py",
+      "sha256": "12e7a589865302641f590eb25608f27501d6041d895ce7014fc0aa7d321c72c9"
+    },
+    {
+      "path": "toolkit/gptv/fer2013.py",
+      "sha256": "d54c0be93f0b61576f60baa949141dc0ee0edf4011b708c187fd17aa1a779b5c"
+    },
+    {
+      "path": "toolkit/gptv/ferv39k.py",
+      "sha256": "c54da79b69dba7c9994605c0685a404502e3436058887ff95badb23ebad0ca87"
+    },
+    {
+      "path": "toolkit/gptv/mer2023.py",
+      "sha256": "89a96a26a7e0d8874ebd830ebba4d964f25d8398bafb41b3e2775c615ba3152b"
+    },
+    {
+      "path": "toolkit/gptv/mvsa-multiple.py",
+      "sha256": "16bbb7153e149e16342141a7fc6b24fd02a3842cb9145c596db3c2d2f87be880"
+    },
+    {
+      "path": "toolkit/gptv/mvsa-single.py",
+      "sha256": "2ba01705cb9601f6a1dc902c92cb2fb2f939a019ead843a6b3807ac54116bda8"
+    },
+    {
+      "path": "toolkit/gptv/rafdb.py",
+      "sha256": "f64243154377a994606477c58bae2ff3b1e0d785de651f6a49a581b2e02f29e9"
+    },
+    {
+      "path": "toolkit/gptv/ravdess.py",
+      "sha256": "56d57ba74d3dba44f254048eb296dbaf1a226b44ceac746a2fe21baded6b9e62"
+    },
+    {
+      "path": "toolkit/gptv/samm.py",
+      "sha256": "58242e9f6ad703afe45dc49e7b8dd0c16dfe921088af6d5695269fafe34c1577"
+    },
+    {
+      "path": "toolkit/gptv/sfew.py",
+      "sha256": "9c8d5226680d9242dc928f255ba6f2f1e7349c259c5ba8e7edeca0df73a68ff8"
+    },
+    {
+      "path": "toolkit/gptv/sims.py",
+      "sha256": "17ba88374015d88da7578037f8c9f47a3fe22360dc188e65b6d8295ae50bcc43"
+    },
+    {
+      "path": "toolkit/gptv/twitter1.py",
+      "sha256": "91bf2710dcf152372f4f69675b1e06b13325c260e5b044bced5d35fa3466480b"
+    },
+    {
+      "path": "toolkit/gptv/twitter2.py",
+      "sha256": "91235e54f87fabb5c7895a3d2419bd5ee383002c8f3fb2cee843cc69b6eca43b"
+    },
+    {
+      "path": "toolkit/model-tune.yaml",
+      "sha256": "160117c5ce577ecfbea28d1284310e408f1c87d49a5ec83054484ea73c8d45a4"
+    },
+    {
+      "path": "toolkit/models/__init__.py",
+      "sha256": "09a6f7930936f29561b4cb8d0381914caf658040cc8ef38a5b57f3d88b414684"
+    },
+    {
+      "path": "toolkit/models/attention.py",
+      "sha256": "8bce1818affc78381674b12a0bdafd390a4e39a56442b4c34164deea9d92542f"
+    },
+    {
+      "path": "toolkit/models/attention_topn.py",
+      "sha256": "82a6af3e493a6d084f3a4347de8a73e1ac8d22bdcc6eb6e240d3f169c1a53e2a"
+    },
+    {
+      "path": "toolkit/models/e2e_model.py",
+      "sha256": "46c82c4ad9b9d2f7cfedc56baf4329972df9085128afe8ed88e56df7457e0ceb"
+    },
+    {
+      "path": "toolkit/models/ef_lstm.py",
+      "sha256": "dd320e866be8ac970ae40e415e75a6171804f4923156fb70f2bcecc7231b59f9"
+    },
+    {
+      "path": "toolkit/models/graph_mfn.py",
+      "sha256": "a50caec27972da6e656b1288ad8d0a5da95fd61bb6a13f8f51eede15e98bc28f"
+    },
+    {
+      "path": "toolkit/models/lf_dnn.py",
+      "sha256": "8d4c28f2d76f6df26b9197d9030c677c3967a110304947355e117621f04242bf"
+    },
+    {
+      "path": "toolkit/models/lmf.py",
+      "sha256": "e0ea4729855964b58b50afaee491848c8b2bf1d8e8759ea3c5ce0891d2cd2701"
+    },
+    {
+      "path": "toolkit/models/mctn.py",
+      "sha256": "43cf7ad8d24c9b07813f1b0fc86f7fb0cb48c89ec34c85bcf5ef3bd03e2bb5cb"
+    },
+    {
+      "path": "toolkit/models/mfm.py",
+      "sha256": "d2d93ecfa64a667502238ac83cb95f4dd8108d7e4b3ef57b98cb2ae080d703a9"
+    },
+    {
+      "path": "toolkit/models/mfn.py",
+      "sha256": "a71f2a96cece0240b62cc22a6318fdf2b6a6308fef7a506581209dbb3c885cd2"
+    },
+    {
+      "path": "toolkit/models/misa.py",
+      "sha256": "8a99698965c2f44a56294361f9d29c3552b32a911c521e7f54958e5885a5a30a"
+    },
+    {
+      "path": "toolkit/models/mmim.py",
+      "sha256": "92750353de70f117184322098f47abbe9ee0da2e916438af23399c91adc287de"
+    },
+    {
+      "path": "toolkit/models/mult.py",
+      "sha256": "9145bb582479264fa7f7cc8f206bd63ba7f13229491326c24fcc4199c2e674e0"
+    },
+    {
+      "path": "toolkit/models/tfn.py",
+      "sha256": "14f58b5e57cd3b12b4734c5b823fb38ddaa5565c3364b68467e726dd0dffff7b"
+    },
+    {
+      "path": "toolkit/models/videomae_pretrain.py",
+      "sha256": "387969516f55b982412197afa48d1c44c3bf82c4587c8241980e6835b262d2ac"
+    },
+    {
+      "path": "toolkit/preprocess/cmumosei.py",
+      "sha256": "93bf488a17e07324c566a94800af5127e015d96cebfb3078d7195f0ddb5d2e9c"
+    },
+    {
+      "path": "toolkit/preprocess/cmumosi.py",
+      "sha256": "630afcf01f22a26848cd93ce1f5e6bb45c983367225f82ea5779b8fbdff78193"
+    },
+    {
+      "path": "toolkit/preprocess/iemocap.py",
+      "sha256": "af1d7e2e8019f25e7fd34b7e67f2e2f0540d1875b4dfca10145aa3a4ce0fbb67"
+    },
+    {
+      "path": "toolkit/preprocess/meld.py",
+      "sha256": "d00942b926e8908ce76a79669d1d7e5fa66e3fcddbabbdc36ce3c6bd59aa0f68"
+    },
+    {
+      "path": "toolkit/preprocess/mer2023.py",
+      "sha256": "c4fd8cb2eb5a2fbd7342345b62ac89588a029bdc897cef10714bc9c4117d7dcd"
+    },
+    {
+      "path": "toolkit/preprocess/mer2023_unlabel.py",
+      "sha256": "fb9f2b52b81e1d1aab4728974ff335229435d74be80679fe0cb0c5aa5d518748"
+    },
+    {
+      "path": "toolkit/preprocess/mer2024.py",
+      "sha256": "107f50e6c3a623b8dd38996ca061aa341e93f48b61c055f60f2534bf2758d54a"
+    },
+    {
+      "path": "toolkit/preprocess/sims.py",
+      "sha256": "f6ec168679303c0a33ea5496fc84d280ad398eb60ee72ced073fd86163d04b3f"
+    },
+    {
+      "path": "toolkit/preprocess/simsv2.py",
+      "sha256": "1f362f96478f8015facc035243fb122583e487fd85abf4d269dcea030c079e4b"
+    },
+    {
+      "path": "toolkit/utils/chatgpt.py",
+      "sha256": "4add1e03919652b06527d938787d79fd1325e54cc264736baf4dd0557ace568a"
+    },
+    {
+      "path": "toolkit/utils/e2e_utils.py",
+      "sha256": "c018c0f8934c1da4ce7cdf364ad9eebde98c9f263e13cf33eca957b0ce2f2e2d"
+    },
+    {
+      "path": "toolkit/utils/functions.py",
+      "sha256": "7d422f9069c1f134729838e0ee08aa9bba0a310ed0b7c7d0f2d1d97ca4f7e23d"
+    },
+    {
+      "path": "toolkit/utils/loss.py",
+      "sha256": "8ed9745f453f77b056a8e53e476eef865b4b0251437cedf8c22c510f0769d9f4"
+    },
+    {
+      "path": "toolkit/utils/metric.py",
+      "sha256": "b132ff2b7773230e60a33ffd120ddeb99a16d6f824de15634538ee866926f469"
+    },
+    {
+      "path": "toolkit/utils/punctuation.py",
+      "sha256": "f595ae93b618d3a15ce41268b8de760a091164f201f2f2f4c29256932c8f3ca2"
+    },
+    {
+      "path": "toolkit/utils/qwen.py",
+      "sha256": "f0dafb395df79dab38d48934da4c4ac7d7fb57817c7932723635425bfad389b1"
+    },
+    {
+      "path": "toolkit/utils/read_data.py",
+      "sha256": "d3a7f7257991577690f0f5a93e25826aeeab421f2e6dd97198fdbb72c8a077e5"
+    },
+    {
+      "path": "toolkit/utils/read_files.py",
+      "sha256": "5c59f4887971fb58a6ead16fca4cdb1463645538d896e3d280e5449cad20adce"
+    },
+    {
+      "path": "toolkit/utils/ttsaudio_utils.py",
+      "sha256": "54f01d60fcef54648b583c436c3d86edbc1fd0ac6f7570151323de48dce0151a"
+    },
+    {
+      "path": "toolkit/utils/videomae_utils.py",
+      "sha256": "e3fbd86a5f16089739070359d173b68d76957e0ab4376ddcbbf20b21e9a419eb"
+    },
+    {
+      "path": "train.py",
+      "sha256": "806aa55dfedc660fc2c8d24b52a7c0db337885f07cc3a9bf8eacd536c86c9818"
+    },
+    {
+      "path": "train_configs/emercoarse_highlevelfilter4_outputhybird_bestsetup_bestfusion_lz.yaml",
+      "sha256": "e976dbc2ab8d6c7928ebcac8a3e5ad7ca369071e98e8194f80b14885cbc349df"
+    },
+    {
+      "path": "train_configs/mercaptionplus_outputhybird_bestsetup_bestfusion_frame_lz.yaml",
+      "sha256": "b05cbbf836d21774def10d2cc534d67c5b998cdf3cdf21d7c9ade536d12b1038"
+    }
+  ],
+  "source_edits": []
+}

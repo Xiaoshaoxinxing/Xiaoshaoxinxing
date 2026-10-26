@@ -1,0 +1,58 @@
+{
+  "datasets": [
+    "MER2023",
+    "MER2024",
+    "MELD",
+    "IEMOCAPFour",
+    "CMUMOSI",
+    "CMUMOSEI",
+    "SIMS",
+    "SIMSv2",
+    "OVMERDPlus"
+  ],
+  "generation": {
+    "seed": 42,
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 256,
+    "eos_token_id": 151645,
+    "pad_token_id": 151643,
+    "repetition_penalty": 1.0
+  },
+  "question": "Please recognize all possible emotional states of the character.",
+  "evaluator": {
+    "model": "models/Qwen2.5-7B-Instruct",
+    "backend": "vllm",
+    "seed": 0,
+    "batch_size": 8,
+    "vllm_version": "0.6.2",
+    "transformers_version": "4.49.0",
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "repetition_penalty": 1.05,
+    "max_tokens": 512,
+    "sampling_seed": null
+  },
+  "extraction_runtime": {
+    "gpu_memory_utilization": 0.36,
+    "max_model_len": 4096,
+    "max_num_seqs": 8,
+    "single_process_store": true
+  },
+  "selection": "Checkpoint search binds one selected Qwen LoRA checkpoint for all nine datasets.",
+  "aggregate": "unweighted arithmetic mean of 4 HR + 4 sentiment weighted F1 + OVMERDPlus wheel Fs",
+  "notes": [
+    "Qwen LoRA uses two image frames and greedy256 decoding; official alignment covers dataset membership, extraction and metrics.",
+    "No benchmark labels/targets enter model input. No failed samples may be skipped or replaced.",
+    "OVMERDPlus official 532-row result enters the mean. Additional 99-overlap/433-nonoverlap results never replace it.",
+    "Omni keeps its native chat template and im_end EOS, exactly as the peer baseline; no AffectGPT-specific ### stopping rule.",
+    "No 2000-token AffectGPT prompt crop is applied. Full media are preserved, with an explicit 32768-token native context guard; oversized inputs fail rather than silently truncate.",
+    "For evaluation audio longer than the processor's 300-second buffer, explicitly extend the buffer and disable truncation; no samples are skipped. All training audio are below 27 seconds and retain the peer's unchanged preprocessing.",
+    "Greedy decoding differs from the original AffectGPT model's generation recipe and is recorded separately from official scoring."
+  ],
+  "official_sources": {
+    "generation_comparison_only": "https://github.com/zeroQiaoba/AffectGPT/blob/master/AffectGPT/inference_hybird.py",
+    "scoring": "https://github.com/zeroQiaoba/AffectGPT/blob/master/AffectGPT/evaluation.py",
+    "extraction": "https://github.com/zeroQiaoba/AffectGPT/blob/master/AffectGPT/my_affectgpt/evaluation/ew_metric.py"
+  }
+}
