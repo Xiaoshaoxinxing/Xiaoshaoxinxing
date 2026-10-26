@@ -6,7 +6,7 @@
 
 训练及 Omni 推理：`.venv`，Python3.10、torch2.4/cu121、transformers4.52.4。官方 face 及标签提取：`.venv-eval`，transformers4.49.0、vLLM0.6.2。具体依赖见[requirements](../requirements)。保留现有环境和模型位置。
 
-数据与模型是本地资产，不随 GitHub 源码上传。正式数据清单在 `data/manifests/`，固定训练目标及原生媒体元数据在 `data/manifests/sft/`。[数据来源记录](results/sft-data-provenance.json)给出 SHA-256 和目标分配规则。
+数据与模型权重是本地资产。GitHub 保留[数据准备说明](../data/README.md)、[资源索引](../data/manifests/catalog.json)、[模型准备说明](../models/README.md)及官方 face 下载清单。完整数据清单在本地 `data/manifests/`，固定训练目标及原生媒体元数据在 `data/manifests/sft/`。[数据来源记录](results/sft-data-provenance.json)给出 SHA-256 和目标分配规则。
 
 ## 只读检查
 

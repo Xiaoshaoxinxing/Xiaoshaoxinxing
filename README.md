@@ -54,7 +54,7 @@ OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 \
   .venv/bin/python -B -m unittest discover -s tests -v
 ```
 
-当前基线已经训练和评测完成。新实验使用新配置、审计及输出身份；不要把已有完成目录当成新任务的输出位置。数据、模型、缓存、运行产物和历史归档均不上传 GitHub。
+当前基线已经训练和评测完成。新实验使用新配置、审计及输出身份；不要把已有完成目录当成新任务的输出位置。实际数据、模型权重、缓存、运行产物和历史归档保留在本地；GitHub 展示各目录的用途说明、数据资源索引和官方 checkpoint 下载清单。
 
 ## 导航
 
@@ -63,6 +63,10 @@ OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 \
 | [实验状态](docs/experiment-status.md) | SFT 主线、已完成结果和下一步 |
 | [运行协议](docs/protocol.md) | 环境、配置、检查与运行边界 |
 | [目录指南](docs/directory-guide.md) | 活动代码、数据产物、缓存与历史归档 |
+| [数据准备](data/README.md) | 数据来源、目录布局与清单准备 |
+| [模型准备](models/README.md) | 基座、评分模型和官方 face 权重 |
+| [运行产物](runs/README.md) | checkpoint、预测和结果的保存位置 |
+| [日志](logs/README.md) / [报告](reports/README.md) | 本地日志与审计记录的用途 |
 | [历史 A 记录](docs/history/native-omni-experiment-a.md) | A 的退役说明与恢复位置 |
 | [归档索引](docs/results/archive-index-20261026.json) | 旧、新路径映射及核验记录 |
 

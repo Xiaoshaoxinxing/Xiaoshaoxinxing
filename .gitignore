@@ -1,9 +1,24 @@
-# Local datasets, weights, calibration artifacts and experiment outputs.
-/data/
-/models/
-/runs/
-/logs/
-/reports/
+# Publish directory guides and explicitly selected metadata only.
+/data/*
+!/data/README.md
+!/data/manifests/
+/data/manifests/*
+!/data/manifests/README.md
+!/data/manifests/catalog.json
+/models/*
+!/models/README.md
+!/models/AffectGPT-face/
+/models/AffectGPT-face/*
+!/models/AffectGPT-face/official-files.json
+/runs/*
+!/runs/README.md
+/logs/*
+!/logs/README.md
+/reports/*
+!/reports/README.md
+# Local shared backbones used by the vendored official implementation.
+/baselines/affectgpt_official_face/upstream/models/
+# Local archives and export packages.
 /.local-archive/
 /dist/
 # Downloaded reference paper; research notes are versioned separately.

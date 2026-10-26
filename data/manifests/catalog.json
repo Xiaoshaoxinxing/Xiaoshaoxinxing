@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "kind": "local_data_resource_catalog",
+  "is_training_manifest": false,
+  "description": "Resource metadata only. Full JSONL manifests, annotations and media remain local.",
+  "training": {
+    "dataset": "MER-Caption+",
+    "directory": "mer2025-dataset",
+    "split": "train",
+    "samples": 31327,
+    "manifest": "data/manifests/mercaptionplus.train.jsonl",
+    "target_counts": {
+      "description": 15664,
+      "ovlabel": 15663
+    }
+  },
+  "benchmarks": [
+    {
+      "dataset": "MER2023",
+      "directory": "mer2023-dataset-process",
+      "split": "test",
+      "samples": 411,
+      "metric_task": "basic",
+      "manifest": "data/manifests/benchmark/MER2023.jsonl"
+    },
+    {
+      "dataset": "MER2024",
+      "directory": "mer2024-dataset-process",
+      "split": "test",
+      "samples": 1169,
+      "metric_task": "basic",
+      "manifest": "data/manifests/benchmark/MER2024.jsonl"
+    },
+    {
+      "dataset": "MELD",
+      "directory": "meld-process",
+      "split": "test",
+      "samples": 2610,
+      "metric_task": "basic",
+      "manifest": "data/manifests/benchmark/MELD.jsonl"
+    },
+    {
+      "dataset": "IEMOCAPFour",
+      "directory": "iemocap-process",
+      "split": "test",
+      "samples": 1241,
+      "metric_task": "basic",
+      "manifest": "data/manifests/benchmark/IEMOCAPFour.jsonl"
+    },
+    {
+      "dataset": "CMUMOSI",
+      "directory": "cmumosi-process",
+      "split": "test",
+      "samples": 686,
+      "metric_task": "sentiment",
+      "manifest": "data/manifests/benchmark/CMUMOSI.jsonl"
+    },
+    {
+      "dataset": "CMUMOSEI",
+      "directory": "cmumosei-process",
+      "split": "test",
+      "samples": 4659,
+      "metric_task": "sentiment",
+      "manifest": "data/manifests/benchmark/CMUMOSEI.jsonl"
+    },
+    {
+      "dataset": "SIMS",
+      "directory": "sims-process",
+      "split": "test",
+      "samples": 457,
+      "metric_task": "sentiment",
+      "manifest": "data/manifests/benchmark/SIMS.jsonl"
+    },
+    {
+      "dataset": "SIMSv2",
+      "directory": "simsv2-process",
+      "split": "test",
+      "samples": 1034,
+      "metric_task": "sentiment",
+      "manifest": "data/manifests/benchmark/SIMSv2.jsonl"
+    },
+    {
+      "dataset": "OVMERDPlus",
+      "directory": "ovmerdplus-process",
+      "split": "test",
+      "samples": 532,
+      "metric_task": "fine_grained",
+      "manifest": "data/manifests/benchmark/OVMERDPlus.jsonl"
+    }
+  ],
+  "full_benchmark_samples": 12799,
+  "files": [
+    {
+      "path": "data/manifests/mercaptionplus.train.jsonl",
+      "bytes": 33080770,
+      "sha256": "eaa1c825bb3219d54ad01ec8e565688397cc709d3e3ce2bffb80a974e01219b7",
+      "included_in_repository": false,
+      "samples": 31327
+    },
+    {
+      "path": "data/manifests/mercaptionplus.train.receipt.json",
+      "bytes": 620,
+      "sha256": "5de5d3b01aeacb7e1b182cebe441b0fa24ede1a1eaf033abc680d13e49b72a95",
+      "included_in_repository": false
+    },
+    {
+      "path": "data/manifests/benchmark/MER2023.jsonl",
+      "bytes": 152782,
+      "sha256": "02117b26563d6c7453442c75ec6b3a2edad3deb848ee6a81bc6293cc4b4a361b",
+      "included_in_repository": false,
+      "samples": 411
+    },
+    {
+      "path": "data/manifests/benchmark/MER2023.receipt.json",
+      "bytes": 484,
+      "sha256": "835720626ffe48fd7d7188fed0d0b6fa1986d0e483852689713ca0c42a45032c",
+      "included_in_repository": false
+    },
+    {
+      "path": "data/manifests/benchmark/MER2024.jsonl",
+      "bytes": 415145,
+      "sha256": "144676ecb5bfacfc9d0ae799ea8c268ddfc0ac85882d3a3e1a66e09ec4af3347",
+      "included_in_repository": false,
+      "samples": 1169
+    },
+    {
+      "path": "data/manifests/benchmark/MER2024.receipt.json",
+      "bytes": 477,
+      "sha256": "5977797984a79e4cfab9a439db3b5e21f7af9add632b05346f79bcb11c58f4e5",
+      "included_in_repository": false
+    },
+    {
+      "path": "data/manifests/benchmark/MELD.jsonl",
+      "bytes": 865597,
+      "sha256": "300a189f3fd3e3a1208ed8adffa693f88c7dee95b27e64663d7e0829dd91c29f",
+      "included_in_repository": false,
+      "samples": 2610
+    },
+    {
+      "path": "data/manifests/benchmark/MELD.receipt.json",
+      "bytes": 458,
+      "sha256": "be88eae9ffe4643a1fecb89db9a2bbcc8fab944b21bf1cc553925383d2152a65",
+      "included_in_repository": false
+    },
+    {
+      "path": "data/manifests/benchmark/IEMOCAPFour.jsonl",
+      "bytes": 471224,
+      "sha256": "5f993db10a343c99cfc0fb51ca9b3e1ef203d9467b73626d9f99af912394c52e",
+      "included_in_repository": false,
+      "samples": 1241
+    },
+    {
+      "path": "data/manifests/benchmark/IEMOCAPFour.receipt.json",
+      "bytes": 469,
+      "sha256": "33da3617d870fd455b2e0b61c57e0c4bf6183251109bdbef5bf0317c940d5782",
+      "included_in_repository": false
+    },
+    {
+      "path": "data/manifests/benchmark/CMUMOSI.jsonl",
+      "bytes": 244187,
+      "sha256": "9427f90d0ed78a3dbca77ba24399989615ac1d70b23d54d9257c19f124e3b1a7",
+      "included_in_repository": false,
+      "samples": 686
+    },
+    {
+      "path": "data/manifests/benchmark/CMUMOSI.receipt.json",
+      "bytes": 463,
+      "sha256": "23c61616d80a081351ef84c6abe31dfe59e452cef418afaeefffeb5b96da0a75",
+      "included_in_repository": false
+    },
+    {
+      "path": "data/manifests/benchmark/CMUMOSEI.jsonl",
+      "bytes": 1895219,
+      "sha256": "59284bf14cf08dcc5365348a325da5bbef4d49f140b80ab5f654c77fc8de8abd",
+      "included_in_repository": false,
+      "samples": 4659
+    },
+    {
+      "path": "data/manifests/benchmark/CMUMOSEI.receipt.json",
+      "bytes": 466,
+      "sha256": "5849ba823a490750e5ed20b80240eb1c5c63a792b2e8cf1d08f9b8a958b84e37",
+      "included_in_repository": false
+    },
+    {
+      "path": "data/manifests/benchmark/SIMS.jsonl",
+      "bytes": 151437,
+      "sha256": "3e587159d73b4692ea8de54b0d23ffc8e74a1f118925e384bc3f48c904e674aa",
+      "included_in_repository": false,
+      "samples": 457
+    },
+    {
+      "path": "data/manifests/benchmark/SIMS.receipt.json",
+      "bytes": 457,
+      "sha256": "77b982edb2a51fa5b1dff790d04dcd00e0b3883963354dab512cf0e32b02255d",
+      "included_in_repository": false
+    },
+    {
+      "path": "data/manifests/benchmark/SIMSv2.jsonl",
+      "bytes": 363970,
+      "sha256": "a4e17aa12d12f675cc5809d5ff9112d874407e0ac49390247609e91830e18c83",
+      "included_in_repository": false,
+      "samples": 1034
+    },
+    {
+      "path": "data/manifests/benchmark/SIMSv2.receipt.json",
+      "bytes": 462,
+      "sha256": "ae7d8a48f7374564d039406d69c6f2ff458f4f041e9327ce60f41d1de88553de",
+      "included_in_repository": false
+    },
+    {
+      "path": "data/manifests/benchmark/OVMERDPlus.jsonl",
+      "bytes": 210365,
+      "sha256": "b2ead7c6d30696f610a246076eabad1bb3d73b11a01c5643fce8de74f5c87bbb",
+      "included_in_repository": false,
+      "samples": 532
+    },
+    {
+      "path": "data/manifests/benchmark/OVMERDPlus.receipt.json",
+      "bytes": 456,
+      "sha256": "2620d0ce85037c5c6c000d76cf98c0a12dc6e3d387a1d30c79f3bf009b382dd5",
+      "included_in_repository": false
+    },
+    {
+      "path": "data/manifests/sft/mercaptionplus-target-plan.json",
+      "bytes": 2714344,
+      "sha256": "10e7690b01d6f34245b7c214ac271471c2ae426b63729ed70985ef30e86e5447",
+      "included_in_repository": false
+    },
+    {
+      "path": "data/manifests/sft/mercaptionplus-length-bounds.json",
+      "bytes": 5008481,
+      "sha256": "4670360f3b2a903173e4e38d07d5a1db02c17e324c94a93f74eae3a522aff016",
+      "included_in_repository": false
+    },
+    {
+      "path": "data/manifests/sft/native-media-metadata.json",
+      "bytes": 13661962,
+      "sha256": "dd6f9d419a6b6ef8821665122cd67870bd0c3ebe677fc8f3b175498138e732c1",
+      "included_in_repository": false
+    }
+  ],
+  "notes": [
+    "Counts precede metric-specific filtering.",
+    "Hashes identify files used by the completed run; regenerated paths or serialization may change hashes.",
+    "OVMERDPlus includes 99 known training-overlap IDs in its official 532-sample full result."
+  ]
+}

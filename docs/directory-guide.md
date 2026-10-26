@@ -21,11 +21,15 @@
 
 ## 数据和产物
 
+GitHub 中的 `data/`、`models/`、`runs/`、`logs/`、`reports/` 通过各自的说明文件展示。实际资源保留在本地；只额外发布 `data/manifests/catalog.json` 的资源元数据，以及 `models/AffectGPT-face/official-files.json` 的官方权重下载清单。目录出现在仓库中不代表其本地数据也已上传。
+
 | 路径 | 内容 |
 | --- | --- |
+| [data/README.md](../data/README.md) | 数据来源、媒体布局与清单准备 |
+| [data/manifests/catalog.json](../data/manifests/catalog.json) | 训练／测试样本数、清单大小及哈希；不包含样本正文 |
 | `data/manifests/sft/` | 固定目标分配、保守长度界和原生媒体元数据，原样从历史审计提取 |
 | `data/manifests/benchmark/` | 九个官方测试集清单 |
-| `models/` | 基座、提取模型和官方 face 权重，保留原位置 |
+| [models/README.md](../models/README.md) | 基座、提取模型及官方 face 权重的本地准备方式 |
 | `runs/peer_lora_epoch2_run02/` | 当前 LoRA 结果、三份 checkpoint、完整训练日志与原始源码快照 |
 | `runs/affectgpt_official_face_screen20_run01/` | 官方 face 筛选与九集结果 |
 | `.cache/sft/` | 当前训练和全量评测的 JPEG 帧缓存，已从运行目录分离 |
@@ -33,6 +37,8 @@
 | `reports/peer_lora_data_audit_20261025/` | 数据集核验记录 |
 | `reports/sft_transition_20261026/` | 本次整理计划、移动记录、逐文件核验和测试日志 |
 | `docs/results/` | 可发布的结果、来源及归档索引 |
+
+运行目录、日志和报告分别见 [runs/README.md](../runs/README.md)、[logs/README.md](../logs/README.md)、[reports/README.md](../reports/README.md)。
 
 `runs/peer_lora_epoch2_run02/checkpoint_receipts/`保留所有 checkpoint 的原始收据；不必保留 33 个活动权重目录来检查筛选记录。重新推理某个已归档候选前，需要按索引恢复其完整权重。
 
